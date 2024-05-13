@@ -3,7 +3,7 @@ import PaginaTipografia from "./pages/PaginaTipografia";
 
 function App() {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename="audittei">
       <Routes>
         <Route path="/" element={ <PaginaTipografia /> } />
       </Routes>
