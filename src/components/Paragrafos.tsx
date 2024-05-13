@@ -23,7 +23,7 @@ export default function Paragrafos() {
                 <span className="m-medium" style={{ color: '#4787F3', fontWeight: 500, fontSize: '24px' }}>PARÁGRAFO COM BOLD</span>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                    faucibus sed metus et iaculis. <a href="">Aenean consectetur </a>tincidunt turpis,
+                    faucibus sed metus et iaculis. <a href="#">Aenean consectetur </a>tincidunt turpis,
                     at ornare nibh bibendum vitae.
                 </p>
             </div>
