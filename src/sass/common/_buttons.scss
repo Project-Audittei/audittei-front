@@ -11,6 +11,10 @@
     span {
         margin: 0px $btn-icon-margin;
     }
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .btn-menu {

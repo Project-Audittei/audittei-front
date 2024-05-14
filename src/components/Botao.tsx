@@ -4,7 +4,7 @@ type BotaoPropsType = {
     label: string;
     estilo: 'Primary' | 'Secondary' | 'Third' | 'Menu';
     tamanho: "Large" | "Normal" | "Medium" | "Small" | "ExtraSmall";
-    onClick: () => void;
+    onClick?: () => void;
     icone?: JSX.Element;
     iconePosicao?: "esquerda" | "direita";
 }

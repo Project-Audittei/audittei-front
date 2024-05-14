@@ -3,6 +3,7 @@ import PaginaTipografia from "./pages/PaginaTipografia";
 import Home from "./pages/Home";
 import { Home as DocsHome } from "./pages/documentation-app/Home";
 import { Tipografia as DocsTipografia } from "./pages/documentation-app/Tipografia";
+import { Grid as DocsGrid } from "./pages/documentation-app/Grid";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         
         <Route path="/docs" element={ <DocsHome /> } />
         <Route path="/docs/tipografia" element={ <DocsTipografia /> } />
+        <Route path="/docs/grid" element={ <DocsGrid /> } />
       </Routes>
     </BrowserRouter>
   );
