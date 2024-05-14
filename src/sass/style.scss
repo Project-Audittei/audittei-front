@@ -1,9 +1,19 @@
 @import './common/variables';
+@import './common/buttons';
+@import './common/background';
 @import './common/font';
 @import './common/reset';
 @import './common/grid';
+@import './common/aside';
 @import './common/margin';
+
+@import 'documentation-app/documentation-app';
 
 body {
     font-family: 'WorkSans';
+}
+
+header .container {
+    display: flex;
+    padding: 24px 8px;
 }

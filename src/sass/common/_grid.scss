@@ -1,7 +1,86 @@
 .container {
     margin: 0px 50px;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
     
     .col {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.app-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #F0F3F8;
+    display: flex;
+    
+    aside {
+        height: 100%;
+        width: 243px;
+        background-color: #FAFCFF;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+
+        .header {
+            width: 100%;
+            height: 84px;
+            min-height: 84px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .separador {
+            width: calc(100% - 32px);
+            height: 1px;
+            background-color: rgba($color: #000000, $alpha: .1);
+            margin: 0 auto;
+        }
+
+        .container {
+            padding: 0px 16px;
+            padding-top: 32px;
+
+            ul.menu {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                .btn {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .app-content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+        header {
+            height: 85px;
+            max-height: 85px;
+            background-color: #F4F7FB;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba($color: #000000, $alpha: .06);
+        }
         
+        main {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding-left: 50px;
+        }
     }
 }

@@ -18,6 +18,90 @@
     margin-bottom: $margin-large;
 }
 
+.m {
+    &t {
+        &-1 {
+            margin-top: 8px;
+        }
+
+        &-2 {
+            margin-top: 16px;
+        }
+
+        &-3 {
+            margin-top: 32px;
+        }
+
+        &-4 {
+            margin-top: 64px;
+        }
+    }
+
+    &b {
+        &-1 {
+            margin-bottom: 8px;
+        }
+
+        &-2 {
+            margin-bottom: 16px;
+        }
+
+        &-3 {
+            margin-bottom: 32px;
+        }
+
+        &-4 {
+            margin-bottom: 64px;
+        }
+    }
+}
+
+.m {
+    &y {
+        &-1 {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        &-2 {
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+
+        &-3 {
+            margin-top: 32px;
+            margin-bottom: 32px;
+        }
+
+        &-4 {
+            margin-top: 64px;
+            margin-bottom: 64px;
+        }
+    }
+
+    &x {
+        &-1 {
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+
+        &-2 {
+            margin-left: 16px;
+            margin-right: 16px;
+        }
+
+        &-3 {
+            margin-left: 32px;
+            margin-right: 32px;
+        }
+
+        &-4 {
+            margin-left: 64px;
+            margin-right: 64px;
+        }
+    }
+}
+
 header {
     margin-bottom: $margin-header;
 }

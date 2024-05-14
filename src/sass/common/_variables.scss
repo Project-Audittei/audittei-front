@@ -46,7 +46,7 @@ $text-warning: #FFB82E;
 $text-danger: #F93232;
 $text-success: #439F6E;
 $text-dark: #000000;
-$text-light: #212121;
+$text-light: #f0f0f0;
 
 // Colors > Paragraph
 $p-link-color: #265FF3;
@@ -59,3 +59,96 @@ $margin-section: 64px;
 $margin-thin: 16px;
 $margin-medium: 32px;
 $margin-large: 40px;
+
+// Buttons
+$btn-padding-y: 10px;
+$btn-padding-x: 24px;
+
+$btn-icon-margin: 8px;
+
+// Buttons > Disabled
+
+$btn-disabled-background: #F4F3FE;
+$btn-disabled-text: #C5C0DB;
+
+// Buttons > Primary > Default
+
+$btn-primary-background: #265EF5;
+$btn-primary-text: #FFFFFF;
+
+// Buttons > Primary > Hover
+
+$btn-primary-background__hover: #0F42CA;
+$btn-primary-text__hover: #FFFFFF;
+
+// Buttons > Primary > Active
+
+$btn-primary-background__active: #0F42CA;
+$btn-primary-text__active: #FFFFFF;
+
+// Buttons > Secondary > Default
+
+$btn-secondary-border: 1px solid #605DEC;
+$btn-secondary-background: #FFFFFF;
+$btn-secondary-text: #605DEC;
+
+// Buttons > Secondary > Hover
+
+$btn-secondary-border__hover: 1px solid #605DEC;
+$btn-secondary-background__hover: #F6F5FF;
+$btn-secondary-text__hover: #265EF5;
+
+// Buttons > Secondary > Active
+
+$btn-secondary-border__active: 1px solid #605DEC;
+$btn-secondary-background__active: #F6F5FF;
+$btn-secondary-text__active: #265EF5;
+
+// Buttons > Third > Default
+
+$btn-third-border: none;
+$btn-third-background: transparent;
+$btn-third-text: #265EF5;
+
+// Buttons > Third > Hover
+
+$btn-third-border__hover: none;
+$btn-third-background__hover: #F6F5FF;
+$btn-third-text__hover: #265EF5;
+
+// Buttons > Third > Active
+
+$btn-third-border__active: none;
+$btn-third-background__active: #F6F5FF;
+$btn-third-text__active: #265EF5;
+
+$btn-large-text: 20px;
+$btn-large-padding-x: 32px;
+$btn-large-padding-y: 20px;
+$btn-large-icon-margin: 8px;
+
+$btn-normal-text: 20px;
+$btn-normal-padding-x: 32px;
+$btn-normal-padding-y: 16px;
+$btn-normal-icon-margin: 8px;
+
+$btn-medium-text: 16px;
+$btn-medium-padding-x: 32px;
+$btn-medium-padding-y: 14px;
+$btn-medium-icon-margin: 8px;
+
+$btn-small-text: 14px;
+$btn-small-padding-x: 24px;
+$btn-small-padding-y: 12px;
+$btn-small-icon-margin: 6px;
+
+$btn-extraSmall-text: 14px;
+$btn-extraSmall-padding-x: 24px;
+$btn-extraSmall-padding-y: 8px;
+$btn-extraSmall-icon-margin: 6px;
+
+$btn-menu-text: 18px;
+$btn-menu-font-weight: 500;
+$btn-menu-padding-x: 24px;
+$btn-menu-padding-y: 8px;
+$btn-menu-icon-margin: 8px;
