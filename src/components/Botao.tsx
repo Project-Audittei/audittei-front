@@ -14,7 +14,7 @@ export default function Botao({ label, tamanho, icone, iconePosicao, estilo, onC
     const [btnEstilo, setBtnEstilo] = useState<string>('');
     const [btnTamanho, setBtnTamanho] = useState<string>('');
 
-    useEffect(() => {
+    const fetchProps = () => {
         switch(tamanho) {
             case "Large":
                 setBtnTamanho('btn-large');
@@ -36,9 +36,7 @@ export default function Botao({ label, tamanho, icone, iconePosicao, estilo, onC
                 setBtnTamanho('btn-extraSmall');
                 break;
         }
-    }, [tamanho]);
 
-    useEffect(() => {
         switch(estilo) {
             case "Primary":
                 setBtnEstilo('btn-primary');
@@ -51,8 +49,15 @@ export default function Botao({ label, tamanho, icone, iconePosicao, estilo, onC
             case "Third":
                 setBtnEstilo('btn-third');
                 break;
+
+            case "Menu":
+                setBtnEstilo('btn-menu');
+                break;
         }
-    }, [estilo]);
+    }
+
+    useEffect(fetchProps, [tamanho, estilo]);
+
 
     if(iconePosicao !== undefined) {
         return (
