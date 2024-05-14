@@ -2,12 +2,10 @@ import { ReactNode } from "react";
 import MenuSide from "./MenuSide";
 
 type VisaoBasicaPropsType = {
-    titulo?: string;
-    nivel: number;
     children: ReactNode;
 }
 
-export default function VisaoBasica({ titulo, nivel, children }: VisaoBasicaPropsType) {
+export default function VisaoBasica({ children }: VisaoBasicaPropsType) {
     return (
         <div className="app-container">
             <aside>

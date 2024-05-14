@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type BotaoPropsType = {
     label: string;
@@ -14,7 +14,7 @@ export default function Botao({ label, tamanho, icone, iconePosicao, estilo, onC
     const [btnEstilo, setBtnEstilo] = useState<string>('');
     const [btnTamanho, setBtnTamanho] = useState<string>('');
 
-    const fetchProps = () => {
+    if(btnTamanho === '') {
         switch(tamanho) {
             case "Large":
                 setBtnTamanho('btn-large');
@@ -27,16 +27,18 @@ export default function Botao({ label, tamanho, icone, iconePosicao, estilo, onC
             case "Normal":
                 setBtnTamanho('btn-normal');
                 break;
-
+    
             case "Small":
                 setBtnTamanho('btn-small');
                 break;
-
+    
             case "ExtraSmall":
                 setBtnTamanho('btn-extraSmall');
                 break;
         }
+    }
 
+    if(btnEstilo === '') {
         switch(estilo) {
             case "Primary":
                 setBtnEstilo('btn-primary');
@@ -55,9 +57,6 @@ export default function Botao({ label, tamanho, icone, iconePosicao, estilo, onC
                 break;
         }
     }
-
-    useEffect(fetchProps, [tamanho, estilo]);
-
 
     if(iconePosicao !== undefined) {
         return (
