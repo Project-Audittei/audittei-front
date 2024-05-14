@@ -36,48 +36,6 @@ export default function Botao({ label, tamanho, icone, iconePosicao, estilo, onC
                 setBtnTamanho('btn-extraSmall');
                 break;
         }
-
-        switch(estilo) {
-            case "Primary":
-                setBtnEstilo('btn-primary');
-                break;
-
-            case "Secondary":
-                setBtnEstilo('btn-secondary');
-                break;
-
-            case "Third":
-                setBtnEstilo('btn-third');
-                break;
-
-            case "Menu":
-                setBtnEstilo('btn-menu');
-                break;
-        }
-    }, []);
-
-    useEffect(() => {
-        switch(tamanho) {
-            case "Large":
-                setBtnTamanho('btn-large');
-                break;
-            
-            case "Medium":
-                setBtnTamanho('btn-medium');
-                break;
-            
-            case "Normal":
-                setBtnTamanho('btn-normal');
-                break;
-
-            case "Small":
-                setBtnTamanho('btn-small');
-                break;
-
-            case "ExtraSmall":
-                setBtnTamanho('btn-extraSmall');
-                break;
-        }
     }, [tamanho]);
 
     useEffect(() => {
