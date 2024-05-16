@@ -115,6 +115,15 @@
                 border: #605DEC;
             }
         }
+
+        &:disabled {
+            background-color: $btn-disabled-background;
+            color: $btn-disabled-text;
+    
+            &:hover {
+                cursor: not-allowed;
+            }
+        }
     }
 }
 

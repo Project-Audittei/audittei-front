@@ -21,6 +21,7 @@ export default function BotoesContent() {
                                 <Botao estilo="Third" tamanho="Large" label="Label" disabled/>
                                 <Botao estilo="Primary" tamanho="Large" icone={ <Pencil size={24} /> } somenteIcone/>
                                 <Botao estilo="Secondary" tamanho="Large" icone={ <Pencil size={24} /> } somenteIcone/>
+                                <Botao estilo="Secondary" tamanho="Large" icone={ <Pencil size={24} /> } somenteIcone disabled/>
                             </div>
                         </div>
                     </div>
@@ -67,6 +68,7 @@ export default function BotoesContent() {
                                 <Botao estilo="Primary" tamanho="Normal" label="Label" disabled/>
                                 <Botao estilo="Primary" tamanho="Normal" icone={ <Pencil size={24}/> } somenteIcone/>
                                 <Botao estilo="Secondary" tamanho="Normal" icone={ <Pencil size={24}/> } somenteIcone/>
+                                <Botao estilo="Secondary" tamanho="Normal" icone={ <Pencil size={24}/> } somenteIcone disabled/>
                             </div>
                         </div>
                     </div>
@@ -113,6 +115,7 @@ export default function BotoesContent() {
                                 <Botao estilo="Primary" tamanho="Medium" label="Label" disabled/>
                                 <Botao estilo="Primary" tamanho="Medium" icone={ <Pencil size={16}/> } somenteIcone/>
                                 <Botao estilo="Secondary" tamanho="Medium" icone={ <Pencil size={16}/> } somenteIcone/>
+                                <Botao estilo="Secondary" tamanho="Medium" icone={ <Pencil size={16}/> } somenteIcone disabled/>
                             </div>
                         </div>
                     </div>
@@ -159,6 +162,7 @@ export default function BotoesContent() {
                                 <Botao estilo="Primary" tamanho="Small" label="Label" disabled/>
                                 <Botao estilo="Primary" tamanho="Small" icone={ <Pencil size={16}/> } somenteIcone/>
                                 <Botao estilo="Secondary" tamanho="Small" icone={ <Pencil size={16}/> } somenteIcone/>
+                                <Botao estilo="Secondary" tamanho="Small" icone={ <Pencil size={16}/> } somenteIcone disabled/>
                             </div>
                         </div>
                     </div>
@@ -205,6 +209,7 @@ export default function BotoesContent() {
                                 <Botao estilo="Primary" tamanho="ExtraSmall" label="Label" disabled/>
                                 <Botao estilo="Primary" tamanho="ExtraSmall" icone={ <Pencil size={16} /> } somenteIcone/>
                                 <Botao estilo="Secondary" tamanho="ExtraSmall" icone={ <Pencil size={16} /> } somenteIcone/>
+                                <Botao estilo="Secondary" tamanho="ExtraSmall" icone={ <Pencil size={16} /> } somenteIcone disabled/>
                             </div>
                         </div>
                     </div>
