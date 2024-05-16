@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft } from "lucide-react";
 import Botao from "./Botao";
+import Modal from "./Modal";
 
 type VisaoBasicaPropsType = {
     titulo?: string;
@@ -16,6 +17,7 @@ export default function VisaoBasica({ titulo, nivel, children }: VisaoBasicaProp
     if(nivel > 0) {
         return (
             <>
+                <Modal />
                 <header className="bg-primary">
                     <div className="container">
                         <Botao

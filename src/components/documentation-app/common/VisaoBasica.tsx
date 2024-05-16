@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import MenuSide from "./MenuSide";
+import Modal from "../../Modal";
 
 type VisaoBasicaPropsType = {
     children: ReactNode;
@@ -8,6 +9,7 @@ type VisaoBasicaPropsType = {
 export default function VisaoBasica({ children }: VisaoBasicaPropsType) {
     return (
         <div className="app-container">
+            <Modal />
             <aside>
                 <div className="header"><h4>Audittei Docs</h4></div>
                 <div className="separador"></div>

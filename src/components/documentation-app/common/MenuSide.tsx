@@ -1,4 +1,4 @@
-import { Home, Type, LayoutGrid, Brush, MousePointer2 } from "lucide-react";
+import { Home, Type, LayoutGrid, Brush, MousePointer2, Component } from "lucide-react";
 import Botao from "../../Botao";
 import { Link } from "react-router-dom";
 
@@ -10,6 +10,7 @@ export default function MenuSide() {
             <li><Link to={'/docs/tipografia'}><Botao estilo="Menu" icone={ <Type size={16}/> } label="Tipografia" tamanho="Small" /></Link></li>
             <li><Link to={'/docs/cores'}><Botao estilo="Menu" icone={ <Brush size={16}/> } label="Cores" tamanho="Small" /></Link></li>
             <li><Link to={'/docs/botoes'}><Botao estilo="Menu" icone={ <MousePointer2 size={16}/> } label="Botões" tamanho="Small" /></Link></li>
+            <li><Link to={'/docs/modal'}><Botao estilo="Menu" icone={ <Component size={16}/> } label="Modal" tamanho="Small" /></Link></li>
         </ul>
     );
 }

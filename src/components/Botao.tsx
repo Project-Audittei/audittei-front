@@ -50,7 +50,7 @@ export default function Botao(props: BotaoPropsType) {
                 break;
     
             case "Secondary":
-                setBtnEstilo(`${className} ${prefix}-secondary`);
+                setBtnEstilo(`${ className } ${prefix}-secondary`);
                 break;
     
             case "Third":
