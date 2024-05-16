@@ -1,5 +1,4 @@
 import { ArrowRight, Plus } from "lucide-react";
-import Amostra from "../../components/Amostra";
 import Botao from "../../components/Botao";
 
 export default function BotoesContent() {
