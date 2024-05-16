@@ -3,9 +3,10 @@ import useModal from "../../hooks/useModal";
 
 export default function ModalContent() {
 
-    const { modalOpen } = useModal();
+    const { modalOpen, setModalTitle } = useModal();
 
     const HandleAbrirModal = () => {
+        setModalTitle( 'Lorem ipsum dolor sit' );
         modalOpen(<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam faucibus sed metus et iaculis. Aenean consectetur tincidunt turpis, at ornare nibh bibendum vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam faucibus sed metus et iaculis. Aenean consectetur tincidunt turpis, at ornare nibh bibendum vitae.</p>);
     }
 

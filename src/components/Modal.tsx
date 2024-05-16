@@ -3,7 +3,7 @@ import Botao from "./Botao";
 import useModal from "../hooks/useModal";
 
 export default function Modal() {
-    const { isModalOpen, modalClose, modalContent } = useModal();
+    const { isModalOpen, modalClose, modalContent, modalTitle } = useModal();
 
     if(!isModalOpen) return (<></>);
 
@@ -22,7 +22,7 @@ export default function Modal() {
                 </div>
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h1>Lorem ipsum dolor sit</h1>
+                        <h1>{ modalTitle }</h1>
                     </div>
                     <div className="modal-body">
                         { modalContent }
