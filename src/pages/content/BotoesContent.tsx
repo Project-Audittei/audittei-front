@@ -1,4 +1,4 @@
-import { ArrowRight, Plus } from "lucide-react";
+import { ArrowRight, Pencil, Plus } from "lucide-react";
 import Botao from "../../components/Botao";
 
 export default function BotoesContent() {
@@ -19,6 +19,8 @@ export default function BotoesContent() {
                                 <Botao estilo="Secondary" tamanho="Large" label="Label" />
                                 <Botao estilo="Third" tamanho="Large" label="Label" />
                                 <Botao estilo="Third" tamanho="Large" label="Label" disabled/>
+                                <Botao estilo="Primary" tamanho="Large" icone={ <Pencil size={24} /> } somenteIcone/>
+                                <Botao estilo="Secondary" tamanho="Large" icone={ <Pencil size={24} /> } somenteIcone/>
                             </div>
                         </div>
                     </div>
@@ -63,6 +65,8 @@ export default function BotoesContent() {
                                 <Botao estilo="Secondary" tamanho="Normal" label="Label" />
                                 <Botao estilo="Third" tamanho="Normal" label="Label" />
                                 <Botao estilo="Primary" tamanho="Normal" label="Label" disabled/>
+                                <Botao estilo="Primary" tamanho="Normal" icone={ <Pencil size={24}/> } somenteIcone/>
+                                <Botao estilo="Secondary" tamanho="Normal" icone={ <Pencil size={24}/> } somenteIcone/>
                             </div>
                         </div>
                     </div>
@@ -107,6 +111,8 @@ export default function BotoesContent() {
                                 <Botao estilo="Secondary" tamanho="Medium" label="Label" />
                                 <Botao estilo="Third" tamanho="Medium" label="Label" />
                                 <Botao estilo="Primary" tamanho="Medium" label="Label" disabled/>
+                                <Botao estilo="Primary" tamanho="Medium" icone={ <Pencil size={16}/> } somenteIcone/>
+                                <Botao estilo="Secondary" tamanho="Medium" icone={ <Pencil size={16}/> } somenteIcone/>
                             </div>
                         </div>
                     </div>
@@ -116,10 +122,10 @@ export default function BotoesContent() {
                         </div>
                         <div className="col">
                             <div className="row">                            
-                                <Botao estilo="Primary" className="my-2" tamanho="Medium" label="Label" icone={<ArrowRight size={24} />} iconePosicao="direita"/>
-                                <Botao estilo="Secondary" className="my-2" tamanho="Medium" label="Label" icone={<ArrowRight size={24} />} iconePosicao="direita"/>
-                                <Botao estilo="Third" className="my-2" tamanho="Medium" label="Label" icone={<ArrowRight size={24} />} iconePosicao="direita"/>
-                                <Botao estilo="Primary" className="my-2" tamanho="Medium" label="Label" icone={<ArrowRight size={24} />} iconePosicao="direita" disabled/>
+                                <Botao estilo="Primary" className="my-2" tamanho="Medium" label="Label" icone={<ArrowRight size={16} />} iconePosicao="direita"/>
+                                <Botao estilo="Secondary" className="my-2" tamanho="Medium" label="Label" icone={<ArrowRight size={16} />} iconePosicao="direita"/>
+                                <Botao estilo="Third" className="my-2" tamanho="Medium" label="Label" icone={<ArrowRight size={16} />} iconePosicao="direita"/>
+                                <Botao estilo="Primary" className="my-2" tamanho="Medium" label="Label" icone={<ArrowRight size={16} />} iconePosicao="direita" disabled/>
                             </div>
                         </div>
                     </div>
@@ -129,10 +135,10 @@ export default function BotoesContent() {
                         </div>
                         <div className="col">
                             <div className="row">                            
-                                <Botao estilo="Primary" tamanho="Medium" label="Label" icone={<Plus size={24} />}/>
-                                <Botao estilo="Secondary" tamanho="Medium" label="Label" icone={<Plus size={24} />}/>
-                                <Botao estilo="Third" tamanho="Medium" label="Label" icone={<Plus size={24} />}/>
-                                <Botao estilo="Primary" tamanho="Medium" label="Label" icone={<Plus size={24} />} disabled/>
+                                <Botao estilo="Primary" tamanho="Medium" label="Label" icone={<Plus size={16} />}/>
+                                <Botao estilo="Secondary" tamanho="Medium" label="Label" icone={<Plus size={16} />}/>
+                                <Botao estilo="Third" tamanho="Medium" label="Label" icone={<Plus size={16} />}/>
+                                <Botao estilo="Primary" tamanho="Medium" label="Label" icone={<Plus size={16} />} disabled/>
                             </div>
                         </div>
                     </div>
@@ -151,6 +157,8 @@ export default function BotoesContent() {
                                 <Botao estilo="Secondary" tamanho="Small" label="Label" />
                                 <Botao estilo="Third" tamanho="Small" label="Label" />
                                 <Botao estilo="Primary" tamanho="Small" label="Label" disabled/>
+                                <Botao estilo="Primary" tamanho="Small" icone={ <Pencil size={16}/> } somenteIcone/>
+                                <Botao estilo="Secondary" tamanho="Small" icone={ <Pencil size={16}/> } somenteIcone/>
                             </div>
                         </div>
                     </div>
@@ -160,10 +168,10 @@ export default function BotoesContent() {
                         </div>
                         <div className="col">
                             <div className="row">                            
-                                <Botao estilo="Primary" className="my-2" tamanho="Small" label="Label" icone={<ArrowRight size={24} />} iconePosicao="direita"/>
-                                <Botao estilo="Secondary" className="my-2" tamanho="Small" label="Label" icone={<ArrowRight size={24} />} iconePosicao="direita"/>
-                                <Botao estilo="Third" className="my-2" tamanho="Small" label="Label" icone={<ArrowRight size={24} />} iconePosicao="direita"/>
-                                <Botao estilo="Primary" className="my-2" tamanho="Small" label="Label" icone={<ArrowRight size={24} />} iconePosicao="direita" disabled/>
+                                <Botao estilo="Primary" className="my-2" tamanho="Small" label="Label" icone={<ArrowRight size={16} />} iconePosicao="direita"/>
+                                <Botao estilo="Secondary" className="my-2" tamanho="Small" label="Label" icone={<ArrowRight size={16} />} iconePosicao="direita"/>
+                                <Botao estilo="Third" className="my-2" tamanho="Small" label="Label" icone={<ArrowRight size={16} />} iconePosicao="direita"/>
+                                <Botao estilo="Primary" className="my-2" tamanho="Small" label="Label" icone={<ArrowRight size={16} />} iconePosicao="direita" disabled/>
                             </div>
                         </div>
                     </div>
@@ -173,10 +181,10 @@ export default function BotoesContent() {
                         </div>
                         <div className="col">
                             <div className="row">                            
-                                <Botao estilo="Primary" tamanho="Small" label="Label" icone={<Plus size={24} />}/>
-                                <Botao estilo="Secondary" tamanho="Small" label="Label" icone={<Plus size={24} />}/>
-                                <Botao estilo="Third" tamanho="Small" label="Label" icone={<Plus size={24} />}/>
-                                <Botao estilo="Primary" tamanho="Small" label="Label" icone={<Plus size={24} />} disabled/>
+                                <Botao estilo="Primary" tamanho="Small" label="Label" icone={<Plus size={16} />}/>
+                                <Botao estilo="Secondary" tamanho="Small" label="Label" icone={<Plus size={16} />}/>
+                                <Botao estilo="Third" tamanho="Small" label="Label" icone={<Plus size={16} />}/>
+                                <Botao estilo="Primary" tamanho="Small" label="Label" icone={<Plus size={16} />} disabled/>
                             </div>
                         </div>
                     </div>
@@ -195,6 +203,8 @@ export default function BotoesContent() {
                                 <Botao estilo="Secondary" tamanho="ExtraSmall" label="Label" />
                                 <Botao estilo="Third" tamanho="ExtraSmall" label="Label" />
                                 <Botao estilo="Primary" tamanho="ExtraSmall" label="Label" disabled/>
+                                <Botao estilo="Primary" tamanho="ExtraSmall" icone={ <Pencil size={16} /> } somenteIcone/>
+                                <Botao estilo="Secondary" tamanho="ExtraSmall" icone={ <Pencil size={16} /> } somenteIcone/>
                             </div>
                         </div>
                     </div>
@@ -204,10 +214,10 @@ export default function BotoesContent() {
                         </div>
                         <div className="col">
                             <div className="row">                            
-                                <Botao estilo="Primary" className="my-2" tamanho="ExtraSmall" label="Label" icone={<ArrowRight size={24} />} iconePosicao="direita"/>
-                                <Botao estilo="Secondary" className="my-2" tamanho="ExtraSmall" label="Label" icone={<ArrowRight size={24} />} iconePosicao="direita"/>
-                                <Botao estilo="Third" className="my-2" tamanho="ExtraSmall" label="Label" icone={<ArrowRight size={24} />} iconePosicao="direita"/>
-                                <Botao estilo="Primary" className="my-2" tamanho="ExtraSmall" label="Label" icone={<ArrowRight size={24} />} iconePosicao="direita" disabled/>
+                                <Botao estilo="Primary" className="my-2" tamanho="ExtraSmall" label="Label" icone={<ArrowRight size={16} />} iconePosicao="direita"/>
+                                <Botao estilo="Secondary" className="my-2" tamanho="ExtraSmall" label="Label" icone={<ArrowRight size={16} />} iconePosicao="direita"/>
+                                <Botao estilo="Third" className="my-2" tamanho="ExtraSmall" label="Label" icone={<ArrowRight size={16} />} iconePosicao="direita"/>
+                                <Botao estilo="Primary" className="my-2" tamanho="ExtraSmall" label="Label" icone={<ArrowRight size={16} />} iconePosicao="direita" disabled/>
                             </div>
                         </div>
                     </div>
@@ -217,10 +227,10 @@ export default function BotoesContent() {
                         </div>
                         <div className="col">
                             <div className="row">                            
-                                <Botao estilo="Primary" tamanho="ExtraSmall" label="Label" icone={<Plus size={24} />}/>
-                                <Botao estilo="Secondary" tamanho="ExtraSmall" label="Label" icone={<Plus size={24} />}/>
-                                <Botao estilo="Third" tamanho="ExtraSmall" label="Label" icone={<Plus size={24} />}/>
-                                <Botao estilo="Primary" tamanho="ExtraSmall" label="Label" icone={<Plus size={24} />} disabled/>
+                                <Botao estilo="Primary" tamanho="ExtraSmall" label="Label" icone={<Plus size={16} />}/>
+                                <Botao estilo="Secondary" tamanho="ExtraSmall" label="Label" icone={<Plus size={16} />}/>
+                                <Botao estilo="Third" tamanho="ExtraSmall" label="Label" icone={<Plus size={16} />}/>
+                                <Botao estilo="Primary" tamanho="ExtraSmall" label="Label" icone={<Plus size={16} />} disabled/>
                             </div>
                         </div>
                     </div>

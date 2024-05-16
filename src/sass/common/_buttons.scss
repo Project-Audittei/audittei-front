@@ -1,4 +1,4 @@
-.btn {
+.btn, .btn-icone {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,6 +82,40 @@
             cursor: not-allowed;
         }
     }
+
+    &-icone {
+        &-primary {
+            background-color: #605DEC;
+            color: #ffffff;
+            border: none;
+    
+            &:hover {
+                cursor: pointer;
+                background-color: #3D3ACE;
+            }
+    
+            &:active {
+                background-color: #3D3ACE;
+            }
+        }
+    
+        &-secondary {
+            background-color: transparent;
+            color: #605DEC;
+            border: none;
+    
+            &:hover {
+                cursor: pointer;
+                background-color: #F6F5FF;
+                border: #605DEC;
+            }
+    
+            &:active {
+                background-color: #F6F5FF;
+                border: #605DEC;
+            }
+        }
+    }
 }
 
 .btn {
@@ -108,5 +142,87 @@
     &-extraSmall {
         padding: $btn-extraSmall-padding-y $btn-extraSmall-padding-x;
         font-size: $btn-extraSmall-text;
+    }
+
+    &-icone {
+        &-large {
+            padding: 20px;
+            font-size: 24px;
+        }
+    
+        &-normal {
+            padding: 16px;
+            font-size: 24px;
+        }
+    
+        &-medium {
+            padding: 12px;
+            font-size: 24px;
+        }
+    
+        &-small {
+            padding: 8px;
+            font-size: 24px;
+        }
+    
+        &-extraSmall {
+            padding: 8px;
+            font-size: 16px;
+        }
+    }
+}
+
+.btn {
+    &-icone {
+        &-margin {
+            &-large {
+                &-left {
+                    margin-left: 8px;
+                }
+
+                &-right {
+                    margin-right: 8px;
+                }
+            } 
+            &-normal {
+                &-left {
+                    margin-left: 8px;
+                }
+
+                &-right {
+                    margin-right: 8px;
+                }
+            }
+        
+            &-medium {
+                &-left {
+                    margin-left: 8px;
+                }
+
+                &-right {
+                    margin-right: 8px;
+                }
+            }
+        
+            &-small {
+                &-left {
+                    margin-left: 6px;
+                }
+
+                &-right {
+                    margin-right: 6px;
+                }
+            }
+            
+            &-extraSmall {
+                &-left {
+                    margin-left: 6px;
+                }
+
+                &-right {
+                    margin-right: 6px;
+                }
+            }
+        }
     }
 }
