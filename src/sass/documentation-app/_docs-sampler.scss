@@ -1,0 +1,27 @@
+.amostra {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    .demo {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+    }
+
+    .demo-borded {
+        border: 1px solid #EBEBEB;
+    }
+
+    .titulo, .descricao {
+        font-size: 20px;
+        font-weight: 300;
+        font-family: 'Montserrat';
+        color: #818181;
+    }
+
+    .descricao {
+        margin-top: 8px;
+    }
+}

@@ -1,2 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 @import 'common/container';
 @import 'common/header';
+
+@import 'docs-sampler';
+@import 'docs-card';
+@import 'docs-titulos';
+
+
+
+#docs {
+    background-color: #fff;
+
+    .descricao {
+        color: #818181;
+        font-size: 16px;
+        line-height: 120%;
+        font-family: 'Montserrat';
+        margin-top: 10px;
+    }
+    
+    .titulo-pagina {
+        font-family: 'Montserrat';
+        font-weight: bold;
+        font-size: 36px;
+        color: #424F65;
+        
+        span {
+            font-size: 16px;
+            line-height: 120%;
+            font-family: "Nunito Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-weight: bold;
+            color: #000;
+            margin-left: 10px;
+        }
+    }
+    
+    .subtitulo {
+        color: #4787F3;
+        font-weight: 500;
+        font-size: 24px;
+        margin-bottom: 40px;
+
+        span {
+            font-size: 20px;
+            line-height: 120%;
+            font-family: "Nunito Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            color: #000;
+            margin-left: 18px;
+        }
+    }
+}
+
+

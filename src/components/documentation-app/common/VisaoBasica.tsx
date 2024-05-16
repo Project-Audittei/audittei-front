@@ -17,7 +17,7 @@ export default function VisaoBasica({ children }: VisaoBasicaPropsType) {
             </aside>
             <div className="app-content">
                 <header></header>
-                <main>{ children }</main>
+                <main id="docs">{ children }</main>
             </div>
         </div>
     );

@@ -21,6 +21,25 @@ $h4-fontWeight: 500;
 $h5-fontWeight: 500;
 $h6-fontWeight: 500;
 
+@media screen and (max-width: 1023px) {
+    $h1-fontSize: 30px;
+    $h2-fontSize: 25px;
+    $h3-fontSize: 22px;
+    $h4-fontSize: 20px;
+    $h5-fontSize: 18px;
+    $h6-fontSize: 16px;
+
+    $h1-lineHeight: 120%;
+    $h2-lineHeight: 140%;
+    $h3-lineHeight: 140%;
+    $h4-lineHeight: 140%;
+    $h5-lineHeight: 140%;
+    $h6-lineHeight: 150%;
+
+    $p-fontSize: 16px;
+    $p-lineHeight: 25px;
+    $p-fontWeight: 500;
+}
 // Paragraph
 
 $p-fontSize: 16px;

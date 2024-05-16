@@ -1,16 +1,13 @@
 .btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     border-radius: 8px;
     border: 1px solid $border-color;
     color: $text-light;
     background-color: transparent;
     padding: $btn-padding-y $btn-padding-x;
     transition: ease-in-out .3s;
-
-    span {
-        margin: 0px $btn-icon-margin;
-    }
 
     &:hover {
         cursor: pointer;
@@ -23,10 +20,6 @@
     padding: $btn-menu-padding-y $btn-menu-padding-x;
     color: $text-dark;
     border: none;
-    
-    span {
-        margin: 0px $btn-menu-icon-margin;
-    }
 }
 
 .btn {
@@ -50,7 +43,7 @@
     &-secondary {
         background-color: $btn-secondary-background;
         color: $btn-secondary-text;
-        border: none;
+        border: $btn-secondary-border;
 
         &:hover {
             cursor: pointer;
@@ -80,51 +73,40 @@
             color: $btn-third-text__active;
         }
     }
+
+    &:disabled {
+        background-color: $btn-disabled-background;
+        color: $btn-disabled-text;
+
+        &:hover {
+            cursor: not-allowed;
+        }
+    }
 }
 
 .btn {
     &-large {
         padding: $btn-large-padding-y $btn-large-padding-x;
         font-size: $btn-large-text;
-
-        span {
-            margin: 0px $btn-large-icon-margin;
-        }
     }
 
     &-normal {
         padding: $btn-normal-padding-y $btn-normal-padding-x;
         font-size: $btn-normal-text;
-
-        span {
-            margin: 0px $btn-normal-icon-margin;
-        }
     }
 
     &-medium {
         padding: $btn-medium-padding-y $btn-medium-padding-x;
         font-size: $btn-medium-text;
-
-        span {
-            margin: 0px $btn-medium-icon-margin;
-        }
     }
 
     &-small {
         padding: $btn-small-padding-y $btn-small-padding-x;
         font-size: $btn-small-text;
-
-        span {
-            margin: 0px $btn-small-icon-margin;
-        }
     }
 
     &-extraSmall {
         padding: $btn-extraSmall-padding-y $btn-extraSmall-padding-x;
         font-size: $btn-extraSmall-text;
-
-        span {
-            margin: 0px $btn-extraSmall-icon-margin;
-        }
     }
 }

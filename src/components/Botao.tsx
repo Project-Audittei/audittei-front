@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type BotaoPropsType = {
+interface BotaoPropsType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     label: string;
     estilo: 'Primary' | 'Secondary' | 'Third' | 'Menu';
     tamanho: "Large" | "Normal" | "Medium" | "Small" | "ExtraSmall";
@@ -9,7 +9,8 @@ type BotaoPropsType = {
     iconePosicao?: "esquerda" | "direita";
 }
 
-export default function Botao({ label, tamanho, icone, iconePosicao, estilo, onClick }: BotaoPropsType) {
+export default function Botao(props: BotaoPropsType) {
+    const { label, tamanho, icone, iconePosicao, estilo, onClick, className, style, disabled } = props;
 
     const [btnEstilo, setBtnEstilo] = useState<string>('');
     const [btnTamanho, setBtnTamanho] = useState<string>('');
@@ -41,39 +42,39 @@ export default function Botao({ label, tamanho, icone, iconePosicao, estilo, onC
     if(btnEstilo === '') {
         switch(estilo) {
             case "Primary":
-                setBtnEstilo('btn-primary');
+                setBtnEstilo(`${className} btn-primary`);
                 break;
-
+    
             case "Secondary":
-                setBtnEstilo('btn-secondary');
+                setBtnEstilo(`${className} btn-secondary`);
                 break;
-
+    
             case "Third":
-                setBtnEstilo('btn-third');
+                setBtnEstilo(`${className} btn-third`);
                 break;
-
+    
             case "Menu":
-                setBtnEstilo('btn-menu');
+                setBtnEstilo(`${className} btn-menu`);
                 break;
         }
     }
 
     if(iconePosicao !== undefined) {
         return (
-            <button className={`btn ${btnEstilo} ${btnTamanho}`} onClick={ onClick }>
+            <button style={ style } className={`btn ${btnEstilo} ${btnTamanho}`} onClick={ onClick } disabled={ disabled }>
                 {
-                    iconePosicao === "esquerda" ? icone ?? '' : ''
+                    iconePosicao === "esquerda" ? <div className="mr-1 d-flex justify-content-center align-items-center">{icone}</div> ?? '' : ''
                 }
                 <span>{ label }</span>
                 {
-                    iconePosicao === "direita" ? icone ?? '' : ''
+                    iconePosicao === "direita" ? <div className="ml-1 d-flex justify-content-center align-items-center">{icone}</div> ?? '' : ''
                 }
             </button>
         );
     }
     return (
-        <button className={`btn ${btnEstilo} ${btnTamanho}`} onClick={ onClick }>
-           { icone ?? '' }
+        <button style={ style } className={`btn ${btnEstilo} ${btnTamanho}`} onClick={ onClick } disabled={ disabled }>
+           { icone ? <div className="mr-1 d-flex justify-content-center align-items-center">{icone}</div> : '' }
            <span>{ label }</span>
         </button>
     );

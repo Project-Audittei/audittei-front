@@ -54,6 +54,42 @@
             margin-bottom: 64px;
         }
     }
+
+    &r {
+        &-1 {
+            margin-right: 8px;
+        }
+
+        &-2 {
+            margin-right: 16px;
+        }
+
+        &-3 {
+            margin-right: 32px;
+        }
+
+        &-4 {
+            margin-right: 64px;
+        }
+    }
+
+    &l {
+        &-1 {
+            margin-left: 8px;
+        }
+
+        &-2 {
+            margin-left: 16px;
+        }
+
+        &-3 {
+            margin-left: 32px;
+        }
+
+        &-4 {
+            margin-left: 64px;
+        }
+    }
 }
 
 .m {

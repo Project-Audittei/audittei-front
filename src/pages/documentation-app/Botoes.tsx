@@ -1,10 +1,10 @@
 import VisaoBasica from "../../components/documentation-app/common/VisaoBasica";
-import TipografiaContent from "../content/TipografiaContent";
+import BotoesContent from "../content/BotoesContent";
 
-export function Tipografia() {
+export function Botoes() {
     return (
         <VisaoBasica>
-            <TipografiaContent />
+            <BotoesContent />
         </VisaoBasica>
     );
 }
