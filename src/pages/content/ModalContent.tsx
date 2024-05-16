@@ -1,6 +1,4 @@
 import Botao from "../../components/Botao";
-import Paragrafos from "../../components/Paragrafos";
-import Titulos from "../../components/Titulos";
 import useModal from "../../hooks/useModal";
 
 export default function ModalContent() {
