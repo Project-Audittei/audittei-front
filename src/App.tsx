@@ -7,6 +7,7 @@ import { Grid as DocsGrid } from "./pages/documentation-app/Grid";
 import { Cores as DocsCores } from "./pages/documentation-app/Cores";
 import { Botoes as DocsBotoes } from "./pages/documentation-app/Botoes";
 import { Modal as DocsModal } from "./pages/documentation-app/Modal";
+import { CamposDeTexto as DocsCamposDeTexto } from "./pages/documentation-app/CamposDeTexto";
 import ModalContextProvider from "./contexts/ModalContext";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
 					<Route path="/docs/cores" element={<DocsCores />} />
 					<Route path="/docs/botoes" element={<DocsBotoes />} />
 					<Route path="/docs/modal" element={<DocsModal />} />
+					<Route path="/docs/campos-de-texto" element={<DocsCamposDeTexto />} />
 				</Routes>
 			</BrowserRouter>
 		</ModalContextProvider>

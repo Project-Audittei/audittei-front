@@ -1,0 +1,1 @@
+export type EstadosForcaType = 'padrao' | 'desabilitado' | 'aviso' | 'erro' | 'carregando' | 'valido';

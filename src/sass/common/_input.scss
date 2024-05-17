@@ -1,0 +1,137 @@
+.form-group:has(label) .form-control {
+    padding: 24px 16px 8px 16px;
+}
+
+.form-group:has(select) .form-control {
+    padding: 16px 48px 16px 20px;
+}
+
+.form-group:has(input:disabled),
+.form-group:has(textarea:disabled),
+.form-group:has(select:disabled) {
+    color: #C5C0DB;
+    background-color: #F7F7FD;
+    
+    .form-control {
+        border: none;
+    }
+
+    &:hover > .icone  {
+        color: #C5C0DB;
+    }
+
+    &:focus, &:active {
+        outline: none;
+        border: none;
+    }
+}
+
+.form-group {
+    position: relative;
+    
+    &:hover > .icone  {
+        color: #605DEC;
+    }
+    
+    label {
+        font-size: 12px;
+        line-height: 16px;
+        color: #9D99AC;
+
+        position: absolute;
+        left: 16px;
+        top: 6px;
+    }
+
+    .icone {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: ease-in-out .3s;
+        
+    }
+
+    .icone {
+        &-esquerda {
+            left: 16px;
+        }
+
+        &-direita {
+            right: 16px;
+        }
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 16px 20px;
+        border-radius: 8px; 
+        font-size: 16px; 
+        border: 1px solid #EDEDED; 
+        font-family: 'WorkSans';
+    
+        &:focus, &:active {
+            outline: none;
+            border-color: #605DEC !important;
+        }        
+    }
+
+    input.form-control {
+        &::placeholder {
+            color: #212121;
+        }
+
+        &[type="search"] {
+            padding-left: 50px;
+        }
+    }
+
+    select.form-control {
+        -moz-appearance:none; /* Firefox */
+        -webkit-appearance:none; /* Safari and Chrome */
+        appearance:none;
+    }
+
+    .icone {
+        pointer-events: none;
+    }
+
+    small {
+        margin-top: 8px;
+    }
+}
+
+.form-group {
+    &.aviso .form-control {
+        border-color: #FFEAC1;
+        background-color: #FFFBF4;
+    }
+
+    &.erro .form-control {
+        border-color: #FFD8D8;
+        background-color: #FFF5F5;
+    }
+
+    &.carregando .form-control {
+        border-color: #E8E6F8;
+        background-color: #F7F7FD;
+    }
+
+    &.valido .form-control {
+        border-color: #E8E6F8;
+        background-color: #F7F7FD;
+    }
+}
+
+.input-group {
+    .validacao-mensagem {
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+
+        small {
+            margin-left: 8px;
+            font-size: 12px;
+            color: #AAAAAA;
+        }
+    }
+}

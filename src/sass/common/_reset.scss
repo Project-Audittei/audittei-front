@@ -62,3 +62,8 @@ p {
 li {
     list-style: none;
 }
+
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
