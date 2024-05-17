@@ -1,0 +1,84 @@
+.notificacao {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .notificacao-content {
+        display: flex;
+        padding-left: 26px;
+        
+        &:has(.icone) {
+            padding-left: 0;
+            
+            span {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .notificacao:not(.notificacao-header) {
+        .notificacao-fechar {
+            top: 50%;
+            transform: translateY(-50%);       
+        }
+    }
+
+    .notificacao-fechar {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        color: #C9C8D3;
+    }
+
+    .notificacao-header {
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+
+        .icone {
+            width: auto;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        span {
+            margin-left: 10px;
+        }
+    }
+}
+
+.notificacao {
+    &-informacao {
+        background-color: #F4F3FE;
+        border-color: #605DEC;
+
+        .icone {
+            color: #605DEC;
+        }
+    }
+    
+    &-erro {
+        background-color: #FFF5F5;
+        border-color: #FFD8D8;
+        
+        .icone {
+            color: $text-danger;
+        }
+    }
+    
+    &-valido {
+        background-color: #F1FFF4;
+        border-color: #C0ECD4;
+
+        .icone {
+            color: $text-success;
+        }
+    }
+}
