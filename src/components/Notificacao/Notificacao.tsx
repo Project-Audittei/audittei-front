@@ -1,6 +1,5 @@
 import { CircleCheckBig, Info, TriangleAlert, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import Botao from "../Botao";
 
 type NotificacaoTipoType = 'informacao' | 'erro' | 'valido';
 type NotificacaoTamanhoType = 'grande' | 'pequeno';
