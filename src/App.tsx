@@ -9,6 +9,7 @@ import { Botoes as DocsBotoes } from "./pages/documentation-app/Botoes";
 import { Modal as DocsModal } from "./pages/documentation-app/Modal";
 import { CamposDeTexto as DocsCamposDeTexto } from "./pages/documentation-app/CamposDeTexto";
 import { Notificacoes as DocsNotificacoes } from "./pages/documentation-app/Notificacoes";
+import { Paginacao as DocsPaginacao } from "./pages/documentation-app/Paginacao";
 import ModalContextProvider from "./contexts/ModalContext";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 					<Route path="/docs/modal" element={<DocsModal />} />
 					<Route path="/docs/campos-de-texto" element={<DocsCamposDeTexto />} />
 					<Route path="/docs/notificacoes" element={<DocsNotificacoes />} />
+					<Route path="/docs/paginacao" element={<DocsPaginacao />} />
 				</Routes>
 			</BrowserRouter>
 		</ModalContextProvider>

@@ -1,0 +1,51 @@
+.paginacao {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+    .paginas {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .controle {
+        width: auto;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pagina-item {
+        &:hover {
+            cursor: pointer;
+        }
+        
+        &:not(.ativo) {
+            &:hover {
+                color: #605DEC;
+            }
+        }
+
+        &.mais {
+            &:hover {
+                cursor: default;
+                color: #000;
+            }
+        }
+    }
+
+    .ativo {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #605DEC;
+        color: #fff;
+        border-radius: 4px;
+    }
+}
