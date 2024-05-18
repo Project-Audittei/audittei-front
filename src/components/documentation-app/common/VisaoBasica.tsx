@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import MenuSide from "./MenuSide";
-import Modal from "../../Modal";
+import Modal from "../../Modal/Modal";
 
 type VisaoBasicaPropsType = {
     children: ReactNode;

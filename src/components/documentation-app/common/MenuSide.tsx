@@ -1,5 +1,5 @@
 import { Home, Type, LayoutGrid, Brush, MousePointer2, Component, TextCursorInput, AlertCircle, BookOpen } from "lucide-react";
-import Botao from "../../Botao";
+import Botao from "../../Botoes/Botao";
 import { Link } from "react-router-dom";
 
 export default function MenuSide() {

@@ -1,5 +1,5 @@
-import Paragrafos from "../../components/Paragrafos";
-import Titulos from "../../components/Titulos";
+import Paragrafos from "../../components/Tipografia/Paragrafos";
+import Titulos from "../../components/Tipografia/Titulos";
 
 export default function TipografiaContent() {
     return (

@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { IPaginacaoNumeros } from "../../@types/Paginacao";
-import Botao from "../Botao";
+import Botao from "../Botoes/Botao";
 
 export default function Paginacao({ 
     atual, 

@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
-import Botao from "./Botao";
-import useModal from "../hooks/useModal";
+import Botao from "../Botoes/Botao";
+import useModal from "../../hooks/useModal";
 
 export default function Modal() {
     const { isModalOpen, modalClose, modalContent, modalTitle } = useModal();

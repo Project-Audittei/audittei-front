@@ -1,4 +1,4 @@
-import Amostra from "../../components/Amostra";
+import Amostra from "../../components/documentation-app/common/Amostra";
 
 export default function CoresContent() {
     return (

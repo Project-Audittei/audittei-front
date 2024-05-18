@@ -1,5 +1,5 @@
 import { ArrowRight, Pencil, Plus } from "lucide-react";
-import Botao from "../../components/Botao";
+import Botao from "../../components/Botoes/Botao";
 
 export default function BotoesContent() {
     return (

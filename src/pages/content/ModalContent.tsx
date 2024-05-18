@@ -1,4 +1,4 @@
-import Botao from "../../components/Botao";
+import Botao from "../../components/Botoes/Botao";
 import useModal from "../../hooks/useModal";
 
 export default function ModalContent() {

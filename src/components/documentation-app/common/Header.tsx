@@ -1,5 +1,5 @@
 import { ChevronLeft } from "lucide-react";
-import Botao from "../../Botao";
+import Botao from "../../Botoes/Botao";
 import { useNavigate } from "react-router-dom";
 import { ReactNode } from "react";
 
