@@ -9,6 +9,7 @@ import { Cores as DocsCores } from "./pages/documentation-app/Cores";
 import { Botoes as DocsBotoes } from "./pages/documentation-app/Botoes";
 import { Modal as DocsModal } from "./pages/documentation-app/Modal";
 import { CamposDeTexto as DocsCamposDeTexto } from "./pages/documentation-app/CamposDeTexto";
+import { Tooltip as DocsTooltip } from "./pages/documentation-app/Tooltip";
 import { Notificacoes as DocsNotificacoes } from "./pages/documentation-app/Notificacoes";
 import { Paginacao as DocsPaginacao } from "./pages/documentation-app/Paginacao";
 import { NavegacaoInterna as DocsNavegacaoInterna } from "./pages/documentation-app/NavegacaoInterna";
@@ -33,6 +34,7 @@ function App() {
 					<Route path="/docs/modal" element={<DocsModal />} />
 					<Route path="/docs/campos-de-texto" element={<DocsCamposDeTexto />} />
 					<Route path="/docs/notificacoes" element={<DocsNotificacoes />} />
+					<Route path="/docs/tooltip" element={<DocsTooltip />} />
 					<Route path="/docs/paginacao" element={<DocsPaginacao />} />
 					<Route path="/docs/navegacao-interna" element={<DocsNavegacaoInterna />} />
 					<Route path="/docs/icones" element={<DocsIcones />} />

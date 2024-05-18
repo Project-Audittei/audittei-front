@@ -1,0 +1,155 @@
+.tooltip-trigger {
+    display: flex;
+    position: relative;
+}
+
+.tooltip-content {
+    position: absolute;
+    background: rgba(0, 0, 0, 1);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    pointer-events: none;
+    white-space: nowrap;
+    border: none;
+    z-index: 9999999;
+}
+
+.tooltip {
+    &-bottom {
+
+        &::after {
+            content: " ";
+            position: absolute;
+            bottom: 100%; /* At the bottom of the tooltip */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: black transparent transparent transparent;
+            transform: rotate(180deg);
+        }
+
+        &-left {
+            left: 0;
+            bottom: -100%;
+    
+            &::after {
+                content: " ";
+                position: absolute;
+                bottom: 100%; /* At the bottom of the tooltip */
+                left: 10%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: black transparent transparent transparent;
+                transform: rotate(180deg);
+            }
+        }
+    
+        &-right {
+            right: 0;
+            bottom: -100%;
+    
+            &::after {
+                content: " ";
+                position: absolute;
+                bottom: 100%; /* At the bottom of the tooltip */
+                right: 10%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: black transparent transparent transparent;
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &-top {
+        top: -100%;
+
+        &::after {
+            content: " ";
+            position: absolute;
+            top: 100%; /* At the bottom of the tooltip */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: black transparent transparent transparent;
+            transform: rotate(0deg);
+        }
+
+        &-left {
+            left: 0;
+            top: -100%;
+    
+            &::after {
+                content: " ";
+                position: absolute;
+                top: 100%; /* At the bottom of the tooltip */
+                left: 10%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: black transparent transparent transparent;
+                transform: rotate(0deg);
+            }
+        }
+    
+        &-right {
+            right: 0;
+            top: -100%;
+    
+            &::after {
+                content: " ";
+                position: absolute;
+                top: 100%; /* At the bottom of the tooltip */
+                right: 10%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: black transparent transparent transparent;
+                transform: rotate(0deg);
+            }
+        }
+    }
+
+    &-left {
+        right: 120%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &::after {
+            content: " ";
+            position: absolute;
+            top: 50%;
+            right: -3%;
+            margin-right: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: black transparent transparent transparent;
+            transform: translateY(-50%) rotate(-90deg);
+        }
+    }
+    
+    &-right {
+        left: 120%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &::after {
+            content: " ";
+            position: absolute;
+            top: 50%;
+            left: -3%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: black transparent transparent transparent;
+            transform: translateY(-50%) rotate(90deg);
+        }
+    }
+
+    
+}
