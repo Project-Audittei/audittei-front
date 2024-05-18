@@ -83,6 +83,13 @@
         &[type="search"] {
             padding-left: 50px;
         }
+
+        &[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            border: 1px solid #BDBCDB;
+        }
     }
 
     select.form-control {

@@ -52,6 +52,20 @@ export default function Input({
     }, [estado]);
 
     switch(type) {
+        case 'checkbox':
+            return (
+                <div className={`form-group`}>
+                    <input 
+                        type="checkbox" 
+                        name={name} 
+                        className="form-control"
+                        disabled={disabled}
+                        value={value}
+                        onChange={onChange}
+                    />
+                </div>
+            );
+
         case 'search':
             return (
                 <div className={`form-group`}>

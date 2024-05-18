@@ -84,6 +84,8 @@
     }
     
     &.celular {
+        width: 320px;
+        background-color: #fff;
         gap: 16px;
         
         .col {
@@ -92,6 +94,9 @@
     }
 
     &.tablet {
+        width: 768px;
+        background-color: #fff;
+
         aside {
             width: 213px;
             background-color: #BCD5FF;
@@ -108,6 +113,9 @@
     }
     
     &.desktop {
+        width: 1280px;
+        background-color: #fff;
+
         aside {
             width: 243px;
             background-color: #BCD5FF;

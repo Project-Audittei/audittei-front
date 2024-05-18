@@ -1,35 +1,66 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+
+type TooltipPositionX = 'left' | 'center' | 'right';
+type TooltipPositionY = 'bottom' | 'center' | 'top';
 
 interface TooltipProps {
   children: React.ReactNode;
   text: string;
-  positionX?: '';
+  positionX?: TooltipPositionX;
+  positionY?: TooltipPositionY;
 }
 
-export default function ToolTip({ children, text }: TooltipProps) {
-  const [visible, setVisible] = useState<boolean>(false);
+export default function Tooltip({ 
+  children, 
+  text,
+  positionX = 'center',
+  positionY = 'bottom'
+}: TooltipProps) {
+  const [visible, setVisible] = useState<boolean>(true);
+  const [classPosicao, setClassPosicao] = useState<string>('tooltip');
+  
   const tooltipRef = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLDivElement | null>(null);
 
-  const showTooltip = () => {
-    if (triggerRef.current && tooltipRef.current) {
-      // const triggerRect = triggerRef.current.getBoundingClientRect();
-      // const tooltipRect = tooltipRef.current.getBoundingClientRect();
-
-      // let top = triggerRect.bottom + 20;
-      // let left = triggerRect.left + 20;
-
-      // if (top + tooltipRect.height > window.innerHeight) {
-      //   top = triggerRect.top - tooltipRect.height + 20;
-      // }
-
-      // if (left + tooltipRect.width > window.innerWidth) {
-      //   left = window.innerWidth - tooltipRect.width + 20;
-      // }
-
-      // setPosition({ top, left });
-      setVisible(true);
+  useEffect(() => {
+    function montarTooltip() {
+      let posicao = 'tooltip';
+  
+      switch(positionY) {
+        case 'bottom':
+          posicao = posicao + '-bottom';
+          break;
+  
+        case 'center':
+          posicao = posicao + '-center';
+          break;
+  
+        case 'top':
+          posicao = posicao + '-top';
+          break;
+      }
+  
+      switch(positionX) {
+        case 'left':
+          posicao = posicao + '-left';
+          break;
+  
+        case 'right':
+          posicao = posicao + '-right';
+          break;
+      }
+  
+      setClassPosicao(posicao);
     }
+
+    montarTooltip();
+  }, [
+    positionX,
+    positionY
+  ]);
+
+  const showTooltip = () => {
+    setVisible(true);
   };
 
   const hideTooltip = () => {
@@ -45,7 +76,7 @@ export default function ToolTip({ children, text }: TooltipProps) {
     >
       {children}
       <div
-          className="tooltip-content tooltip-left"
+          className={`tooltip-content ${ classPosicao }`}
           ref={ tooltipRef }
           style={{ display: visible ? 'inline-block' : 'none' }}
         >

@@ -3,7 +3,7 @@ export default function GridCelular() {
         <div className="row">
             <div className="col">
                 <div className="row mb-2" style={{ height: '100%' }}>
-                    <div className="col-3" style={{ height: 750 }}>
+                    <div className="col-6" style={{ height: 750 }}>
                         <div className="subtitulo">320-640 <span>Celular - Centralizado</span></div>
                         <div className="row demo-grid celular">
                             <div className="col"></div>
