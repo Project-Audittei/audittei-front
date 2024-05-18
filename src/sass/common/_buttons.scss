@@ -117,6 +117,17 @@
             }
         }
 
+        &-icon {
+            background-color: transparent;
+            color: #25282B;
+            border: none;
+    
+            &:hover {
+                cursor: pointer;
+                color: #605DEC;
+            }
+        }
+
         &:disabled {
             background-color: $btn-disabled-background;
             color: $btn-disabled-text;

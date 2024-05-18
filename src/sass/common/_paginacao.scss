@@ -49,3 +49,35 @@
         border-radius: 4px;
     }
 }
+
+.paginacao-pontos {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .paginas {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .pagina-item {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #F4F3FE;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .ativo {
+        background-color: #605DEC;
+
+        &:hover {
+            cursor: default;
+        }
+    }
+}

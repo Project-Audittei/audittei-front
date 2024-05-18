@@ -62,7 +62,7 @@ export default function Botao(props: BotaoPropsType) {
                 break;
 
             case "Icone":
-                setBtnEstilo(`${className} ${prefix}-icon`);
+                setBtnEstilo(`${prefix}-icon`);
                 break;
         }
     }
@@ -92,8 +92,9 @@ export default function Botao(props: BotaoPropsType) {
     }
 
     if(somenteIcone) {
+        console.log(btnEstilo);
         return (
-            <button style={ style } className={`${prefix} ${btnEstilo} ${btnTamanho}`} onClick={ onClick } disabled={ disabled }>
+            <button style={ style } className={`${prefix} ${btnEstilo} ${btnTamanho} ${className ?? ''}`} onClick={ onClick } disabled={ disabled }>
                 <div className="d-flex justify-content-center align-items-center">{icone}</div>
             </button>
         );

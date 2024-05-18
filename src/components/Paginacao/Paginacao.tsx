@@ -1,49 +1,119 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { IPaginacaoNumeros } from "../../@types/Paginacao";
+import Botao from "../Botao";
 
-export interface IPaginacao {
-    atual: number;
-    quantidade: number;
-}
+export default function Paginacao({ 
+    atual, 
+    quantidade,
+    onAvancarPagina,
+    onRetrocederPagina,
+    onSelecionarNumeroPagina,
+    quantidadeMinimaEmTela = 3
+}: IPaginacaoNumeros) {
+    const [itens, setItens] = useState<JSX.Element[]>([]);
+    
+    useEffect(() => {
+        const elementosPaginacao = [];
 
-export default function Paginacao({ atual, quantidade }: IPaginacao) {
-    const [itens] = useState<JSX.Element[]>([]);
-    const quantidadeMinimaEmTela = 3;
-    
-    if(atual > quantidadeMinimaEmTela) {
-        itens.push(<li className={`pagina-item mais`}>1</li>);
-        itens.push(<li className={`pagina-item mais`}>...</li>);
-    }
-    
-    if (atual < quantidade) {
-        for (let index = atual - 1; index <= atual + 1; index++) {
-            console.log('executando...');
-            if(quantidade > 5 && index > atual + 2) {
-                itens.push(<li key={ index } className={`pagina-item mais`}>...</li>);
-                itens.push(<li key={ index } className={`pagina-item`}>{ quantidade }</li>);
-                break;
+        if (atual <= quantidadeMinimaEmTela) {
+            if(quantidade < quantidadeMinimaEmTela) {
+                for(let index = 1; index <= quantidade; index++) {
+                    if (atual === index) {
+                        elementosPaginacao.push(<li className={`pagina-item ativo`}>{ index }</li>);
+                    } else {
+                        elementosPaginacao.push(<li className={`pagina-item`} onClick={() => onSelecionarNumeroPagina(index)}>{ index }</li>);
+                    }
+                }
+            } else {
+                for(let index = 1; index <= quantidadeMinimaEmTela; index++) {
+                    if (atual === index) {
+                        elementosPaginacao.push(<li className={`pagina-item ativo`}>{ index }</li>);
+                    } else {
+                        elementosPaginacao.push(<li className={`pagina-item`} onClick={() => onSelecionarNumeroPagina(index)}>{ index }</li>);
+                    }
+                }
             }
-            itens.push(<li key={ index } className={`pagina-item ${ index === atual ? 'ativo' : '' }`}>{ index }</li>);
-        }
-    }
 
-    if ( atual + 3 > quantidadeMinimaEmTela) {
-        itens.push(<li className={`pagina-item mais`}>...</li>);
-        itens.push(<li className={`pagina-item mais`}>{ quantidade }</li>);
-    }
+
+            if(quantidade > quantidadeMinimaEmTela) {
+                elementosPaginacao.push(<li className={`pagina-item mais`}>...</li>);
+                elementosPaginacao.push(<li className={`pagina-item`} onClick={() => onSelecionarNumeroPagina(quantidade)}>{ quantidade }</li>);
+            }
+            setItens(elementosPaginacao);
+            return;
+        }
+        
+        if (atual > quantidadeMinimaEmTela && atual < quantidade - quantidadeMinimaEmTela) {
+            elementosPaginacao.push(<li className={`pagina-item`} onClick={() => onSelecionarNumeroPagina(1)}>1</li>);
+            elementosPaginacao.push(<li className={`pagina-item mais`}>...</li>);
+
+            elementosPaginacao.push(<li className={`pagina-item `} onClick={() => onSelecionarNumeroPagina(atual - 1)}>{ atual - 1 }</li>);
+            elementosPaginacao.push(<li className={`pagina-item ativo`}>{ atual }</li>);
+            elementosPaginacao.push(<li className={`pagina-item `} onClick={() => onSelecionarNumeroPagina(atual + 1)}>{ atual + 1 }</li>);
+
+            elementosPaginacao.push(<li className={`pagina-item mais`}>...</li>);
+            elementosPaginacao.push(<li className={`pagina-item`} onClick={() => onSelecionarNumeroPagina(atual + 1)}>{ quantidade }</li>);
+
+            setItens(elementosPaginacao);
+            return;
+        }
+        
+        if (atual <= quantidade) {
+            console.log('caiu aqui');
+            elementosPaginacao.push(<li className={`pagina-item`} onClick={() => onSelecionarNumeroPagina(1)}>1</li>);
+            elementosPaginacao.push(<li className={`pagina-item mais`}>...</li>);
+
+            if(atual <= quantidade - quantidadeMinimaEmTela) {
+                for(let index = atual; index < quantidade; index++) {
+                    if (atual === index) {
+                        elementosPaginacao.push(<li className={`pagina-item ativo`}>{ index }</li>);
+                    } else {
+                        elementosPaginacao.push(<li className={`pagina-item`} onClick={() => onSelecionarNumeroPagina(index)}>{ index }</li>);
+                    }
+                }
+            } else {
+                for(let index = quantidade - quantidadeMinimaEmTela + 1; index <= quantidade; index++) {
+                    if (atual === index) {
+                        elementosPaginacao.push(<li className={`pagina-item ativo`}>{ index }</li>);
+                    } else {
+                        elementosPaginacao.push(<li className={`pagina-item`} onClick={() => onSelecionarNumeroPagina(index)}>{ index }</li>);
+                    }
+                }
+            }
+
+            setItens(elementosPaginacao);
+            return;
+        }
+    }, [
+        atual,
+        quantidade,
+        quantidadeMinimaEmTela,
+        onSelecionarNumeroPagina
+    ]);
 
     return (
         <div className="paginacao">
             <ul className="paginas">
                 <li className="pagina-item">
-                    <div className="controle controle-esquerda">
-                        <ChevronLeft />
+                    <div className="controle controle-esquerda" onClick={onRetrocederPagina}>
+                        <Botao
+                            estilo="Icone"
+                            tamanho="Small"
+                            icone={ <ChevronLeft /> }
+                            somenteIcone
+                        />
                     </div>
                 </li>
                 { itens }
                 <li className="pagina-item">
-                    <div className="controle controle-direita">
-                        <ChevronRight />
+                    <div className="controle controle-direita" onClick={onAvancarPagina}>
+                        <Botao
+                            estilo="Icone"
+                            tamanho="Small"
+                            icone={ <ChevronRight /> }
+                            somenteIcone
+                        />
                     </div>
                 </li>
             </ul>
