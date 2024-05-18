@@ -1,7 +1,9 @@
+import Margem from "../Margem";
+
 export default function MargemCelular() {
     return (
         <>
-            <div className="subtitulo">Mobile</div>
+            <Margem tipo="celular" />
         </>
     );
 }
