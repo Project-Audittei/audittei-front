@@ -2,12 +2,6 @@ export default function Titulos() {
     return (
         <>
             <div className="row">
-                <div className="card mt-3 mb-4">
-                    <div className="card-header">FONTE</div>
-                    <div className="card-body">Work Sans</div>
-                </div>
-            </div>
-            <div className="row">
                 <div className="col">
                     <div className="subtitulo">TITULOS</div>
                 </div>
