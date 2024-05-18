@@ -12,7 +12,7 @@ export default function MenuSide() {
             <li><Link to={'/docs/icones'}><Botao estilo="Menu" icone={<Award size={16} />} label="Ícones" tamanho="Small" /></Link></li>
             <li><Link to={'/docs/cores'}><Botao estilo="Menu" icone={<Brush size={16} />} label="Cores" tamanho="Small" /></Link></li>
             <li><Link to={'/docs/botoes'}><Botao estilo="Menu" icone={<MousePointer2 size={16} />} label="Botões" tamanho="Small" /></Link></li>
-            <li><Link to={'/docs/campos-de-texto'}><Botao estilo="Menu" icone={<TextCursorInput size={16} />} label="Campos de Texto" tamanho="Small" /></Link></li>
+            <li><Link to={'/docs/campos-de-texto'}><Botao estilo="Menu" icone={<TextCursorInput size={16} />} label="Elementos de Formulário" tamanho="Small" /></Link></li>
             <li><Link to={'/docs/tooltip'}><Botao estilo="Menu" icone={<Info size={16} />} label="Tooltip" tamanho="Small" /></Link></li>
             <li><Link to={'/docs/notificacoes'}><Botao estilo="Menu" icone={<TriangleAlert size={16} />} label="Notificações" tamanho="Small" /></Link></li>
             <li><Link to={'/docs/paginacao'}><Botao estilo="Menu" icone={<BookOpen size={16} />} label="Paginação" tamanho="Small" /></Link></li>

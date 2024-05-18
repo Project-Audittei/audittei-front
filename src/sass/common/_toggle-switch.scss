@@ -1,0 +1,77 @@
+.form-group:has(.toggle-switch) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    label {
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+
+    &:has(input:disabled) {
+        background: transparent;
+    }
+}
+
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 24px;
+
+    input {
+        display: none;
+
+        &:checked ~ label {
+            background-color: #605DEC;
+        }
+
+        &:checked ~ label::after {
+            transform: translateX(65%);
+            background: #ffffff;
+        }
+
+        &:focus ~ label {
+            border: 2px solid #F845FC;
+        }
+
+        &:disabled ~ label {
+            background-color: #F4F3FE;
+            cursor: default;
+
+            &:hover {
+                box-shadow: none;
+            }
+        }
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 24px;
+        padding: 8px;
+        border-radius: 15px;
+        background-color: #D4D4DE;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &::after {
+            content: "";
+            display: inherit;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ffffff;
+            transition: 0.3s;
+            transform: translateX(-65%);
+        }
+
+        &:hover {
+            box-shadow: 0px 4px 4px rgba($color: #8E8DD0, $alpha: .16);
+        }
+    }
+}

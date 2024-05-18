@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { EstadosForcaType } from "../../../@types/EstadoForca";
 import { MensagensValidacao } from "../MensagemValidacao";
 import SeletorEstado from "../../documentation-app/common/SeletorEstado";
-import Checkbox from "../Checkbox";
+import RadioButton from "../RadioButton";
+import ToggleSwitch from "../ToggleSwitch";
 
 export default function CheckboxExemplos() {
 
@@ -56,14 +57,38 @@ export default function CheckboxExemplos() {
             <div className="row mb-4">
                 <div className="col-2"><h5>Checkbox</h5></div>
                 <div className="col-4">
-                    <Checkbox 
-                        checked={ marcado }
-                        onChange={() => setMarcado(!marcado)}
-                        mensagensValidacao={ mensagensValidacao }
-                        estado={ forcaEstado }
-                        disabled={ desabilitado }
-                    />
+                    <div className="row mb-4">
+                        <RadioButton
+                            checked={marcado}
+                            onChange={() => { setMarcado(!marcado); console.log(marcado); }}
+                            mensagensValidacao={mensagensValidacao}
+                            estado={forcaEstado}
+                            disabled={desabilitado}
+                            name="Teste"
+                        />
+                    </div>
+                    <div className="row">
+                        <RadioButton
+                            checked={marcado}
+                            onChange={() => { setMarcado(!marcado); console.log(marcado); }}
+                            mensagensValidacao={mensagensValidacao}
+                            estado={forcaEstado}
+                            disabled={desabilitado}
+                            name="Teste"
+                        />
+                    </div>
                 </div>
+            </div>
+            <div className="row mb-4">
+                <h5>Checkbox</h5>
+                <ToggleSwitch
+                    checked={marcado}
+                    onChange={() => { setMarcado(!marcado); console.log(marcado); }}
+                    mensagensValidacao={mensagensValidacao}
+                    estado={forcaEstado}
+                    disabled={desabilitado}
+                    name="Teste"
+                />
             </div>
         </>
     );

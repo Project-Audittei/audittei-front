@@ -1,8 +1,12 @@
-.checkbox-container {
-    display: block;
+.radio-container {
     position: relative;
     cursor: pointer;
     user-select: none;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .checkmark {
         position: absolute;
@@ -11,9 +15,8 @@
         transform: translate(-50%, -50%);
         height: 24px;
         width: 24px;
+        border-radius: 50%;
         border: 1px solid #BDBCDB;
-        background-color: transparent;
-        border-radius: 4px;
 
         &:hover {
             border-color: #605DEC;
@@ -38,11 +41,15 @@
 
     input:checked:disabled ~ .checkmark:after {
         background-color: #F4F3FE;
-        border-color: #C5C0DB;
     }
 
     input.form-control:checked:disabled ~.checkmark {
         background-color: #F4F3FE;
+        border: none;
+    }
+
+    input.form-control:checked:disabled ~.checkmark::after {
+        background-color: #C5C0DB;
     }
 
     .form-group.erro input.form-control ~.checkmark{
@@ -53,10 +60,10 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%) rotate(45deg);
-        width: 5px;
+        width: 10px;
         height: 10px;
-        border: solid white;
-        border-width: 0 3px 3px 0;
+        border-radius: 50%;
+        background-color: #605DEC;
     }
 
     .checkmark:after {
@@ -66,8 +73,8 @@
     }
 
     input.form-control:checked~.checkmark {
-        background-color: #605DEC;
-        border: none;
+        background-color: white;
+        border: 1px solid #605DEC;
     }
 
     & input {
@@ -78,6 +85,6 @@
         width: 0;
     }
 
-    /* Create a custom checkbox */
+    /* Create a custom radio */
 
 }

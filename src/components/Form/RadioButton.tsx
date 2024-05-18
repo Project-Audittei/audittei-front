@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
+import { MensagensValidacao } from "./MensagemValidacao";
 import { EstadosForcaType } from "../../@types/EstadoForca";
 
 interface CheckboxPropsType extends React.InputHTMLAttributes<HTMLInputElement> {
+    mensagensValidacao?: MensagensValidacao;
     icone?: JSX.Element;
     label?: string;
     estado?: EstadosForcaType;
 }
 
-export default function Checkbox({
+export default function RadioButton({
     name,
     id,
     checked,
@@ -43,9 +45,9 @@ export default function Checkbox({
     }, [estado]);
 
     return (
-        <label className="checkbox-container">
+        <label className="radio-container">
             <div className={`form-group ${classEstado}`} >
-                <input className="form-control" type="checkbox" name={ name } id={ id } checked={checked} onChange={onChange} disabled={disabled} />
+                <input className="form-control" type="radio" name={ name } id={ id } checked={checked} onChange={onChange} disabled={disabled} />
                 <span className="checkmark"></span>
             </div>
         </label>

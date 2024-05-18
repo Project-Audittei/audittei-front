@@ -1,20 +1,24 @@
 import { useState, useEffect } from "react";
 import { EstadosForcaType } from "../../@types/EstadoForca";
+import { MensagensValidacao } from "./MensagemValidacao";
 
 interface CheckboxPropsType extends React.InputHTMLAttributes<HTMLInputElement> {
+    mensagensValidacao?: MensagensValidacao;
     icone?: JSX.Element;
     label?: string;
     estado?: EstadosForcaType;
 }
 
-export default function Checkbox({
+export default function ToggleSwitch({
     name,
     id,
     checked,
     estado = 'padrao',
+    mensagensValidacao,
     disabled,
     onChange
 }: CheckboxPropsType) {
+
     const [classEstado, setClassEstado] = useState<string>('');
 
     useEffect(() => {
@@ -43,11 +47,11 @@ export default function Checkbox({
     }, [estado]);
 
     return (
-        <label className="checkbox-container">
-            <div className={`form-group ${classEstado}`} >
-                <input className="form-control" type="checkbox" name={ name } id={ id } checked={checked} onChange={onChange} disabled={disabled} />
-                <span className="checkmark"></span>
-            </div>
-        </label>
+        <div className={`form-group ${classEstado}`}>
+            <span className="toggle-switch">
+                <input id="switch-rounded" type="checkbox" checked={ checked } onChange={ onChange } disabled={ disabled }/>
+                <label htmlFor="switch-rounded"></label>
+            </span>
+        </div>
     );
 }

@@ -46,6 +46,8 @@ export default function MensagemValidacao({
         }
     }, [tipo]);
 
+    if(tipo === 'padrao') return (<></>);
+
     return (
         <div className="validacao-mensagem">
             { icone }
