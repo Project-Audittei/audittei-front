@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import { MensagensValidacao } from "./MensagemValidacao";
 import { EstadosForcaType } from "../../@types/EstadoForca";
 
 interface CheckboxPropsType extends React.InputHTMLAttributes<HTMLInputElement> {
-    mensagensValidacao?: MensagensValidacao;
     icone?: JSX.Element;
     label?: string;
     estado?: EstadosForcaType;

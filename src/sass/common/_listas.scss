@@ -1,0 +1,12 @@
+ul.lista {
+    position: relative;
+    margin-left: 16px;
+    li {
+        list-style: initial;
+        margin-bottom: 16px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}

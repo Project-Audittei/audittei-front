@@ -1,0 +1,105 @@
+.card-informacoes {
+    width: 100%;
+    padding: 16px;
+    border-radius: 10px;
+    border: 2px dashed  #7764FF;
+
+    .card-header {
+        width: 100%;
+        padding: 16px 22px;
+        background-color: rgba($color: #7764FF, $alpha: .1);
+        border-radius: 10px;
+        color: #000;
+    }
+
+    .card-body {
+
+        ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            p {
+                margin-left: 10px;
+            }
+        }
+
+        li.separador {
+            display: flex;
+            align-self: center;
+            width: 80%;
+            height: 0;
+            border: 1px solid #000;
+        }
+
+        span, p {
+            font-weight: 400;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        span.item-numero {
+            width: 18px;
+            height: 18px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background-color: #7764FF;
+        }
+
+        span.item-tamanho {
+            margin-left: auto;
+            background-color: #DCEC7D;
+            font-weight: bold;
+            padding: 3px;
+        }
+
+        span.item-nome {
+            margin-left: auto;
+            background-color: #D7D1FF;
+            font-weight: bold;
+            padding: 3px;
+        }
+    }
+}
+
+.card-perfil {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.card-perfil-container {
+    padding: 15px 20px;
+    border: 1px solid #EEF0F4;
+    border-radius: 10px;
+    background-color: #fff;
+
+    .foto-usuario {
+        width: 45px;
+        height: 45px;
+        border-radius: 100%;
+        background-image: linear-gradient(#2761F8, #80A2FF);
+
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+    }
+
+    a {
+        font-size: 16px;
+        color: #265EF5;
+    }
+}

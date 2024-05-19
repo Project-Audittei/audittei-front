@@ -1,0 +1,22 @@
+ul.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .subtitulo {
+        margin-left: 16px;
+        color: #4787F3;
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: -2%;
+        margin-top: 48px;
+    }
+
+    .btn-menu {
+        padding-left: 16px;
+        padding-right: 0;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+    }
+}

@@ -1,17 +1,37 @@
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+
+export type BotaoTamanho = "Large" | "Normal" | "Medium" | "Small" | "ExtraSmall";
+export type BotaoEstilo = 'Primary' | 'Secondary' | 'Third' | 'Menu' | 'Icone' | 'Danger';
 
 interface BotaoPropsType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     label?: string;
-    estilo: 'Primary' | 'Secondary' | 'Third' | 'Menu' | 'Icone';
-    tamanho: "Large" | "Normal" | "Medium" | "Small" | "ExtraSmall";
+    estilo: BotaoEstilo;
+    tamanho: BotaoTamanho;
     onClick?: () => void;
     icone?: JSX.Element;
     iconePosicao?: "esquerda" | "direita";
     somenteIcone?: boolean;
+    notificacoes?: number;
+    tamanhoAutomatico?: boolean;
+    subitens?: any[];
 }
 
-export default function Botao(props: BotaoPropsType) {
-    const { label, tamanho, icone, iconePosicao, estilo, onClick, className, style, disabled, somenteIcone } = props;
+export default function Botao({ 
+    label, 
+    tamanho, 
+    icone, 
+    iconePosicao, 
+    estilo, 
+    onClick, 
+    className, 
+    style, 
+    disabled, 
+    somenteIcone,
+    notificacoes,
+    tamanhoAutomatico,
+    subitens
+}: BotaoPropsType) {
 
     const [btnEstilo, setBtnEstilo] = useState<string>('');
     const [btnTamanho, setBtnTamanho] = useState<string>('');
@@ -46,19 +66,23 @@ export default function Botao(props: BotaoPropsType) {
     if(btnEstilo === '') {
         switch(estilo) {
             case "Primary":
-                setBtnEstilo(`${className} ${prefix}-primary`);
+                setBtnEstilo(`${className ?? ''} ${ tamanhoAutomatico ? 'btn-auto' : '' } ${prefix}-primary`);
                 break;
     
             case "Secondary":
-                setBtnEstilo(`${ className } ${prefix}-secondary`);
+                setBtnEstilo(`${ className ?? ''} ${ tamanhoAutomatico ? 'btn-auto' : '' } ${prefix}-secondary`);
                 break;
     
             case "Third":
-                setBtnEstilo(`${className} ${prefix}-third`);
+                setBtnEstilo(`${className ?? ''} ${ tamanhoAutomatico ? 'btn-auto' : '' } ${prefix}-third`);
                 break;
     
             case "Menu":
-                setBtnEstilo(`${className} ${prefix}-menu`);
+                setBtnEstilo(`${className ?? ''} ${ tamanhoAutomatico ? 'btn-auto' : '' } ${prefix}-menu`);
+                break;
+            
+            case "Danger":
+                setBtnEstilo(`${className ?? ''} ${ tamanhoAutomatico ? 'btn-auto' : '' } ${prefix}-perigo`);
                 break;
 
             case "Icone":
@@ -113,10 +137,22 @@ export default function Botao(props: BotaoPropsType) {
             </button>
         );
     }
+
+    if(estilo === 'Menu') {
+        return (
+            <button style={ style } className={`${prefix} ${btnEstilo} ${btnTamanho}`} onClick={ onClick } disabled={ disabled }>
+                { icone ? <div className={`${btnIconeMargin}-right d-flex justify-content-center align-items-center`}>{icone}</div> : '' }
+                <span>{ label }</span>
+                { subitens ? <ChevronDown size={16} style={{ marginLeft: 'auto' }} /> : '' }
+            </button>
+        );
+    }
+
     return (
         <button style={ style } className={`${prefix} ${btnEstilo} ${btnTamanho}`} onClick={ onClick } disabled={ disabled }>
            { icone ? <div className={`${btnIconeMargin}-right d-flex justify-content-center align-items-center`}>{icone}</div> : '' }
            <span>{ label }</span>
+           { notificacoes ? <span className="notificacoes">{ notificacoes }</span> : '' }
         </button>
     );
 }

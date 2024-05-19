@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { EstadosForcaType } from "../../../@types/EstadoForca";
 import SeletorEstado from "../../documentation-app/common/SeletorEstado";
-import Checkbox from "../Checkbox";
+import ToggleSwitch from "../ToggleSwitch";
 
-export default function CheckboxExemplos() {
+export default function ToggleSwitchExemplos() {
 
     const [estado, setEstado] = useState<string>('');
     const [forcaEstado, setForcaEstado] = useState<EstadosForcaType>('padrao');
     const [desabilitado, setDesabilitado] = useState<boolean>(false);
+    const [marcado, setMarcado] = useState<boolean>(false);
 
     useEffect(() => {
         setDesabilitado(false);
@@ -45,15 +46,14 @@ export default function CheckboxExemplos() {
                 <SeletorEstado value={estado} onChange={e => setEstado(e.currentTarget.value)} />
             </div>
             <div className="row mb-4">
-                <div className="row mb-4">
-                    <h5>Checkbox</h5>
-                    <div className="row">
-                        <Checkbox estado={ forcaEstado } disabled={desabilitado}/>
-                        <Checkbox estado={ forcaEstado } disabled={desabilitado}/>
-                        <Checkbox estado={ forcaEstado } disabled={desabilitado}/>
-                        <Checkbox estado={ forcaEstado } disabled={desabilitado}/>
-                    </div>
-                </div>
+                <h5>Habilitar/Desabilitar</h5>
+                <ToggleSwitch
+                    checked={marcado}
+                    onChange={() => { setMarcado(!marcado); console.log(marcado); }}
+                    estado={forcaEstado}
+                    disabled={desabilitado}
+                    name="Teste"
+                />
             </div>
         </>
     );

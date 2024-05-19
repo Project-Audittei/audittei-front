@@ -141,6 +141,24 @@ $btn-third-border__active: none;
 $btn-third-background__active: #F6F5FF;
 $btn-third-text__active: #265EF5;
 
+// Buttons > Perigo > Default
+
+$btn-perigo-border: 1px solid #F93232;
+$btn-perigo-background: transparent;
+$btn-perigo-text: #F93232;
+
+// Buttons > Perigo > Hover
+
+$btn-perigo-border__hover: 1px solid #cd2828;
+$btn-perigo-background__hover: transparent;
+$btn-perigo-text__hover: #cd2828;
+
+// Buttons > Perigo > Active
+
+$btn-perigo-border__active: none;
+$btn-perigo-background__active: transparent;
+$btn-perigo-text__active: #cd2828;
+
 $btn-large-text: 20px;
 $btn-large-padding-x: 32px;
 $btn-large-padding-y: 20px;

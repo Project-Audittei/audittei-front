@@ -1,12 +1,14 @@
-import Margem from "../../components/Margem/Margem";
+import MargemCelular from "../../components/Margem/exemplos/MargemCelular";
+import MargemDesktop from "../../components/Margem/exemplos/MargemDesktop";
+import MargemTablet from "../../components/Margem/exemplos/MargemTablet";
 import NavegacaoInterna, { INavegacaoInternaTab } from "../../components/NavegacaoInterna/NavegacaoInterna";
 
 export default function MargemContent() {
 
     const tabs: INavegacaoInternaTab[] = [
-        { id: 1, titulo: "Celular", conteudo: <Margem tipo="celular" /> },
-        { id: 2, titulo: "Tablet", conteudo: <Margem tipo="tablet" /> },
-        { id: 3, titulo: "Desktop", conteudo: <Margem tipo="desktop" /> }
+        { id: 1, titulo: "Celular", conteudo: <MargemCelular /> },
+        { id: 2, titulo: "Tablet", conteudo: <MargemTablet /> },
+        { id: 3, titulo: "Desktop", conteudo: <MargemDesktop /> }
     ];
 
     return(

@@ -1,6 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import PaginaTipografia from "./pages/PaginaTipografia";
-import Home from "./pages/Home";
 import { Home as DocsHome } from "./pages/documentation-app/Home";
 import { Tipografia as DocsTipografia } from "./pages/documentation-app/Tipografia";
 import { Grid as DocsGrid } from "./pages/documentation-app/Grid";
@@ -15,14 +13,14 @@ import { Paginacao as DocsPaginacao } from "./pages/documentation-app/Paginacao"
 import { NavegacaoInterna as DocsNavegacaoInterna } from "./pages/documentation-app/NavegacaoInterna";
 import { Icones as DocsIcones } from "./pages/documentation-app/Icones";
 import ModalContextProvider from "./contexts/ModalContext";
+import PaginaSistema from "./pages/sistema/PaginaSistema";
+import Home from "./pages/Home";
 
 function App() {
 	return (
 		<ModalContextProvider>
 			<BrowserRouter basename="/audittei">
 				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/tipografia" element={<PaginaTipografia />} />
 
 					<Route path="/docs" element={<DocsHome />} />
 					<Route path="/docs/tipografia" element={<DocsTipografia />} />
@@ -38,6 +36,10 @@ function App() {
 					<Route path="/docs/paginacao" element={<DocsPaginacao />} />
 					<Route path="/docs/navegacao-interna" element={<DocsNavegacaoInterna />} />
 					<Route path="/docs/icones" element={<DocsIcones />} />
+
+					<Route path="/sistema" element={ <PaginaSistema /> } />
+
+					<Route path="/" element={ <Home /> } />
 				</Routes>
 			</BrowserRouter>
 		</ModalContextProvider>

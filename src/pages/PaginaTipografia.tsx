@@ -4,7 +4,7 @@ import VisaoBasica from "../components/VisaoBasica";
 
 export default function PaginaTipografia() {
     return (
-        <VisaoBasica nivel={1} titulo="Tipografia">
+        <VisaoBasica>
             <Titulos />
             <Paragrafos />
         </VisaoBasica>

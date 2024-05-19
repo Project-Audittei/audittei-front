@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { EstadosForcaType } from "../../../@types/EstadoForca";
 import SeletorEstado from "../../documentation-app/common/SeletorEstado";
-import Checkbox from "../Checkbox";
+import RadioButton from "../RadioButton";
 
-export default function CheckboxExemplos() {
+export default function RadioButtonExemplos() {
 
     const [estado, setEstado] = useState<string>('');
     const [forcaEstado, setForcaEstado] = useState<EstadosForcaType>('padrao');
     const [desabilitado, setDesabilitado] = useState<boolean>(false);
+    const [marcado, setMarcado] = useState<string>('');
 
     useEffect(() => {
         setDesabilitado(false);
@@ -47,12 +48,22 @@ export default function CheckboxExemplos() {
             <div className="row mb-4">
                 <div className="row mb-4">
                     <h5>Checkbox</h5>
-                    <div className="row">
-                        <Checkbox estado={ forcaEstado } disabled={desabilitado}/>
-                        <Checkbox estado={ forcaEstado } disabled={desabilitado}/>
-                        <Checkbox estado={ forcaEstado } disabled={desabilitado}/>
-                        <Checkbox estado={ forcaEstado } disabled={desabilitado}/>
-                    </div>
+                    <RadioButton
+                    value={0}
+                        checked={marcado === '0'}
+                        onChange={() => setMarcado('0')}
+                        estado={forcaEstado}
+                        disabled={desabilitado}
+                        name="exemplo_radio"
+                    />
+                    <RadioButton
+                    value={1}
+                        checked={marcado === '1'}
+                        onChange={() => setMarcado('1')}
+                        estado={forcaEstado}
+                        disabled={desabilitado}
+                        name="exemplo_radio"
+                    />
                 </div>
             </div>
         </>

@@ -16,7 +16,7 @@ export default function Tooltip({
   positionX = 'center',
   positionY = 'bottom'
 }: TooltipProps) {
-  const [visible, setVisible] = useState<boolean>(true);
+  const [visible, setVisible] = useState<boolean>(false);
   const [classPosicao, setClassPosicao] = useState<string>('tooltip');
   
   const tooltipRef = useRef<HTMLDivElement | null>(null);

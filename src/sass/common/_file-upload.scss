@@ -1,0 +1,30 @@
+.file-upload-container {
+    width: 100%;
+    padding-top: 24px;
+    padding-bottom: 40px;
+    border: 2px solid #A0BAFD;
+    border-style: dashed;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: ease-in-out .3s;
+
+    &:hover {
+        border-color: #265FF3;
+        cursor: pointer;
+    }
+
+    p {
+        font-size: 14;
+        font-weight: 400;
+        color: #828282;
+        margin-bottom: 24px;
+    }
+
+    input {
+        display: none;
+        opacity: 0;
+    }
+}

@@ -1,0 +1,47 @@
+.roda-progresso {
+    position: relative;
+    width: auto;
+    height: auto;
+
+    .progresso {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #8A8894;
+    }
+
+    .circular-loader {
+        display: inline-block;
+        position: relative;
+    }
+
+    .circular-loader-svg {
+        transform: rotate(-90deg);
+    }
+
+    .circular-loader-bg {
+        fill: none;
+        stroke: #e6e6e6;
+    }
+
+    .circular-loader-progress {
+        fill: none;
+        stroke: #605DEC;
+        transition: stroke 0.3s ease;
+    }
+
+    &.grande {
+        .progresso {
+            font-size: 14px;
+            line-height: 130%;
+        }
+    }
+    
+    &.pequeno {
+        .progresso {
+            font-size: 10px;
+            line-height: 16px;
+        }
+    }
+}
