@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home as DocsHome } from "./pages/documentation-app/Home";
 import { Tipografia as DocsTipografia } from "./pages/documentation-app/Tipografia";
 import { Grid as DocsGrid } from "./pages/documentation-app/Grid";
 import { Margin as DocsMargin } from "./pages/documentation-app/Margin";
@@ -21,10 +20,8 @@ function App() {
 		<ModalContextProvider>
 			<BrowserRouter basename="/audittei">
 				<Routes>
-
-					<Route path="/docs" element={<DocsHome />} />
+					<Route path="/docs" element={<DocsGrid />} />
 					<Route path="/docs/tipografia" element={<DocsTipografia />} />
-					<Route path="/docs/grid" element={<DocsGrid />} />
 					<Route path="/docs/margem" element={<DocsMargin />} />
 					<Route path="/docs/grid" element={<DocsGrid />} />
 					<Route path="/docs/cores" element={<DocsCores />} />
@@ -37,9 +34,9 @@ function App() {
 					<Route path="/docs/navegacao-interna" element={<DocsNavegacaoInterna />} />
 					<Route path="/docs/icones" element={<DocsIcones />} />
 
-					<Route path="/sistema" element={ <PaginaSistema /> } />
+					<Route path="/" element={ <PaginaSistema /> } />
 
-					<Route path="/" element={ <Home /> } />
+					<Route path="/style-guide" element={ <Home /> } />
 				</Routes>
 			</BrowserRouter>
 		</ModalContextProvider>
