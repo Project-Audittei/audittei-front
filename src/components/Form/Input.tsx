@@ -86,7 +86,7 @@ export default function Input({
             return (
                 <div className="input-group">
                     <div className={`form-group ${classEstado}`}>
-                        <label htmlFor={ name }>Senha</label>
+                        <label htmlFor={ name }>{ label ?? 'Senha' }</label>
                         <input 
                             type="password" 
                             name={name} 
@@ -94,6 +94,7 @@ export default function Input({
                             value={value}
                             onChange={onChange}
                             disabled={disabled} 
+                            placeholder={ placeholder }
                         />
                         <div className="icone icone-direita"><EyeIcon size={24} /></div>
                     </div>
@@ -113,6 +114,7 @@ export default function Input({
                             value={ value } 
                             disabled={ disabled }
                             onChange={onChange}
+                            placeholder={ placeholder }
                         />
                         { <div className="icone icone-direita">{ icone }</div> ?? '' }
                     </div>

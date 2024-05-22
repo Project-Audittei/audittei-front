@@ -4,6 +4,7 @@ import Modal from "../../Modal/Modal";
 import Selecao from "../../Form/Selecao";
 import Botao from "../../Botoes/Botao";
 import { Bell } from "lucide-react";
+import Logo from "../../app/Logo";
 
 type VisaoBasicaPropsType = {
     children: ReactNode;
@@ -15,7 +16,7 @@ export default function VisaoBasica({ children }: VisaoBasicaPropsType) {
             <Modal />
             <aside>
                 <div className="header">
-                    <img src={`${process.env.PUBLIC_URL}/assets/images/logo.svg`} alt="" />
+                    <Logo />
                 </div>
                 <div className="separador"></div>
                 <div className="container">

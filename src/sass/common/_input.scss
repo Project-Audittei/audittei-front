@@ -43,6 +43,7 @@
         position: absolute;
         left: 16px;
         top: 6px;
+        z-index: 9999999;
     }
 
     .icone {
@@ -50,7 +51,7 @@
         top: 50%;
         transform: translateY(-50%);
         transition: ease-in-out .3s;
-        
+        z-index: 999999;
     }
 
     .icone {

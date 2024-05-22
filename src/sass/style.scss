@@ -5,6 +5,7 @@
 @import './common/buttons';
 @import './common/background';
 @import './common/font';
+@import './common/form';
 @import './common/grid';
 @import './common/menu';
 @import './common/listas';
@@ -27,6 +28,8 @@
 @import 'documentation-app/documentation-app';
 
 @import './common/reset';
+
+@import './auth/auth';
 
 body {
     font-family: 'WorkSans';

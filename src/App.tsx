@@ -14,6 +14,7 @@ import { Icones as DocsIcones } from "./pages/documentation-app/Icones";
 import ModalContextProvider from "./contexts/ModalContext";
 import PaginaSistema from "./pages/sistema/PaginaSistema";
 import Home from "./pages/Home";
+import Cadastro from "./pages/sistema/Auth/Cadastro";
 
 function App() {
 	return (
@@ -35,6 +36,7 @@ function App() {
 					<Route path="/docs/icones" element={<DocsIcones />} />
 
 					<Route path="/" element={ <PaginaSistema /> } />
+					<Route path="/cadastro" element={ <Cadastro /> } />
 
 					<Route path="/style-guide" element={ <Home /> } />
 				</Routes>

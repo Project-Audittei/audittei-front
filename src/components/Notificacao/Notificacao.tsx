@@ -8,31 +8,32 @@ export interface INotificacao {
     tipo: NotificacaoTipoType;
     tamanho: NotificacaoTamanhoType;
     mensagem: string;
+    tituloNotificacao?: string;
 }
 
-export default function Notificacao({ tipo = 'informacao', mensagem, tamanho = 'grande' }: INotificacao) {
+export default function Notificacao({ tituloNotificacao, tipo = 'informacao', mensagem, tamanho = 'grande' }: INotificacao) {
     const [icone, setIcone] = useState<JSX.Element>(<></>);
     const [visivel, setVisivel] = useState<boolean>(true);
-    const [titulo, setTitulo] = useState<string>('');
+    const [titulo, setTitulo] = useState<string>(tituloNotificacao ?? '');
     const [classNotificacao, setClassNotificacao] = useState<string>('');
 
     useEffect(() => {
         switch (tipo) {
             case "informacao":
                 setIcone(<Info size={16} />);
-                setTitulo('Informação');
+                if(titulo === '') setTitulo('Informação');
                 setClassNotificacao('notificacao-informacao');
                 break;
 
             case "erro":
                 setIcone(<TriangleAlert size={16} />);
-                setTitulo('Notificação de Erro');
+                if(titulo === '') setTitulo('Notificação de Erro');
                 setClassNotificacao('notificacao-erro');
                 break;
 
             case "valido":
                 setIcone(<CircleCheckBig size={16} />);
-                setTitulo('Notificação de Sucesso');
+                if(titulo === '') setTitulo('Notificação de Sucesso');
                 setClassNotificacao('notificacao-valido');
                 break;
         }

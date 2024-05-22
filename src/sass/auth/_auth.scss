@@ -1,0 +1,32 @@
+.auth-acoes {
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.auth-logo {
+    margin-top: 50px;
+    margin-bottom: 24px;
+}
+
+.auth-container {
+    padding: 24px 80px;
+    background-color: #fff;
+    border-radius: 8px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 8px 16px 0px rgba($color: #8E8DD0, $alpha: .12);
+
+    span.subtitulo {
+        color: #969696;
+        font-size: 16px;
+        line-height: 25px;
+        margin-top: 8px;
+    }
+
+    form.form-container {
+        width: 525px;
+        margin-top: 35px;
+    }
+}
