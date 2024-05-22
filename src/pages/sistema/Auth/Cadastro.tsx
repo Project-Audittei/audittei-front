@@ -1,4 +1,4 @@
-import { ArrowBigRight, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Botao from "../../../components/Botoes/Botao";
 import FormContainer from "../../../components/Form/FormContainer";
 import Input from "../../../components/Form/Input";
