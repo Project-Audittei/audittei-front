@@ -2,7 +2,11 @@ import { X } from "lucide-react";
 import Botao from "../Botoes/Botao";
 import useModal from "../../hooks/useModal";
 
-export default function Modal() {
+interface ModalProps {
+    naoFecha?: boolean;
+}
+
+export default function Modal({ naoFecha }: ModalProps) {
     const { isModalOpen, modalClose, modalContent, modalTitle } = useModal();
 
     if(!isModalOpen) return (<></>);

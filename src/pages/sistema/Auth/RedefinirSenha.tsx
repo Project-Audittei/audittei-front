@@ -2,28 +2,17 @@ import { ArrowRight } from "lucide-react";
 import Botao from "../../../components/Botoes/Botao";
 import FormContainer from "../../../components/Form/FormContainer";
 import Input from "../../../components/Form/Input";
-import Notificacao from "../../../components/Notificacao/Notificacao";
 import AuthContainer from "../../../components/app/AuthContainer";
 import Container from "../../../components/app/Container";
 import Logo from "../../../components/app/Logo";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Cadastro() {
-    const [nome, setNome] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
-    const [telefone, setTelefone] = useState<string>('');
-    const [nomeEmpresa, setNomeEmpresa] = useState<string>('');
+export default function RedefinirSenha() {
+    const [chaveAcesso, setChaveAcesso] = useState<string>('');
     const [senha, setSenha] = useState<string>('');
     const [confirmarSenha, setConfirmarSenha] = useState<string>('');
-    const [dominioEmpresa, setDominioEmpresa] = useState<string>('');
-
     const navigate = useNavigate();
-
-    useEffect(() => {
-        let dominio = nomeEmpresa.replace(" ", '-');
-        setDominioEmpresa(dominio.toLowerCase());
-    }, [nomeEmpresa]);
 
     return (
         <Container>
@@ -34,7 +23,7 @@ export default function Cadastro() {
                             estilo="Primary"
                             tamanho="Small"
                             label="Teste grátis por 15 dias"
-                            disabled
+                            onClick={ () => navigate('/cadastro') }
                         />
                         <Botao
                             estilo="Primary"
@@ -49,46 +38,17 @@ export default function Cadastro() {
                 </div>
             </div>
             <AuthContainer>
-                <h3>Teste grátis por 15 dias!</h3>
-                <span className="subtitulo">Não será necessário fornecer dados de cartão de crédito.</span>
+                <h3>Digite uma nova senha</h3>
+                <span className="subtitulo">Falta pouco. Digite o código de segurança e uma nova senha.</span>
                 <FormContainer>
                     <div className="form-element-group">
                         <Input
                             type="text"
-                            placeholder="Nome e Sobrenome"
-                            label="Nome e Sobrenome"
-                            value={nome}
-                            onChange={(e) => setNome(e.currentTarget.value)}
+                            placeholder="Digite a chave de segurança que recebeu no seu e-mail"
+                            label="Digite a chave de segurança que recebeu no seu e-mail"
+                            value={chaveAcesso}
+                            onChange={(e) => setChaveAcesso(e.currentTarget.value)}
                         />
-                        <Input
-                            type="text"
-                            label="Email profissional"
-                            placeholder="Email profissional"
-                            value={email}
-                            onChange={(e) => setEmail(e.currentTarget.value)}
-                        />
-                        <Input
-                            type="text"
-                            label="DDD + Telefone"
-                            placeholder="DDD + Telefone"
-                            value={telefone}
-                            onChange={(e) => setTelefone(e.currentTarget.value)}
-                        />
-                    </div>
-                    <div className="form-element-group">
-                        <Input
-                            type="text"
-                            placeholder="Nome da Empresa"
-                            label="Nome da Empresa"
-                            value={nomeEmpresa}
-                            onChange={(e) => setNomeEmpresa(e.currentTarget.value)}
-                        />
-                        { nomeEmpresa !== '' ? <Notificacao
-                            tituloNotificacao="Seu endereço de acesso ao Audittei será:"
-                            tipo="informacao"
-                            tamanho="grande"
-                            mensagem={`https://${ dominioEmpresa }.audittei.com`}
-                        /> : '' }
                         <Input
                             type="password"
                             label="Insira sua senha de acesso"
@@ -108,15 +68,23 @@ export default function Cadastro() {
                             }}
 
                         />
-                        <span className="form-info">Ao continuar você concorda com os Termos de Uso do Sistema e com as nossas Políticas de Privacidade.</span>
                     </div>
                     <div className="form-element-group-button">
                         <Botao
                             estilo="Primary"
                             tamanho="Normal"
-                            label="Testar grátis"
+                            label="Definir nova senha"
                             icone={<ArrowRight size={24} />}
                             iconePosicao="direita"
+                            onClick={ () => navigate('/login') }
+                        />
+                        <Botao
+                            estilo="Third"
+                            tamanho="ExtraSmall"
+                            label="Voltar para login"
+                            icone={<ArrowRight size={24} />}
+                            iconePosicao="direita"
+                            onClick={ () => navigate('/login') }
                         />
                     </div>
                 </FormContainer>

@@ -7,11 +7,11 @@ type NotificacaoTamanhoType = 'grande' | 'pequeno';
 export interface INotificacao {
     tipo: NotificacaoTipoType;
     tamanho: NotificacaoTamanhoType;
-    mensagem: string;
+    mensagem: string | JSX.Element;
     tituloNotificacao?: string;
 }
 
-export default function Notificacao({ tituloNotificacao, tipo = 'informacao', mensagem, tamanho = 'grande' }: INotificacao) {
+export default function Notificacao({ tituloNotificacao = "Notificação", tipo = 'informacao', mensagem, tamanho = 'grande' }: INotificacao) {
     const [icone, setIcone] = useState<JSX.Element>(<></>);
     const [visivel, setVisivel] = useState<boolean>(true);
     const [titulo, setTitulo] = useState<string>(tituloNotificacao ?? '');
@@ -21,23 +21,23 @@ export default function Notificacao({ tituloNotificacao, tipo = 'informacao', me
         switch (tipo) {
             case "informacao":
                 setIcone(<Info size={16} />);
-                if(titulo === '') setTitulo('Informação');
+                setTitulo(tituloNotificacao);
                 setClassNotificacao('notificacao-informacao');
                 break;
 
             case "erro":
                 setIcone(<TriangleAlert size={16} />);
-                if(titulo === '') setTitulo('Notificação de Erro');
+                setTitulo(tituloNotificacao);
                 setClassNotificacao('notificacao-erro');
                 break;
 
             case "valido":
                 setIcone(<CircleCheckBig size={16} />);
-                if(titulo === '') setTitulo('Notificação de Sucesso');
+                setTitulo(tituloNotificacao);
                 setClassNotificacao('notificacao-valido');
                 break;
         }
-    }, [tipo, titulo]);
+    }, [tipo, tituloNotificacao]);
 
     const HandleFecharNotificacao = () => {
         setVisivel(false);

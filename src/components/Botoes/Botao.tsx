@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 
 export type BotaoTamanho = "Large" | "Normal" | "Medium" | "Small" | "ExtraSmall";
 export type BotaoEstilo = 'Primary' | 'Secondary' | 'Third' | 'Menu' | 'Icone' | 'Danger';
@@ -8,7 +8,7 @@ interface BotaoPropsType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     label?: string;
     estilo: BotaoEstilo;
     tamanho: BotaoTamanho;
-    onClick?: () => void;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
     icone?: JSX.Element;
     iconePosicao?: "esquerda" | "direita";
     somenteIcone?: boolean;

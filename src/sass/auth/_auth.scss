@@ -20,6 +20,8 @@
 
     span.subtitulo {
         color: #969696;
+        max-width: 525px;
+        text-align: center;
         font-size: 16px;
         line-height: 25px;
         margin-top: 8px;
@@ -27,6 +29,11 @@
 
     form.form-container {
         width: 525px;
+        max-width: 525px;
         margin-top: 35px;
+    }
+
+    .checkbox {
+        margin-top: 12px;
     }
 }

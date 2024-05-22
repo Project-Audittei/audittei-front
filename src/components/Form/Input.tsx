@@ -118,7 +118,7 @@ export default function Input({
                         />
                         { <div className="icone icone-direita">{ icone }</div> ?? '' }
                     </div>
-                    <MensagemValidacao mensagens={mensagensValidacao} tipo={estado} />
+                    { mensagensValidacao ? <MensagemValidacao mensagens={mensagensValidacao} tipo={estado} /> : '' }
                 </div>
             );
     }

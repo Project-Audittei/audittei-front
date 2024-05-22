@@ -13,7 +13,8 @@ export default function Checkbox({
     checked,
     estado = 'padrao',
     disabled,
-    onChange
+    onChange,
+    label
 }: CheckboxPropsType) {
     const [classEstado, setClassEstado] = useState<string>('');
 
@@ -43,11 +44,14 @@ export default function Checkbox({
     }, [estado]);
 
     return (
-        <label className="checkbox-container">
-            <div className={`form-group ${classEstado}`} >
-                <input className="form-control" type="checkbox" name={ name } id={ id } checked={checked} onChange={onChange} disabled={disabled} />
-                <span className="checkmark"></span>
-            </div>
-        </label>
+        <div className="checkbox">
+            <label className="checkbox-container">
+                <div className={`form-group ${classEstado}`} >
+                    <input className="form-control" type="checkbox" name={ name ?? 'checkbox-item' } id={ id ?? 'checkbox-item' } checked={checked} onChange={onChange} disabled={disabled} />
+                    <span className="checkmark"></span>
+                </div>
+            </label>
+            { label ? <label htmlFor={ id ?? 'checkbox-item' } className="checkbox-label">{ label }</label> : '' }
+        </div>
     );
 }

@@ -5,61 +5,6 @@
     position: relative;
 }
 
-h1 {
-    font-size: $h1-fontSize;
-    font-weight: $h1-fontWeight;
-    line-height: $h1-lineHeight;
-}
-
-h2 {
-    font-size: $h2-fontSize;
-    font-weight: $h2-fontWeight;
-    line-height: $h2-lineHeight;
-}
-
-h3 {
-    font-size: $h3-fontSize;
-    font-weight: $h3-fontWeight;
-    line-height: $h3-lineHeight;
-}
-
-h4 {
-    font-size: $h4-fontSize;
-    font-weight: $h4-fontWeight;
-    line-height: $h4-lineHeight;
-}
-
-h5 {
-    font-size: $h5-fontSize;
-    font-weight: $h5-fontWeight;
-    line-height: $h5-lineHeight;
-}
-
-h6 {
-    font-size: $h6-fontSize;
-    font-weight: $h6-fontWeight;
-    line-height: $h6-lineHeight;
-}
-
-p {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 25px;
-
-    b {
-        font-weight: 600;
-    }
-
-    a {
-        color: $p-link-color;
-        text-decoration: underline;
-
-        &:hover {
-            color: $p-link-color-hover;
-        }
-    }
-}
-
 li {
     list-style: none;
 }

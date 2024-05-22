@@ -70,3 +70,27 @@
         }
     }
 }
+
+#modal.modal-form {
+    
+
+    &:has(.modal-header) .modal {
+        width: min(725px, 100%);
+        border-radius: 8px;
+        padding: 0;
+
+        .modal-header:has(img) {
+            img {
+                width: 100%;
+            }
+        }
+
+        .modal-header {
+            margin-bottom: 0px;
+        }
+
+        .modal-content {
+            padding: 24px 92px;
+        }
+    }
+}

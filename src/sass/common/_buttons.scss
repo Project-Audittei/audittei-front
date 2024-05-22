@@ -18,6 +18,10 @@
     }
 }
 
+.btn.border-none, .btn.border-none:hover {
+    border: none;
+}
+
 .btn-menu {
     font-weight: $btn-menu-font-weight;
     font-size: $btn-menu-text;

@@ -15,6 +15,11 @@ import ModalContextProvider from "./contexts/ModalContext";
 import PaginaSistema from "./pages/sistema/PaginaSistema";
 import Home from "./pages/Home";
 import Cadastro from "./pages/sistema/Auth/Cadastro";
+import RedefinirSenha from "./pages/sistema/Auth/RedefinirSenha";
+import Login from "./pages/sistema/Auth/Login";
+import EsqueciSenha from "./pages/sistema/Auth/EsqueciSenha";
+import LinkRedefinicaoExpirado from "./pages/sistema/Auth/LinkRedefinicaoExpirado";
+import PaginaPrimeiroAcesso from "./pages/sistema/PaginaPrimeiroAcesso";
 
 function App() {
 	return (
@@ -36,7 +41,12 @@ function App() {
 					<Route path="/docs/icones" element={<DocsIcones />} />
 
 					<Route path="/" element={ <PaginaSistema /> } />
+					<Route path="/primeiro-acesso" element={ <PaginaPrimeiroAcesso /> } />
 					<Route path="/cadastro" element={ <Cadastro /> } />
+					<Route path="/esqueci-senha" element={ <EsqueciSenha /> } />
+					<Route path="/redefinir-senha" element={ <RedefinirSenha /> } />
+					<Route path="/reenviar-link-recuperacao" element={ <LinkRedefinicaoExpirado /> } />
+					<Route path="/login" element={ <Login /> } />
 
 					<Route path="/style-guide" element={ <Home /> } />
 				</Routes>

@@ -11,6 +11,7 @@ form.form-container {
         display: flex;
         width: 100%;
         flex-direction: column;
+        align-items: center;
         gap: 8px;
         margin-bottom: 30px;
 
@@ -22,9 +23,14 @@ form.form-container {
             width: 100%;
         }
 
-        &.form-element-group-button {
-            margin-top: 24px;
-        }
+    }
+    
+    .form-element-group-button {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
     }
 
     span.form-info {
