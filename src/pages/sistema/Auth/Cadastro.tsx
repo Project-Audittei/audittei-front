@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 export default function Cadastro() {
     const [nome, setNome] = useState<string>('');
     const [email, setEmail] = useState<string>('');
+    const [telefone, setTelefone] = useState<string>('');
     const [nomeEmpresa, setNomeEmpresa] = useState<string>('');
     const [senha, setSenha] = useState<string>('');
     const [confirmarSenha, setConfirmarSenha] = useState<string>('');
@@ -61,6 +62,13 @@ export default function Cadastro() {
                             placeholder="Email profissional"
                             value={email}
                             onChange={(e) => setEmail(e.currentTarget.value)}
+                        />
+                        <Input
+                            type="text"
+                            label="DDD + Telefone"
+                            placeholder="DDD + Telefone"
+                            value={telefone}
+                            onChange={(e) => setTelefone(e.currentTarget.value)}
                         />
                     </div>
                     <div className="form-element-group">
