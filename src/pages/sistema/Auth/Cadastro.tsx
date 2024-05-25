@@ -12,8 +12,8 @@ import { InputError } from "../../../@types/InputErro";
 import { APIResponseErro } from "../../../models/API";
 import { TelefoneMascara, TelefoneSanitize } from "../../../helpers/TelefoneSanitize";
 import { NovoUsuarioModel } from "../../../models/UsuarioModel";
-import { consumirAPI } from "../../../hooks/useAPI";
-import { RegraValidacaoCampo, ValidadorCampo, ValidarCampos } from "../../../helpers/ValidadorCampo";
+import { consumirAPI } from "../../../hooks/consumirAPI";
+import { RegraValidacaoCampo, ValidarCampos } from "../../../helpers/ValidadorCampo";
 
 export default function Cadastro() {
     const [nomeCompleto, setNomeCompleto] = useState<string>('');
@@ -57,8 +57,6 @@ export default function Cadastro() {
 
     const HandleCadastrarUsuario = async (e: any) => {
         e.preventDefault();
-
-        let estadoUsuario = true;
 
         const regras: RegraValidacaoCampo[] = [
             { regra: "not-null" }, 

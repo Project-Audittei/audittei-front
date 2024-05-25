@@ -1,6 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
-import { NovoUsuarioModel, UsuarioLoginModel, UsuarioModel } from "../models/UsuarioModel";
-import { consumirAPI } from "../hooks/useAPI";
+import { UsuarioModel } from "../models/UsuarioModel";
 
 interface UsuarioContextProviderProps {
     children: ReactNode;

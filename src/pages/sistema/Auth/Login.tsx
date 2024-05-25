@@ -9,9 +9,7 @@ import { useState } from "react";
 import Checkbox from "../../../components/Form/Checkbox";
 import { useNavigate } from "react-router-dom";
 import { UsuarioLoginModel } from "../../../models/UsuarioModel";
-import { EstadosForcaType } from "../../../@types/EstadoForca";
-import useUsuario from "../../../hooks/useUsuario";
-import { consumirAPI } from "../../../hooks/useAPI";
+import { consumirAPI } from "../../../hooks/consumirAPI";
 import Notificacao from "../../../components/Notificacao/Notificacao";
 import { APIResponseErro } from "../../../models/API";
 import { InputError } from "../../../@types/InputErro";
@@ -26,7 +24,6 @@ export default function Login() {
     const [erroLogin, setErroLogin] = useState<APIResponseErro | null>(null);
 
     const navigate = useNavigate();
-    const { setUsuario } = useUsuario();
 
     const HandleLogin = async (e: any) => {
         e.preventDefault();
@@ -50,7 +47,7 @@ export default function Login() {
 
         let usuario: UsuarioLoginModel = { email, senha };
         
-        let { statusCode, message, data, success } = await consumirAPI({
+        let { message, success } = await consumirAPI({
             url: '/auth/login',
             dataRequest: usuario,
             method: "post"

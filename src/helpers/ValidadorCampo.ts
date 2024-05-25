@@ -27,9 +27,9 @@ export const ValidadorCampo = ( campo: string, regras: RegraValidacaoCampo[] ): 
             case "not-empty":
                 estado = campo !== '';
                 break;
-        } 
+        }
 
-        if(!estado) return;
+        return estado;
     })
 
     return estado;
@@ -53,6 +53,8 @@ export const ValidarCampos = (campos: CamposParaValidacao[]) : boolean => {
             });
             estado = false;
         } else setError(null);
+
+        return true;
     } )
 
     return estado;

@@ -38,7 +38,7 @@ export default function Notificacao({ tituloNotificacao = "Notificação", tipo 
                 setClassNotificacao( className + ' notificacao-valido');
                 break;
         }
-    }, [tipo, tituloNotificacao]);
+    }, [tipo, tituloNotificacao, className]);
 
     const HandleFecharNotificacao = () => {
         setVisivel(false);
