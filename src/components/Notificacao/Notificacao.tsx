@@ -1,7 +1,7 @@
 import { CircleCheckBig, Info, TriangleAlert, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-type NotificacaoTipoType = 'informacao' | 'erro' | 'valido';
+export type NotificacaoTipoType = 'informacao' | 'erro' | 'valido';
 type NotificacaoTamanhoType = 'grande' | 'pequeno';
 
 export interface INotificacao {
@@ -9,9 +9,10 @@ export interface INotificacao {
     tamanho: NotificacaoTamanhoType;
     mensagem: string | JSX.Element;
     tituloNotificacao?: string;
+    className?: string;
 }
 
-export default function Notificacao({ tituloNotificacao = "Notificação", tipo = 'informacao', mensagem, tamanho = 'grande' }: INotificacao) {
+export default function Notificacao({ tituloNotificacao = "Notificação", tipo = 'informacao', mensagem, tamanho = 'grande', className = '' }: INotificacao) {
     const [icone, setIcone] = useState<JSX.Element>(<></>);
     const [visivel, setVisivel] = useState<boolean>(true);
     const [titulo, setTitulo] = useState<string>(tituloNotificacao ?? '');
@@ -22,19 +23,19 @@ export default function Notificacao({ tituloNotificacao = "Notificação", tipo 
             case "informacao":
                 setIcone(<Info size={16} />);
                 setTitulo(tituloNotificacao);
-                setClassNotificacao('notificacao-informacao');
+                setClassNotificacao( className + ' notificacao-informacao');
                 break;
 
             case "erro":
                 setIcone(<TriangleAlert size={16} />);
                 setTitulo(tituloNotificacao);
-                setClassNotificacao('notificacao-erro');
+                setClassNotificacao( className + ' notificacao-erro');
                 break;
 
             case "valido":
                 setIcone(<CircleCheckBig size={16} />);
                 setTitulo(tituloNotificacao);
-                setClassNotificacao('notificacao-valido');
+                setClassNotificacao( className + ' notificacao-valido');
                 break;
         }
     }, [tipo, tituloNotificacao]);

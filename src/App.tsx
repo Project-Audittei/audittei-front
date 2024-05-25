@@ -20,37 +20,40 @@ import Login from "./pages/sistema/Auth/Login";
 import EsqueciSenha from "./pages/sistema/Auth/EsqueciSenha";
 import LinkRedefinicaoExpirado from "./pages/sistema/Auth/LinkRedefinicaoExpirado";
 import PaginaPrimeiroAcesso from "./pages/sistema/PaginaPrimeiroAcesso";
+import UsuarioContextProvider from "./contexts/UsuarioContext";
 
 function App() {
 	return (
 		<ModalContextProvider>
-			<BrowserRouter basename="/audittei">
-				<Routes>
-					<Route path="/docs" element={<DocsGrid />} />
-					<Route path="/docs/tipografia" element={<DocsTipografia />} />
-					<Route path="/docs/margem" element={<DocsMargin />} />
-					<Route path="/docs/grid" element={<DocsGrid />} />
-					<Route path="/docs/cores" element={<DocsCores />} />
-					<Route path="/docs/botoes" element={<DocsBotoes />} />
-					<Route path="/docs/modal" element={<DocsModal />} />
-					<Route path="/docs/campos-de-texto" element={<DocsCamposDeTexto />} />
-					<Route path="/docs/notificacoes" element={<DocsNotificacoes />} />
-					<Route path="/docs/tooltip" element={<DocsTooltip />} />
-					<Route path="/docs/paginacao" element={<DocsPaginacao />} />
-					<Route path="/docs/navegacao-interna" element={<DocsNavegacaoInterna />} />
-					<Route path="/docs/icones" element={<DocsIcones />} />
+			<UsuarioContextProvider>
+				<BrowserRouter basename="/audittei">
+					<Routes>
+						<Route path="/docs" element={<DocsGrid />} />
+						<Route path="/docs/tipografia" element={<DocsTipografia />} />
+						<Route path="/docs/margem" element={<DocsMargin />} />
+						<Route path="/docs/grid" element={<DocsGrid />} />
+						<Route path="/docs/cores" element={<DocsCores />} />
+						<Route path="/docs/botoes" element={<DocsBotoes />} />
+						<Route path="/docs/modal" element={<DocsModal />} />
+						<Route path="/docs/campos-de-texto" element={<DocsCamposDeTexto />} />
+						<Route path="/docs/notificacoes" element={<DocsNotificacoes />} />
+						<Route path="/docs/tooltip" element={<DocsTooltip />} />
+						<Route path="/docs/paginacao" element={<DocsPaginacao />} />
+						<Route path="/docs/navegacao-interna" element={<DocsNavegacaoInterna />} />
+						<Route path="/docs/icones" element={<DocsIcones />} />
 
-					<Route path="/" element={ <PaginaSistema /> } />
-					<Route path="/primeiro-acesso" element={ <PaginaPrimeiroAcesso /> } />
-					<Route path="/cadastro" element={ <Cadastro /> } />
-					<Route path="/esqueci-senha" element={ <EsqueciSenha /> } />
-					<Route path="/redefinir-senha" element={ <RedefinirSenha /> } />
-					<Route path="/reenviar-link-recuperacao" element={ <LinkRedefinicaoExpirado /> } />
-					<Route path="/login" element={ <Login /> } />
+						<Route path="/" element={ <PaginaSistema /> } />
+						<Route path="/primeiro-acesso" element={ <PaginaPrimeiroAcesso /> } />
+						<Route path="/cadastro" element={ <Cadastro /> } />
+						<Route path="/esqueci-senha" element={ <EsqueciSenha /> } />
+						<Route path="/redefinir-senha" element={ <RedefinirSenha /> } />
+						<Route path="/reenviar-link-recuperacao" element={ <LinkRedefinicaoExpirado /> } />
+						<Route path="/login" element={ <Login /> } />
 
-					<Route path="/style-guide" element={ <Home /> } />
-				</Routes>
-			</BrowserRouter>
+						<Route path="/style-guide" element={ <Home /> } />
+					</Routes>
+				</BrowserRouter>
+			</UsuarioContextProvider>
 		</ModalContextProvider>
 	);
 }

@@ -21,7 +21,9 @@ export default function Input({
     estado = 'padrao',
     mensagensValidacao,
     disabled,
-    onChange
+    onChange,
+    onInput,
+    onInputCapture
 }: InputPropsType) {
 
     const [classEstado, setClassEstado] = useState<string>('');
@@ -62,6 +64,8 @@ export default function Input({
                         disabled={disabled}
                         value={value}
                         onChange={onChange}
+                        onInput={onInput}
+                        onInputCapture={onInputCapture}
                     />
                 </div>
             );
@@ -78,6 +82,8 @@ export default function Input({
                         disabled={disabled}
                         value={value}
                         onChange={onChange} 
+                        onInput={onInput}
+                        onInputCapture={onInputCapture}
                     />
                 </div>
             );
@@ -95,6 +101,8 @@ export default function Input({
                             onChange={onChange}
                             disabled={disabled} 
                             placeholder={ placeholder }
+                            onInput={onInput}
+                            onInputCapture={onInputCapture}
                         />
                         <div className="icone icone-direita"><EyeIcon size={24} /></div>
                     </div>
@@ -115,6 +123,8 @@ export default function Input({
                             disabled={ disabled }
                             onChange={onChange}
                             placeholder={ placeholder }
+                            onInput={onInput}
+                            onInputCapture={onInputCapture}
                         />
                         { <div className="icone icone-direita">{ icone }</div> ?? '' }
                     </div>
