@@ -5,6 +5,12 @@
     position: relative;
 }
 
+a {
+    &:hover {
+        text-decoration: underline !important;
+    }
+}
+
 li {
     list-style: none;
 }

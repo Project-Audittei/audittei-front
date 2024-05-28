@@ -17,6 +17,12 @@ ul.menu {
         padding-right: 0;
         width: 100%;
         font-size: 16px;
-        font-weight: 500;
+        font-weight: 400;
+        border-radius: 8px;
+        transition: .3s ease-in-out;
+
+        &:hover {
+            background-color: #EFF7FE;
+        }
     }
 }

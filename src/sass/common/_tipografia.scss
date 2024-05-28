@@ -49,6 +49,7 @@ p {
 
         &:hover {
             color: $p-link-color-hover;
+            text-decoration: none;
         }
     }
 }

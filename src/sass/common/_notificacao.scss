@@ -43,6 +43,12 @@
         right: 16px;
         top: 16px;
         color: #C9C8D3;
+        transition: .3s ease-in-out;
+
+        &:hover {
+            cursor: pointer;
+            opacity: 50%;
+        }
     }
 
     .notificacao-header {
