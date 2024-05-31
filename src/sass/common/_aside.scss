@@ -1,12 +1,17 @@
 aside {
-    min-width: 243px;
-    width: 243px;
-    max-width: 243px;
+    min-width: 270px;
+    width: 270px;
+    max-width: 270px;
     height: 100%;
 
     .container {
-        padding: 0px 30px;
+        padding-left: 16px;
+        padding-right: 10px;
         width: 100%;
         margin: 0;
+    }
+
+    &::-webkit-scrollbar {
+        width: 2px;
     }
 }

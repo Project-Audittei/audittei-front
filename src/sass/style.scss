@@ -27,10 +27,10 @@
 @import './common/tipografia';
 
 @import 'documentation-app/documentation-app';
-
 @import './common/reset';
-
 @import './auth/auth';
+
+@import './app/card-onboarding';
 
 *, body {
     font-family: 'WorkSans';

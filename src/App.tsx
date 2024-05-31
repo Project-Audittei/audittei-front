@@ -12,7 +12,6 @@ import { Paginacao as DocsPaginacao } from "./pages/documentation-app/Paginacao"
 import { NavegacaoInterna as DocsNavegacaoInterna } from "./pages/documentation-app/NavegacaoInterna";
 import { Icones as DocsIcones } from "./pages/documentation-app/Icones";
 import ModalContextProvider from "./contexts/ModalContext";
-import PaginaSistema from "./pages/sistema/PaginaSistema";
 import Home from "./pages/Home";
 import Cadastro from "./pages/sistema/Auth/Cadastro";
 import RedefinirSenha from "./pages/sistema/Auth/RedefinirSenha";
@@ -21,6 +20,7 @@ import EsqueciSenha from "./pages/sistema/Auth/EsqueciSenha";
 import LinkRedefinicaoExpirado from "./pages/sistema/Auth/LinkRedefinicaoExpirado";
 import PaginaPrimeiroAcesso from "./pages/sistema/PaginaPrimeiroAcesso";
 import UsuarioContextProvider from "./contexts/UsuarioContext";
+import PaginaInicial from "./pages/sistema/PaginaInicial";
 
 function App() {
 	return (
@@ -42,7 +42,7 @@ function App() {
 						<Route path="/docs/navegacao-interna" element={<DocsNavegacaoInterna />} />
 						<Route path="/docs/icones" element={<DocsIcones />} />
 
-						<Route path="/" element={ <PaginaSistema /> } />
+						<Route path="/" element={ <PaginaInicial /> } />
 						<Route path="/primeiro-acesso" element={ <PaginaPrimeiroAcesso /> } />
 						<Route path="/cadastro" element={ <Cadastro /> } />
 						<Route path="/esqueci-senha" element={ <EsqueciSenha /> } />

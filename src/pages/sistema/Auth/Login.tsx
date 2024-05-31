@@ -5,25 +5,35 @@ import Input from "../../../components/Form/Input";
 import AuthContainer from "../../../components/app/AuthContainer";
 import Container from "../../../components/app/Container";
 import Logo from "../../../components/app/Logo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Checkbox from "../../../components/Form/Checkbox";
 import { useNavigate } from "react-router-dom";
 import { UsuarioLoginModel } from "../../../models/UsuarioModel";
 import { consumirAPI } from "../../../hooks/consumirAPI";
 import Notificacao from "../../../components/Notificacao/Notificacao";
-import { APIResponseErro } from "../../../models/API";
+import { APIRequestResponse } from "../../../models/API";
 import { InputError } from "../../../@types/InputErro";
+import useUsuario from "../../../hooks/useUsuario";
 
 export default function Login() {
     const [email, setEmail] = useState<string>('');
     const [senha, setSenha] = useState<string>('');
-
+    
     const [emailError, setEmailError] = useState<InputError | null>(null);
     const [senhaError, setSenhaError] = useState<InputError | null>(null);
-
-    const [erroLogin, setErroLogin] = useState<APIResponseErro | null>(null);
-
+    
+    const [erroLogin, setErroLogin] = useState<APIRequestResponse | null>(null);
+    
     const navigate = useNavigate();
+    const { HandleSignIn, VerificaSessao } = useUsuario();
+    
+    useEffect(() => {
+        VerificaSessao()
+            .then( result => {
+                return result ? navigate('/') : '';
+            });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const HandleLogin = async (e: any) => {
         e.preventDefault();
@@ -47,7 +57,7 @@ export default function Login() {
 
         let usuario: UsuarioLoginModel = { email, senha };
         
-        let { message, success } = await consumirAPI({
+        let { data, message, success } = await consumirAPI<unknown, string>({
             url: '/auth/login',
             dataRequest: usuario,
             method: "post"
@@ -61,6 +71,10 @@ export default function Login() {
             })
 
             return;
+        }
+
+        if(await HandleSignIn(data!)) {
+            navigate('/primeiro-acesso');
         }
     }
 
@@ -98,6 +112,7 @@ export default function Login() {
                             mensagem={ erroLogin.mensagem }
                             tamanho="grande"
                             tituloNotificacao={ erroLogin.titulo }
+                            bloquearFechar
                         />
 
                     : '' }

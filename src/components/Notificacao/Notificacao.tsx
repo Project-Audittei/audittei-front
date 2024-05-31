@@ -10,9 +10,17 @@ export interface INotificacao {
     mensagem: string | JSX.Element;
     tituloNotificacao?: string;
     className?: string;
+    bloquearFechar?: boolean;
 }
 
-export default function Notificacao({ tituloNotificacao = "Notificação", tipo = 'informacao', mensagem, tamanho = 'grande', className = '' }: INotificacao) {
+export default function Notificacao({ 
+    tituloNotificacao = "Notificação", 
+    tipo = 'informacao', 
+    mensagem, 
+    tamanho = 'grande', 
+    className = '',
+    bloquearFechar = false
+}: INotificacao) {
     const [icone, setIcone] = useState<JSX.Element>(<></>);
     const [visivel, setVisivel] = useState<boolean>(true);
     const [titulo, setTitulo] = useState<string>(tituloNotificacao ?? '');
@@ -59,9 +67,11 @@ export default function Notificacao({ tituloNotificacao = "Notificação", tipo 
                     <div className="notificacao-content">
                         {mensagem}
                     </div>
-                    <div className="notificacao-fechar">
-                        <X size={20} onClick={HandleFecharNotificacao} />
-                    </div>
+                    { !bloquearFechar ? 
+                        <div className="notificacao-fechar">
+                            <X size={20} onClick={HandleFecharNotificacao} />
+                        </div> : <></>
+                    }
                 </div>
             );
 
@@ -74,9 +84,11 @@ export default function Notificacao({ tituloNotificacao = "Notificação", tipo 
                         </div>
                         <span>{mensagem}</span>
                     </div>
-                    <div className="notificacao-fechar">
-                        <X size={20} onClick={HandleFecharNotificacao} />
-                    </div>
+                    { !bloquearFechar ? 
+                        <div className="notificacao-fechar">
+                            <X size={20} onClick={HandleFecharNotificacao} />
+                        </div> : <></> 
+                    }
                 </div>
             );
     }

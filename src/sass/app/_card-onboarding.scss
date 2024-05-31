@@ -1,0 +1,57 @@
+.card-onboarding {
+    background-color: #F4F3FE;
+    border-color: #265EF5;
+    position: relative;
+    padding: 32px 20px;
+    width: 540px;
+    align-items: flex-start;
+
+    .card-background {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .card-header {
+        display: flex;
+        align-items: flex-start;
+
+        h6 {
+            margin-left: 10px;
+            text-align: left;
+        }
+    }
+
+    .card-body {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        gap: 0px;
+
+        & > div {
+            margin-left: 10px;
+
+            span {
+                line-height: 140%;
+                font-weight: 400;
+                font-size: 16px;
+            }
+
+            .btn {
+                margin-top: 10px;
+            }
+        }
+    }
+
+    span.numero {
+        background-color: #265EF5;
+        width: 25px;
+        height: 25px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-radius: 50%;
+    }
+}

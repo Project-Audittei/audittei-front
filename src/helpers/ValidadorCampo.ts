@@ -1,6 +1,6 @@
 import { InputError } from "../@types/InputErro";
 
-type RegraValidacao = 'not-null' | 'not-empty' | 'more-than' | 'less-than';
+type RegraValidacao = 'not-null' | 'not-empty' | 'more-than' | 'less-than' | 'valid-email';
 
 export interface RegraValidacaoCampo {
     regra: RegraValidacao;
@@ -26,6 +26,10 @@ export const ValidadorCampo = ( campo: string, regras: RegraValidacaoCampo[] ): 
 
             case "not-empty":
                 estado = campo !== '';
+                break;
+
+            case "valid-email":
+                estado = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(campo);
                 break;
         }
 

@@ -18,6 +18,11 @@ export interface UsuarioModel {
     userRole: string;
     username: string;
     password: string;
+    
+    iniciais: string;
+    access_token: string;
+    expires_in: number;
+    nomeSimples: string;
 }
 
 export interface UsuarioLoginModel {
