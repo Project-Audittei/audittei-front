@@ -28,6 +28,12 @@ export default function Input({
 
     const [classEstado, setClassEstado] = useState<string>('');
 
+    const [mostrarSenha, setMostrarSenha] = useState<boolean>(false);
+
+    const HandleMostrarSenha = () => {
+        return setMostrarSenha(!mostrarSenha);
+    }
+
     useEffect(() => {
         switch(estado) {
             case 'aviso':
@@ -78,13 +84,14 @@ export default function Input({
                         type="search" 
                         name={name} 
                         className="form-control" 
-                        placeholder={ placeholder ?? "Texto" } 
+                        placeholder={ placeholder ?? " " } 
                         disabled={disabled}
                         value={value}
                         onChange={onChange} 
                         onInput={onInput}
                         onInputCapture={onInputCapture}
                     />
+                    <label htmlFor={ name }>{ label ?? 'Procurar' }</label>
                 </div>
             );
         
@@ -92,19 +99,19 @@ export default function Input({
             return (
                 <div className="input-group">
                     <div className={`form-group ${classEstado}`}>
-                        <label htmlFor={ name }>{ label ?? 'Senha' }</label>
                         <input 
-                            type="password" 
+                            type={ !mostrarSenha ? "password" : "text" } 
                             name={name} 
                             className="form-control"
                             value={value}
                             onChange={onChange}
                             disabled={disabled} 
-                            placeholder={ placeholder }
+                            placeholder={ placeholder ?? " " }
                             onInput={onInput}
                             onInputCapture={onInputCapture}
                         />
-                        <div className="icone icone-direita"><EyeIcon size={24} /></div>
+                        <label htmlFor={ name }>{ label ?? 'Senha' }</label>
+                        <div className="icone icone-direita icone-mostrar-senha" onMouseDown={ HandleMostrarSenha } onMouseUp={ HandleMostrarSenha } ><EyeIcon size={24} /></div>
                     </div>
                     <MensagemValidacao mensagens={mensagensValidacao} tipo={estado} />
                 </div>
@@ -114,7 +121,6 @@ export default function Input({
             return (
                 <div className="input-group">
                     <div className={`form-group ${classEstado}`}>
-                        { label ? <label htmlFor={ name }>{ label }</label> : '' }
                         <input 
                             type="text" 
                             name={ name } 
@@ -122,10 +128,11 @@ export default function Input({
                             value={ value } 
                             disabled={ disabled }
                             onChange={onChange}
-                            placeholder={ placeholder }
+                            placeholder={ placeholder ?? " " }
                             onInput={onInput}
                             onInputCapture={onInputCapture}
                         />
+                        { label ? <label htmlFor={ name }>{ label }</label> : '' }
                         { <div className="icone icone-direita">{ icone }</div> ?? '' }
                     </div>
                     { mensagensValidacao ? <MensagemValidacao mensagens={mensagensValidacao} tipo={estado} /> : '' }

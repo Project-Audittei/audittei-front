@@ -14,14 +14,19 @@ export interface MenuLateral {
 }
 
 interface MenuLateralProps {
+    baseUrl?: string;
     menu: MenuLateral[];
     ativo?: string;
 }
 
-export default function MenuSide({ menu, ativo }: MenuLateralProps) {
+export default function MenuSide({ baseUrl, menu, ativo }: MenuLateralProps) {
 
     function RenderizarMenu({ label, link, icon, subitens }: MenuItem) {
+        let classContainer = "menu-item-container";
+        let classMenu = 'menu-item';
+
         if(subitens) {
+            classContainer = classContainer + " menu-item-container-parent";
             let itens: JSX.Element[] = [];
 
             subitens.map((item) => {
@@ -30,7 +35,7 @@ export default function MenuSide({ menu, ativo }: MenuLateralProps) {
 
             return (
                 <li className="menu-item">
-                    <div className="menu-item-container">
+                    <div className={ classContainer + " " + classMenu }>
                         { icon }
                         <span>{ label }</span>
                         <ChevronDown style={{ marginLeft: 'auto' }} size={16} />
@@ -42,18 +47,18 @@ export default function MenuSide({ menu, ativo }: MenuLateralProps) {
             );
         }
         
-        let classMenu = 'menu-item';
-
         if(ativo) {
-            if(label === ativo) {
-                classMenu += " ativo";
+            if(link === ativo) {
+                classMenu = classMenu + " ativo";
             }
         }
 
+        console.log(`${link}`)
+
         return (
             <li className={ classMenu }>
-                <Link to={link}>
-                    <div className="menu-item-container">{ icon } <span>{ label }</span></div>
+                <Link to={ baseUrl ? `${link}` : link }>
+                    <div className={ classContainer }>{ icon } <span>{ label }</span></div>
                 </Link>
             </li>
         );

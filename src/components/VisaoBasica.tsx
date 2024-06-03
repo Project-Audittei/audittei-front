@@ -7,10 +7,12 @@ import Selecao from "./Form/Selecao";
 import CardPerfil from "./CardPerfil/CardPerfil";
 import useUsuario from "../hooks/useUsuario";
 import { useNavigate } from "react-router-dom";
+import Breadcrumb from "./breadcrumb/Breadcrumb";
 
 type VisaoBasicaPropsType = {
     children?: ReactNode;
     menuAtivo?: string;
+    breadcrumbSecao?: string;
 }
 
 const menu: MenuLateral[] = [
@@ -63,7 +65,7 @@ const menu: MenuLateral[] = [
                 subitens: [
                     {
                         label: 'Ver todas',
-                        link: '/'
+                        link: '/gerenciar-empresas'
                     },
                     {
                         label: 'Adicionar nova empresa',
@@ -80,7 +82,7 @@ const menu: MenuLateral[] = [
     }
 ];
 
-export default function VisaoBasica({ children, menuAtivo }: VisaoBasicaPropsType) {
+export default function VisaoBasica({ children, menuAtivo, breadcrumbSecao }: VisaoBasicaPropsType) {
 
     const navigate = useNavigate();
     const { VerificaSessao } = useUsuario();
@@ -102,7 +104,7 @@ export default function VisaoBasica({ children, menuAtivo }: VisaoBasicaPropsTyp
                 </div>
                 <div className="separador"></div>
                 <div className="container h-max flex">
-                    <MenuSide menu={menu} ativo={menuAtivo}/>
+                    <MenuSide baseUrl="audittei" menu={menu} ativo={menuAtivo}/>
                     <CardPerfil />
                 </div>
             </aside>
@@ -131,7 +133,10 @@ export default function VisaoBasica({ children, menuAtivo }: VisaoBasicaPropsTyp
                         </div>
                     </div>
                 </header>
-                <main>{ children }</main>
+                <main>
+                    <Breadcrumb secao={ breadcrumbSecao } />
+                    { children }
+                </main>
             </div>
         </div>
     );

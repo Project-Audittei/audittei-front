@@ -44,7 +44,6 @@ export default function RedefinirSenha() {
                     <div className="form-element-group">
                         <Input
                             type="text"
-                            placeholder="Digite a chave de segurança que recebeu no seu e-mail"
                             label="Digite a chave de segurança que recebeu no seu e-mail"
                             value={chaveAcesso}
                             onChange={(e) => setChaveAcesso(e.currentTarget.value)}
@@ -52,14 +51,12 @@ export default function RedefinirSenha() {
                         <Input
                             type="password"
                             label="Insira sua senha de acesso"
-                            placeholder="Insira sua senha de acesso"
                             value={senha}
                             onChange={(e) => setSenha(e.currentTarget.value)}
                         />
                         <Input
                             type="password"
                             label="Repita a sua senha de acesso"
-                            placeholder="Repita a sua senha de acesso"
                             value={confirmarSenha}
                             onChange={(e) => setConfirmarSenha(e.currentTarget.value)}
                             estado={ senha === confirmarSenha ? 'padrao' : 'erro' }

@@ -1,4 +1,5 @@
 import { NotificacaoTipoType } from "../components/Notificacao/Notificacao";
+import { UsuarioModel } from "./UsuarioModel";
 
 export interface APIRequest<T> {
     url: string;
@@ -27,4 +28,9 @@ export interface APIRequestResponse {
     titulo: string;
     tipo: NotificacaoTipoType;
     mensagem: string;
+}
+
+export interface APILoginResponse {
+    user: UsuarioModel;
+    token: string;
 }

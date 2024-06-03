@@ -8,10 +8,9 @@ import Logo from "../../../components/app/Logo";
 import { useEffect, useState } from "react";
 import Checkbox from "../../../components/Form/Checkbox";
 import { useNavigate } from "react-router-dom";
-import { UsuarioLoginModel } from "../../../models/UsuarioModel";
 import { consumirAPI } from "../../../hooks/consumirAPI";
 import Notificacao from "../../../components/Notificacao/Notificacao";
-import { APIRequestResponse } from "../../../models/API";
+import { APILoginResponse, APIRequestResponse } from "../../../models/API";
 import { InputError } from "../../../@types/InputErro";
 import useUsuario from "../../../hooks/useUsuario";
 
@@ -54,14 +53,14 @@ export default function Login() {
 
         if(email.split('').length < 6) return;
         if(senha.split('').length < 6) return;
-
-        let usuario: UsuarioLoginModel = { email, senha };
         
-        let { data, message, success } = await consumirAPI<unknown, string>({
+        let { data, message, success } = await consumirAPI<unknown, APILoginResponse>({
             url: '/auth/login',
-            dataRequest: usuario,
+            dataRequest: { email, senha },
             method: "post"
         });
+
+        const { user, token } = data!;
 
         if(!success) {
             setErroLogin({
@@ -73,7 +72,7 @@ export default function Login() {
             return;
         }
 
-        if(await HandleSignIn(data!)) {
+        if(HandleSignIn(user, token)) {
             navigate('/primeiro-acesso');
         }
     }
@@ -119,7 +118,6 @@ export default function Login() {
                     <div className="form-element-group">
                         <Input
                             type="text"
-                            placeholder="E-mail profissional"
                             label="E-mail profissional"
                             value={email}
                             onChange={(e) => setEmail(e.currentTarget.value)}
@@ -131,7 +129,6 @@ export default function Login() {
                         <Input
                             type="password"
                             label="Senha de acesso"
-                            placeholder="Senha de acesso"
                             value={senha}
                             onChange={(e) => setSenha(e.currentTarget.value)}
                             estado={ senhaError?.estado ?? 'padrao' }

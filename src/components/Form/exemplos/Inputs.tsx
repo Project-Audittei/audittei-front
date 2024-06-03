@@ -129,8 +129,7 @@ export default function Inputs() {
                 <div className="col-2"><h5>Senha</h5></div>
                 <div className="col-4">
                     <Input
-                        type="password" 
-                        placeholder="Texto" 
+                        type="password"
                         estado={forcaEstado} 
                         mensagensValidacao={mensagensValidacao}
                         disabled={desabilitado}

@@ -163,7 +163,6 @@ export default function Cadastro() {
                     <div className="form-element-group">
                         <Input
                             type="text"
-                            placeholder="Nome e Sobrenome"
                             label="Nome e Sobrenome"
                             value={nomeCompleto}
                             onChange={(e) => setNomeCompleto(e.currentTarget.value)}
@@ -175,7 +174,6 @@ export default function Cadastro() {
                         <Input
                             type="text"
                             label="Email profissional"
-                            placeholder="Email profissional"
                             value={email}
                             onChange={(e) => setEmail(e.currentTarget.value)}
                             estado={ emailError ? emailError.estado : 'padrao' }
@@ -186,7 +184,6 @@ export default function Cadastro() {
                         <Input
                             type="text"
                             label="DDD + Telefone"
-                            placeholder="DDD + Telefone"
                             value={telefone}
                             onChange={e => setTelefone(TelefoneMascara(e.currentTarget.value))}
                             estado={ telefoneError ? telefoneError.estado : 'padrao' }
@@ -198,7 +195,6 @@ export default function Cadastro() {
                     <div className="form-element-group">
                         <Input
                             type="text"
-                            placeholder="Nome da Empresa"
                             label="Nome da Empresa"
                             value={nomeEmpresa}
                             onChange={(e) => setNomeEmpresa(e.currentTarget.value)}
@@ -216,7 +212,6 @@ export default function Cadastro() {
                         <Input
                             type="password"
                             label="Insira sua senha de acesso"
-                            placeholder="Insira sua senha de acesso"
                             value={senha}
                             onChange={(e) => setSenha(e.currentTarget.value)}
                             estado={ senhaError ? senhaError.estado : 'padrao' }
@@ -225,7 +220,6 @@ export default function Cadastro() {
                         <Input
                             type="password"
                             label="Repita a sua senha de acesso"
-                            placeholder="Repita a sua senha de acesso"
                             value={confirmarSenha}
                             onChange={(e) => VerificaSenha(e.currentTarget.value)}
                             estado={ confirmarSenhaError ? confirmarSenhaError.estado : 'padrao' }

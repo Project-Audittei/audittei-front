@@ -1,0 +1,13 @@
+.breadcrumb {
+    padding-bottom: 24px;
+    
+    .descricao {
+        font-size: 16px;
+        color: $text-secondary;
+    }
+
+    .secao-breadcrumb {
+        color: $text-dark;
+        text-decoration: underline;
+    }
+}

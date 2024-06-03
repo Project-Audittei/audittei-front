@@ -85,7 +85,6 @@ export default function EsqueciSenha() {
                     <div className="form-element-group">
                         <Input
                             type="text"
-                            placeholder="Digite seu e-mail"
                             label="Digite seu e-mail"
                             value={email}
                             onChange={(e) => setEmail(e.currentTarget.value)}

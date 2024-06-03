@@ -48,7 +48,6 @@ export default function PaginaPrimeiroAcesso() {
                                         <div className="col-6">
                                             <Input
                                                 type="text"
-                                                placeholder="CNPJ"
                                                 label="CNPJ"
                                                 value={cnpj}
                                                 onChange={e => HandleBuscarEmpresa(e.currentTarget.value)}
@@ -60,7 +59,6 @@ export default function PaginaPrimeiroAcesso() {
                                             <Input
                                                 type="text"
                                                 label="Razão Social"
-                                                placeholder="Razão Social"
                                                 value={empresa.razaoSocial}
                                                 disabled
                                             />
@@ -71,7 +69,6 @@ export default function PaginaPrimeiroAcesso() {
                                             <Input
                                                 type="text"
                                                 label="E-mail do Escritório"
-                                                placeholder="E-mail do Escritório"
                                                 value={email}
                                                 onChange={e => setEmail(e.currentTarget.value)}
                                             />
@@ -81,7 +78,6 @@ export default function PaginaPrimeiroAcesso() {
                                         <div className="col-6">
                                             <Input
                                                 type="text"
-                                                placeholder="Telefone do Escritório"
                                                 label="Telefone do Escritório"
                                             />
                                         </div>
@@ -90,7 +86,6 @@ export default function PaginaPrimeiroAcesso() {
                                         <div className="col-6">
                                             <Input
                                                 type="text"
-                                                placeholder="CEP"
                                                 label="CEP"
                                                 value={empresa.cep}
                                                 disabled
@@ -101,7 +96,6 @@ export default function PaginaPrimeiroAcesso() {
                                         <div className="col">
                                             <Input
                                                 type="text"
-                                                placeholder="Logradouro"
                                                 label="Logradouro"
                                                 value={empresa.logadouro}
                                                 disabled
@@ -112,7 +106,6 @@ export default function PaginaPrimeiroAcesso() {
                                         <div className="col-6">
                                             <Input
                                                 type="text"
-                                                placeholder="Bairro"
                                                 label="Bairro"
                                                 value={empresa.bairro}
                                                 disabled
@@ -121,7 +114,6 @@ export default function PaginaPrimeiroAcesso() {
                                         <div className="col-6">
                                             <Input
                                                 type="text"
-                                                placeholder="Cidade"
                                                 label="Cidade"
                                                 value={empresa.cidade}
                                                 disabled

@@ -2,6 +2,7 @@ ul.menu {
     width: 100%;
     display: flex;
     flex-direction: column;
+    transition: .5s ease-in-out;
 
     .subtitulo {
         margin-left: 16px;
@@ -12,9 +13,7 @@ ul.menu {
         margin-top: 48px;
     }
 
-    .ativo {
-        color: #265EF5;
-    }
+    
 
     .menu-item {
         padding: 16px;
@@ -38,6 +37,8 @@ ul.menu {
             }
         }
 
+        
+
         .menu-item-container {
             display: flex;
             align-items: center;
@@ -47,11 +48,57 @@ ul.menu {
             }
         }
 
-        .submenu {
-            display: none;
-            
+        &:has(.menu-item-container-parent) {
+            padding: 0;
+
+            &:hover {
+                .submenu {
+                    display: flex;
+                }
+            }
+        }
+
+        &:has( .menu-item.ativo ) {
             .menu-item {
                 padding: 16px 0px;
+            }
+            
+            .submenu {
+                display: flex;
+                
+                .menu-item {
+                    padding: 16px;
+                }
+            }
+
+            .menu-item-container-parent {
+                padding: 0px;
+            }
+
+            .menu-item.menu-item-container-parent {
+                padding: 16px;
+                border-bottom: 1px solid #EEF0F4;
+            }
+
+            .menu-item-container-parent > span,
+            .menu-item-container-parent > svg:first-of-type {
+                color: #265EF5;
+            }
+
+            background-color: #EFF7FE;
+        }
+
+        .submenu {
+            display: none;
+            flex-direction: column;
+            
+            .menu-item {
+                padding: 16px;
+                border-bottom: 1px solid #EEF0F4;
+
+                &:last-of-type {
+                    border: none;
+                }
 
                 span {
                     margin-left: 0;

@@ -21,6 +21,7 @@ import LinkRedefinicaoExpirado from "./pages/sistema/Auth/LinkRedefinicaoExpirad
 import PaginaPrimeiroAcesso from "./pages/sistema/PaginaPrimeiroAcesso";
 import UsuarioContextProvider from "./contexts/UsuarioContext";
 import PaginaInicial from "./pages/sistema/PaginaInicial";
+import PaginaGerenciarEmpresas from "./pages/gerenciar-empresas/PaginaGerenciarEmpresas";
 
 function App() {
 	return (
@@ -44,6 +45,8 @@ function App() {
 
 						<Route path="/" element={ <PaginaInicial /> } />
 						<Route path="/primeiro-acesso" element={ <PaginaPrimeiroAcesso /> } />
+						<Route path="/gerenciar-empresas" element={ <PaginaGerenciarEmpresas /> } />
+
 						<Route path="/cadastro" element={ <Cadastro /> } />
 						<Route path="/esqueci-senha" element={ <EsqueciSenha /> } />
 						<Route path="/redefinir-senha" element={ <RedefinirSenha /> } />

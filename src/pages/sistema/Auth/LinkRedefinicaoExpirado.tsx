@@ -41,7 +41,6 @@ export default function LinkRedefinicaoExpirado() {
                     <div className="form-element-group">
                         <Input
                             type="text"
-                            placeholder="E-mail cadastrado"
                             label="E-mail cadastrado"
                             estado={ emailEstado }
                             value={email}

@@ -1,6 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
 import { UsuarioModel } from "../models/UsuarioModel";
-import { consumirAPI } from "../hooks/consumirAPI";
 import { jwtDecode } from "jwt-decode";
 
 interface UsuarioContextProviderProps {
@@ -10,7 +9,7 @@ interface UsuarioContextProviderProps {
 interface UsuarioContextData {
     usuario: UsuarioModel;
     VerificaSessao: () => Promise<boolean>;
-    HandleSignIn: (token: string) => Promise<boolean>;
+    HandleSignIn: (usuario: UsuarioModel, token: string) => boolean;
     HandleLogOut: () => boolean;
 }
 
@@ -37,27 +36,19 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
         return false;
     }
 
-    const HandleSignIn = async (token: string) : Promise<boolean> => {
-        const { data, success } = await consumirAPI<unknown, UsuarioModel>({
-            url: '/user/get-data',
-            authToken: token
-        });
+    const HandleSignIn = (usuario: UsuarioModel, token: string) : boolean => {
+        
+        let usuarioLogado = usuario;
 
-        if(success) {
-            let usuarioLogado = data!;
-
-            usuarioLogado.iniciais = obterIniciais(usuarioLogado.nomeCompleto);
-            usuarioLogado.access_token = token;
-            usuarioLogado.expires_in = obterDataExpiracaoToken(token);
-            usuarioLogado.nomeSimples = usuarioLogado.nomeCompleto.split(" ")[0];
-            
-            setUsuario(usuarioLogado);
-            localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(usuarioLogado));
-            
-            return true;
-        }
-
-        return false;
+        usuarioLogado.iniciais = obterIniciais(usuarioLogado.nomeCompleto);
+        usuarioLogado.access_token = token;
+        usuarioLogado.expires_in = obterDataExpiracaoToken(token);
+        usuarioLogado.nomeSimples = usuarioLogado.nomeCompleto.split(" ")[0];
+        
+        setUsuario(usuarioLogado);
+        localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(usuarioLogado));
+        
+        return true;
     }
 
     const HandleLogOut = () : boolean => {
