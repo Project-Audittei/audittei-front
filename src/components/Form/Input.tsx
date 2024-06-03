@@ -23,7 +23,8 @@ export default function Input({
     disabled,
     onChange,
     onInput,
-    onInputCapture
+    onInputCapture,
+    max
 }: InputPropsType) {
 
     const [classEstado, setClassEstado] = useState<string>('');
@@ -114,6 +115,29 @@ export default function Input({
                         <div className="icone icone-direita icone-mostrar-senha" onMouseDown={ HandleMostrarSenha } onMouseUp={ HandleMostrarSenha } ><EyeIcon size={24} /></div>
                     </div>
                     <MensagemValidacao mensagens={mensagensValidacao} tipo={estado} />
+                </div>
+            );
+
+        case "number":
+            return (
+                <div className="input-group">
+                    <div className={`form-group ${classEstado}`}>
+                        <input 
+                            type="number"
+                            max={max} 
+                            name={ name } 
+                            className="form-control" 
+                            value={ value } 
+                            disabled={ disabled }
+                            onChange={onChange}
+                            placeholder={ placeholder ?? " " }
+                            onInput={onInput}
+                            onInputCapture={onInputCapture}
+                        />
+                        { label ? <label htmlFor={ name }>{ label }</label> : '' }
+                        { <div className="icone icone-direita">{ icone }</div> ?? '' }
+                    </div>
+                    { mensagensValidacao ? <MensagemValidacao mensagens={mensagensValidacao} tipo={estado} /> : '' }
                 </div>
             );
 

@@ -15,7 +15,9 @@ export default function PaginaPrimeiroAcesso() {
     const { usuario } = useUsuario();
 
     const HandleBuscarEmpresa = async (entrada: string) => {
-        setCnpj(entrada);
+        if(entrada.split('').length <= 14) {
+            setCnpj(entrada);
+        }
 
         if(entrada.split('').length === 14) {
             const { data } = await consumirAPI<object, CNPJModel>({
@@ -47,8 +49,9 @@ export default function PaginaPrimeiroAcesso() {
                                     <div className="row">
                                         <div className="col-6">
                                             <Input
-                                                type="text"
+                                                type="number"
                                                 label="CNPJ"
+                                                max={14}
                                                 value={cnpj}
                                                 onChange={e => HandleBuscarEmpresa(e.currentTarget.value)}
                                             />
