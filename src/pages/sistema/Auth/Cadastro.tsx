@@ -112,6 +112,16 @@ export default function Cadastro() {
             method: "post"
         });
 
+        if(!success) {
+            setFeedbackCadastro({
+                titulo: "Erro ao realizar login",
+                tipo: 'erro',
+                mensagem: message
+            });
+
+            return;
+        }
+
         setFeedbackCadastro({
             titulo: success ? "Cadastrado com sucesso" : "Erro ao realizar login",
             tipo: success ? 'valido' : 'erro',
