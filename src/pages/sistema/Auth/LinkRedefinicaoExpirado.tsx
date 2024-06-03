@@ -6,17 +6,12 @@ import AuthContainer from "../../../components/app/AuthContainer";
 import Container from "../../../components/app/Container";
 import Logo from "../../../components/app/Logo";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Notificacao from "../../../components/Notificacao/Notificacao";
-import { EstadosForcaType } from "../../../@types/EstadoForca";
 import { APIRequestResponse } from "../../../models/API";
 import { consumirAPI } from "../../../hooks/consumirAPI";
 
 export default function LinkRedefinicaoExpirado() {
     const [email, setEmail] = useState<string>('');
-    const [emailValido, setEmailValido] = useState<boolean>(false);
-    const [emailEstado, setEmailEstado] = useState<EstadosForcaType>('padrao');
-    const [emailEnviado, setEmailEnviado] = useState<boolean>(false);
 
     const [feedback, setFeedback] = useState<APIRequestResponse | null>(null);
 
@@ -63,7 +58,7 @@ export default function LinkRedefinicaoExpirado() {
                         <Input
                             type="text"
                             label="E-mail cadastrado"
-                            estado={ emailEstado }
+                            estado={ "padrao" }
                             value={email}
                             onChange={(e) => setEmail(e.currentTarget.value)}
                         />
