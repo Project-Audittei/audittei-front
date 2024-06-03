@@ -115,7 +115,6 @@ export default function Inputs() {
                 <div className="col-4">
                     <Input
                         type="search"
-                        label="Nome"
                         value={valorTexto}
                         onChange={e => setValorTexto!(e.currentTarget.value)}
                         icone={<Calendar size={24} />}

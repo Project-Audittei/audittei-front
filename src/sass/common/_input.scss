@@ -40,10 +40,7 @@
     input[type="text"]:active ~ label,
     input[type="password"]:not(:placeholder-shown) ~ label,
     input[type="password"]:focus ~ label,
-    input[type="password"]:active ~ label
-    input[type="search"]:not(:placeholder-shown) ~ label,
-    input[type="search"]:focus ~ label,
-    input[type="search"]:active ~ label {
+    input[type="password"]:active ~ label {
         font-size: 12px;
         line-height: 16px;
         color: #9D99AC;
@@ -51,6 +48,22 @@
         left: 16px;
         top: 16px;
         z-index: 9999999;
+    }
+
+    input[type="search"]:not(:placeholder-shown) ~ label,
+    input[type="search"]:focus ~ label,
+    input[type="search"]:active ~ label {
+        font-size: 12px;
+        line-height: 16px;
+        color: #9D99AC;
+        position: absolute;
+        left: 50px;
+        top: 16px;
+        z-index: 9999999;
+    }
+
+    input[type="search"] ~ label {
+        left: 50px;
     }
     
     label {
