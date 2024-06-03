@@ -43,8 +43,13 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
         usuarioLogado.iniciais = obterIniciais(usuarioLogado.nomeCompleto);
         usuarioLogado.access_token = token;
         usuarioLogado.expires_in = obterDataExpiracaoToken(token);
-        usuarioLogado.nomeSimples = usuarioLogado.nomeCompleto.split(" ")[0];
+    
         
+
+        if(usuarioLogado.nomeCompleto.split(" ")) {
+            usuarioLogado.nomeSimples = usuarioLogado.nomeCompleto.split(" ")[0]
+        } else usuarioLogado.nomeSimples = usuarioLogado.nomeCompleto;
+
         setUsuario(usuarioLogado);
         localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(usuarioLogado));
         
@@ -59,7 +64,7 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
     function obterIniciais(nome: string) : string {
         let nomes = nome.split(' ');
 
-        return nomes[0].split('')[0] + nomes[1].split('')[0];
+        return nomes.length > 1 ? nomes[0].split('')[0] + nomes[1].split('')[0] : nomes[0].split('')[0] + nomes[0].split('')[1];
     }
 
     function obterDataExpiracaoToken(token: string) : number {
