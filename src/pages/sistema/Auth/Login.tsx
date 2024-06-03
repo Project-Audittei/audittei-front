@@ -70,7 +70,17 @@ export default function Login() {
             method: "post"
         });
 
-        const { user, token } = data!;
+        if(!data) {
+            setNotificacao({
+                titulo: "Erro ao realizar login",
+                tipo: 'erro',
+                mensagem: "Um erro ocorreu ao tentar realizar o login"
+            })
+
+            return;
+        }
+
+        const { user, token } = data;
 
         if(!success) {
             setNotificacao({
