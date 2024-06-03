@@ -22,6 +22,7 @@ import PaginaPrimeiroAcesso from "./pages/sistema/PaginaPrimeiroAcesso";
 import UsuarioContextProvider from "./contexts/UsuarioContext";
 import PaginaInicial from "./pages/sistema/PaginaInicial";
 import PaginaGerenciarEmpresas from "./pages/gerenciar-empresas/PaginaGerenciarEmpresas";
+import ConfirmarConta from "./pages/sistema/Auth/ConfirmarConta";
 
 function App() {
 	return (
@@ -48,9 +49,10 @@ function App() {
 						<Route path="/gerenciar-empresas" element={ <PaginaGerenciarEmpresas /> } />
 
 						<Route path="/cadastro" element={ <Cadastro /> } />
+						<Route path="/confirmar-conta/:hash" element={ <ConfirmarConta /> } />
 						<Route path="/esqueci-senha" element={ <EsqueciSenha /> } />
 						<Route path="/redefinir-senha" element={ <RedefinirSenha /> } />
-						<Route path="/reenviar-link-recuperacao" element={ <LinkRedefinicaoExpirado /> } />
+						<Route path="/reenviar-confirmar-conta" element={ <LinkRedefinicaoExpirado /> } />
 						<Route path="/login" element={ <Login /> } />
 
 						<Route path="/style-guide" element={ <Home /> } />

@@ -13,6 +13,9 @@ ul.menu {
         margin-top: 48px;
     }
 
+    & > .menu-item.ativo {
+        color: #265EF5;
+    }
     
 
     .menu-item {
@@ -36,6 +39,8 @@ ul.menu {
                 text-decoration: none;
             }
         }
+
+        
 
         
 

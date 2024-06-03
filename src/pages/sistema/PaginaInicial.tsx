@@ -7,7 +7,7 @@ export default function PaginaInicial() {
     const { usuario } = useUsuario();
 
     return (
-        <VisaoBasica menuAtivo="Inicio" breadcrumbSecao="Página Inicial">
+        <VisaoBasica menuAtivo="/" breadcrumbSecao="Página Inicial">
             <h3>👋 Olá, { usuario.nomeSimples }!</h3>
             <p className="subtitulo">Bem-vind@ de volta.</p>
             <div className="card mt-3">

@@ -25,22 +25,22 @@ const menu: MenuLateral[] = [
             },
             {
                 label: "Fiscal",
-                link: '/',
+                link: '/fiscal',
                 icon: <SearchCheck size={16} />
             },
             {
                 label: "Contábil",
-                link: '/',
+                link: '/contabil',
                 icon: <HandCoins size={16} />
             },
             {
                 label: "Gestão",
-                link: '/',
+                link: '/gestao',
                 icon: <BriefcaseBusiness size={16} />
             },
             {
                 label: "Recursos Humanos",
-                link: '/',
+                link: '/recursos-humanos',
                 icon: <Users size={16} />
             },
         ]
@@ -50,17 +50,17 @@ const menu: MenuLateral[] = [
         itens: [
             {
                 label: "Gerenciar Escritório",
-                link: '/',
+                link: '/gerenciar-escritorio',
                 icon: <Building2 size={16} />
             },
             {
                 label: "Gerenciar Equipe",
-                link: '/',
+                link: '/gerenciar-equipe',
                 icon: <ShieldHalf size={16} />
             },
             {
                 label: "Gerenciar Empresas",
-                link: '/',
+                link: '/gerenciar-empresas',
                 icon: <BriefcaseBusiness size={16} />,
                 subitens: [
                     {
@@ -69,13 +69,13 @@ const menu: MenuLateral[] = [
                     },
                     {
                         label: 'Adicionar nova empresa',
-                        link: '/'
+                        link: '/gerenciar-empresas/nova'
                     },
                 ]
             },
             {
                 label: "Gerenciar Assinatura",
-                link: '/',
+                link: '/gerenciar-assinatura',
                 icon: <CreditCard size={16} />
             },
         ]

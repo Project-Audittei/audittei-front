@@ -7,7 +7,7 @@ import Container from "../../../components/app/Container";
 import Logo from "../../../components/app/Logo";
 import { useEffect, useState } from "react";
 import Checkbox from "../../../components/Form/Checkbox";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { consumirAPI } from "../../../hooks/consumirAPI";
 import Notificacao from "../../../components/Notificacao/Notificacao";
 import { APILoginResponse, APIRequestResponse } from "../../../models/API";
@@ -15,18 +15,28 @@ import { InputError } from "../../../@types/InputErro";
 import useUsuario from "../../../hooks/useUsuario";
 
 export default function Login() {
+    const location = useLocation();
+
     const [email, setEmail] = useState<string>('');
     const [senha, setSenha] = useState<string>('');
     
     const [emailError, setEmailError] = useState<InputError | null>(null);
     const [senhaError, setSenhaError] = useState<InputError | null>(null);
     
-    const [erroLogin, setErroLogin] = useState<APIRequestResponse | null>(null);
+    const [notificacao, setNotificacao] = useState<APIRequestResponse | null>(null);
     
     const navigate = useNavigate();
     const { HandleSignIn, VerificaSessao } = useUsuario();
+
+
     
     useEffect(() => {
+        let teste = location.state;
+
+        if(teste !== null) {
+            setNotificacao(teste.NotificacaoFeedback);
+        }
+
         VerificaSessao()
             .then( result => {
                 return result ? navigate('/') : '';
@@ -63,7 +73,7 @@ export default function Login() {
         const { user, token } = data!;
 
         if(!success) {
-            setErroLogin({
+            setNotificacao({
                 titulo: "Erro ao realizar login",
                 tipo: 'erro',
                 mensagem: message
@@ -104,13 +114,13 @@ export default function Login() {
                 <h3>Entrar</h3>
                 <span className="subtitulo">Você já tem conta, digite seus dados de acesso.</span>
                 <FormContainer>
-                    { erroLogin ?
+                    { notificacao ?
                         <Notificacao
                             className="mb-2"
-                            tipo={ erroLogin.tipo }
-                            mensagem={ erroLogin.mensagem }
+                            tipo={ notificacao.tipo }
+                            mensagem={ notificacao.mensagem }
                             tamanho="grande"
-                            tituloNotificacao={ erroLogin.titulo }
+                            tituloNotificacao={ notificacao.titulo }
                             bloquearFechar
                         />
 
