@@ -56,6 +56,7 @@ export default function LinkRedefinicaoExpirado() {
                                     'Ótimo! Enviamos um link de confirmação para o seu e-mail. Por favor, verifique sua caixa de entrada e confirme o seu cadastro.' :
                                     <span>O e-mail inserido não consta em nosso cadastro. Se desejar, pode tentar novamente com outro endereço de e-mail ou realizar o cadastro <Link to={'/cadastro'}>clicando aqui</Link>.</span>
                                 }
+                                bloquearFechar
                             /> 
                         : ''}
                     </div>

@@ -156,6 +156,7 @@ export default function Cadastro() {
                                 tamanho="grande"
                                 tipo={ feedbackCadastro.tipo }
                                 tituloNotificacao={ feedbackCadastro.titulo }
+                                bloquearFechar
                             />
                         : ''
                     }
