@@ -1,3 +1,3 @@
 export const APIConfig = {
-    baseUrl: "http://177.53.105.110:2031"
+    baseUrl: "https://api.audittei.com.br"
 };
