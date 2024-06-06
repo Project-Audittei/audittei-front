@@ -1,5 +1,4 @@
 import { ReactNode, createContext, useState } from "react";
-import ImportarPlanilhaEmpresas from "../components/app/Modais/ImportarPlanilhaEmpresas";
 
 interface ModalContextProviderProps {
     children: ReactNode;
