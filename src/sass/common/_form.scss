@@ -42,3 +42,32 @@ form.form-container {
         margin-top: 24px;
     }
 }
+
+.form-viewer {
+    .card-body, .form-container {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .card {
+        padding: 0;
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+
+    .form-container {
+        gap: 18px;
+    }
+
+    .form-field {
+        .label {
+            color: #000;
+        }
+
+        .valor {
+            color: #828282;
+        }
+    }
+}

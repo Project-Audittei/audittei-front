@@ -96,7 +96,7 @@ export default function PaginaListarEmpresas() {
                     </Alerta>
                 </>
                 : (
-                    <>
+                    <div className="mt-3">
                         <Tabela<EmpresaModel> 
                             campos={["CNPJ", "Razão Social", "UF", "Cadastro"]} 
                             chaves={['cnpj', 'razao_social', 'uf', 'cadastro']} 
@@ -108,10 +108,10 @@ export default function PaginaListarEmpresas() {
                         />
                         <div className="row row-align-center mt-2">
                             <div className="col-2">
-                                <Paginacao atual={1} quantidade={4} onAvancarPagina={() => { }} onRetrocederPagina={() => { }} onSelecionarNumeroPagina={() => { }} />
+                                <Paginacao atual={1} quantidade={1} onAvancarPagina={() => { }} onRetrocederPagina={() => { }} onSelecionarNumeroPagina={() => { }} />
                             </div>
                         </div>
-                    </>
+                    </div>
                 )}
         </VisaoBasica>
     );
