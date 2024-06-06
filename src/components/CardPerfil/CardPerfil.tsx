@@ -30,7 +30,7 @@ export default function CardPerfil() {
                 </div>
             </div>
             <div className="row">
-                <Botao onClick={HandleSair} estilo={"Danger"} iconePosicao="direita" label="Sair" icone={<LogOut size={16} />} tamanho={"Small"} tamanhoAutomatico/>
+                <Botao className="btn-max" onClick={HandleSair} estilo={"Danger"} iconePosicao="direita" label="Sair" icone={<LogOut size={16} />} tamanho={"Small"} tamanhoAutomatico/>
             </div>
         </div>
     );

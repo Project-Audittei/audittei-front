@@ -2,6 +2,10 @@
     width: 100%;
 }
 
+.btn-max {
+    width: 100% !important;
+}
+
 .btn, .btn-icone {
     display: flex;
     align-items: center;
@@ -12,6 +16,7 @@
     background-color: transparent;
     padding: $btn-padding-y $btn-padding-x;
     transition: ease-in-out .3s;
+    width: max-content;
 
     &:hover {
         cursor: pointer;

@@ -37,7 +37,9 @@ export default function Paginacao({
 
 
             if(quantidade > quantidadeMinimaEmTela) {
-                elementosPaginacao.push(<li className={`pagina-item mais`}>...</li>);
+                
+                if(quantidade - 1 > quantidadeMinimaEmTela) elementosPaginacao.push(<li className={`pagina-item mais`}>...</li>);
+
                 elementosPaginacao.push(<li className={`pagina-item`} onClick={() => onSelecionarNumeroPagina(quantidade)}>{ quantidade }</li>);
             }
             setItens(elementosPaginacao);

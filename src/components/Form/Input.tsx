@@ -24,7 +24,8 @@ export default function Input({
     onChange,
     onInput,
     onInputCapture,
-    max
+    max,
+    className
 }: InputPropsType) {
 
     const [classEstado, setClassEstado] = useState<string>('');
@@ -120,7 +121,7 @@ export default function Input({
 
         case "number":
             return (
-                <div className="input-group">
+                <div className={`input-group ${className}`}>
                     <div className={`form-group ${classEstado}`}>
                         <input 
                             type="number"

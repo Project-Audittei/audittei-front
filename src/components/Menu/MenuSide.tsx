@@ -53,8 +53,6 @@ export default function MenuSide({ baseUrl, menu, ativo }: MenuLateralProps) {
             }
         }
 
-        console.log(`${link}`)
-
         return (
             <li className={ classMenu }>
                 <Link to={ baseUrl ? `${link}` : link }>
@@ -66,14 +64,12 @@ export default function MenuSide({ baseUrl, menu, ativo }: MenuLateralProps) {
 
     return (
         <ul className="menu">
-            { menu.map(({ secao, itens }) => {
-                return(
-                    <>
-                        { secao ? <li><div className="subtitulo mb-2">{ secao }</div></li> : '' }
-                        { itens.map((item) => RenderizarMenu(item)) }
-                    </>
-                );
-            }) }
+            { menu.map(({ secao, itens }, index) => (
+                <div key={index}>
+                    { secao ? <li><div className="subtitulo mb-2">{ secao }</div></li> : '' }
+                    { itens.map((item) => RenderizarMenu(item)) }
+                </div>
+            )) }
         </ul>
     );
 }

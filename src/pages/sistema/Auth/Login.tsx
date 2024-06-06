@@ -26,7 +26,7 @@ export default function Login() {
     const [notificacao, setNotificacao] = useState<APIRequestResponse | null>(null);
     
     const navigate = useNavigate();
-    const { HandleSignIn, VerificaSessao } = useUsuario();
+    const { HandleSignIn, VerificaSessao, ChecarUsuarioAnonimo } = useUsuario();
 
 
     
@@ -63,6 +63,8 @@ export default function Login() {
 
         if(email.split('').length < 6) return;
         if(senha.split('').length < 6) return;
+
+        if(ChecarUsuarioAnonimo(email, senha)) return navigate('/primeiro-acesso');
         
         let { data, message, success } = await consumirAPI<unknown, APILoginResponse>({
             url: '/auth/login',

@@ -24,7 +24,8 @@ export default function Selecao({
     estado = 'padrao',
     mensagensValidacao,
     disabled,
-    onChange
+    onChange,
+    className
 }: SelecaoPropsType) {
     const [classEstado, setClassEstado] = useState<string>('');
 
@@ -54,7 +55,7 @@ export default function Selecao({
     }, [estado]);
 
     return (
-        <div className="input-group">
+        <div className={`input-group ${className}`}>
             <div className={`form-group ${classEstado}`} >
                 <select 
                     id={ id }

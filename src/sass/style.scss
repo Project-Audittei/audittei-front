@@ -26,10 +26,13 @@
 @import './common/iframe';
 @import './common/navegacao-interna';
 @import './common/tipografia';
+@import './common/table';
 
 @import 'documentation-app/documentation-app';
 @import './common/reset';
 @import './auth/auth';
+@import './app/filtro';
+@import './app/modais/importar-planilha-empresas';
 
 @import './app/card-onboarding';
 

@@ -2,17 +2,24 @@ import { X } from "lucide-react";
 import Botao from "../Botoes/Botao";
 import useModal from "../../hooks/useModal";
 
-interface ModalProps {
-    naoFecha?: boolean;
-}
-
-export default function Modal({ naoFecha }: ModalProps) {
-    const { isModalOpen, modalClose, modalContent, modalTitle } = useModal();
+export default function Modal() {
+    const { isModalOpen, modalClose, modalContent, modalTitle, isModalPersonalizado } = useModal();
 
     if(!isModalOpen) return (<></>);
 
     const HandleFecharModal = () => {
         modalClose();
+    }
+
+    if(isModalPersonalizado) {
+        return (
+            <div id="modal">
+                <div className="backdrop"></div>
+                <div className="modal modal-personalizado">
+                { modalContent }
+                </div>
+            </div>
+        );
     }
 
     return (

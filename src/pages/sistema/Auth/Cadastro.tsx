@@ -22,7 +22,6 @@ export default function Cadastro() {
     const [nomeEmpresa, setNomeEmpresa] = useState<string>('');
     const [senha, setSenha] = useState<string>('');
     const [confirmarSenha, setConfirmarSenha] = useState<string>('');
-    const [dominioEmpresa, setDominioEmpresa] = useState<string>('');
 
     // Erros
     const [nomeCompletoError, setNomeCompletoError] = useState<InputError | null>(null);
@@ -37,8 +36,6 @@ export default function Cadastro() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        let dominio = nomeEmpresa.replaceAll(" ", '-');
-        setDominioEmpresa(dominio.toLowerCase());
     }, [nomeEmpresa]);
 
     const VerificaSenha = (senhaInput: string) => {
@@ -213,12 +210,6 @@ export default function Cadastro() {
                                 erro: nomeEmpresaError ? nomeEmpresaError.mensagem : ''
                             }}
                         />
-                        { nomeEmpresa !== '' ? <Notificacao
-                            tituloNotificacao="Seu endereço de acesso ao Audittei será:"
-                            tipo="informacao"
-                            tamanho="grande"
-                            mensagem={`https://${ dominioEmpresa }.audittei.com`}
-                        /> : '' }
                         <Input
                             type="password"
                             label="Insira sua senha de acesso"

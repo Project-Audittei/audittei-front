@@ -1,0 +1,28 @@
+.importar-planilha-empresas {
+    width: 725px;
+    position: relative;
+
+    .modal-content {
+        padding: 39px 45px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center
+    }
+
+    .descricao {
+        width: 85%;
+        color: #969696;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 999999;
+    }
+
+    .modal-header {
+        margin-bottom: 0 !important;
+    }
+}

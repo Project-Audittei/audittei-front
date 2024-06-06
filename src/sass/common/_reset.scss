@@ -13,3 +13,13 @@ input::-ms-reveal,
 input::-ms-clear {
     display: none;
 }
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid;
+    border-color: #E4E6EA;
+    margin: 24px 0;
+    padding: 0px;
+}

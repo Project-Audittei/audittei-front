@@ -8,6 +8,12 @@
     background-image: linear-gradient(#fff, #F2F5FF);
 }
 
+.w {
+    &-50 {
+        width: 50% !important;
+    }
+}
+
 .container {
     margin: 0px 50px;
 }
@@ -33,6 +39,19 @@
     .col {
         width: 100%;
         height: 100%;
+    }
+
+    .col-align-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .col-align-center.align-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
     }
 
     .col {

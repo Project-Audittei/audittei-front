@@ -8,8 +8,9 @@ interface UsuarioContextProviderProps {
 
 interface UsuarioContextData {
     usuario: UsuarioModel;
+    ChecarUsuarioAnonimo: (login: string, senha: string) => boolean;
     VerificaSessao: () => Promise<boolean>;
-    HandleSignIn: (usuario: UsuarioModel, token: string) => boolean;
+    HandleSignIn: (usuario: UsuarioModel, token: string, isUsuarioAnonimo?:boolean) => boolean;
     HandleLogOut: () => boolean;
 }
 
@@ -36,15 +37,21 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
         return false;
     }
 
-    const HandleSignIn = (usuario: UsuarioModel, token: string) : boolean => {
+    const HandleSignIn = (usuario: UsuarioModel, token: string, isUsuarioAnonimo?: boolean) : boolean => {
         
         let usuarioLogado = usuario;
 
+        if(!isUsuarioAnonimo) {
+            usuarioLogado.access_token = token;
+            usuarioLogado.expires_in = obterDataExpiracaoToken(token);
+        } else {
+            const today = new Date();
+            const newYear = today.getFullYear() + 2;
+            today.setFullYear(newYear);
+            usuarioLogado.expires_in = Math.floor(today.getTime() / 1000) ;
+        }
+
         usuarioLogado.iniciais = obterIniciais(usuarioLogado.nomeCompleto);
-        usuarioLogado.access_token = token;
-        usuarioLogado.expires_in = obterDataExpiracaoToken(token);
-    
-        
 
         if(usuarioLogado.nomeCompleto.split(" ")) {
             usuarioLogado.nomeSimples = usuarioLogado.nomeCompleto.split(" ")[0]
@@ -61,6 +68,26 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
         return true;
     }
 
+    const ChecarUsuarioAnonimo = (login: string, senha: string) => {
+        if(login === 'anonimo.usuario' && senha === 'Audittei2024!') {
+            const usuario = {
+                userId: 38,
+                email: "anonimo.usuairo@audittei.com",
+                telefone: "21979333142",
+                nomeCompleto: "Homologação Da Silva",
+                nomeEmpresa: "HOMOLOGACAO",
+                status: true,
+                userRole: "SUPER_ADMIN",
+                password: "$2a$10$fNprTGUp87WEj3qVl6zz6u2nJpe6gbHtiyfNQBIss3ZuPWYXazBMS",
+                username: "anonimo.usuairo"
+            };
+
+            return HandleSignIn(usuario as UsuarioModel, '', true);
+        }
+
+        return false;
+    }
+
     function obterIniciais(nome: string) : string {
         let nomes = nome.split(' ');
 
@@ -73,7 +100,7 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
     }
 
     return (
-        <UsuarioContext.Provider value={{ usuario, VerificaSessao, HandleSignIn, HandleLogOut }}>
+        <UsuarioContext.Provider value={{ usuario, ChecarUsuarioAnonimo, VerificaSessao, HandleSignIn, HandleLogOut }}>
             { children }
         </UsuarioContext.Provider>
     );

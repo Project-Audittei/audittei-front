@@ -73,7 +73,7 @@
         font-size: 16px;
         line-height: 16px;
         color: $text-dark;
-
+        pointer-events: none;
         position: absolute;
         left: 16px;
         top: 50%;
@@ -136,7 +136,7 @@
         appearance:none;
     }
 
-    select.icone {
+    select ~ .icone {
         pointer-events: none;
     }
 

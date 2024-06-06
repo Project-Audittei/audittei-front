@@ -21,8 +21,10 @@ import LinkRedefinicaoExpirado from "./pages/sistema/Auth/LinkRedefinicaoExpirad
 import PaginaPrimeiroAcesso from "./pages/sistema/PaginaPrimeiroAcesso";
 import UsuarioContextProvider from "./contexts/UsuarioContext";
 import PaginaInicial from "./pages/sistema/PaginaInicial";
-import PaginaGerenciarEmpresas from "./pages/gerenciar-empresas/PaginaGerenciarEmpresas";
+import PaginaListarEmpresas from "./pages/gerenciar-empresas/PaginaListarEmpresas";
 import ConfirmarConta from "./pages/sistema/Auth/ConfirmarConta";
+import PaginaCrudEmpresa from "./pages/gerenciar-empresas/PaginaCrudEmpresa";
+import PaginaVerEmpresa from "./pages/gerenciar-empresas/PaginaVerEmpresa";
 
 function App() {
 	return (
@@ -46,7 +48,11 @@ function App() {
 
 						<Route path="/" element={ <PaginaInicial /> } />
 						<Route path="/primeiro-acesso" element={ <PaginaPrimeiroAcesso /> } />
-						<Route path="/gerenciar-empresas" element={ <PaginaGerenciarEmpresas /> } />
+
+						<Route path="/gerenciar-empresas" element={ <PaginaListarEmpresas /> } />
+						<Route path="/gerenciar-empresas/nova" element={ <PaginaCrudEmpresa modo="novo"/> } />
+						<Route path="/gerenciar-empresas/visualizar/:id" element={ <PaginaVerEmpresa /> } />
+						<Route path="/gerenciar-empresas/editar/:id" element={ <PaginaCrudEmpresa modo="edicao" /> } />
 
 						<Route path="/cadastro" element={ <Cadastro /> } />
 						<Route path="/confirmar-conta/:hash" element={ <ConfirmarConta /> } />
