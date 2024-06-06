@@ -1,5 +1,5 @@
 import { Eye, Pencil } from "lucide-react";
-import { MouseEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Botao from "../Botoes/Botao";
 import { EntidadeBasicaModel } from "../../models/EntidadeBasicaModel";
 
@@ -38,6 +38,7 @@ export default function Tabela<T extends EntidadeBasicaModel>({ campos, itens, c
 
     useEffect(() => {
         renderizarTabela();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [itens]);
 
     if (itens.length === 0) return <></>;
