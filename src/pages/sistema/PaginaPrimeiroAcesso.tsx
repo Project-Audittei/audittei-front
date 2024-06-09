@@ -7,6 +7,7 @@ import { useState } from "react";
 import { consumirAPI } from "../../hooks/consumirAPI";
 import { CNPJModel } from "../../models/CNPJModel";
 import useUsuario from "../../hooks/useUsuario";
+import { CNPJMascara, CNPJSanitize } from "../../helpers/CNPJSanitize";
 
 export default function PaginaPrimeiroAcesso() {    
     const [cnpj, setCnpj] = useState<string>('');
@@ -15,11 +16,9 @@ export default function PaginaPrimeiroAcesso() {
     const { usuario } = useUsuario();
 
     const HandleBuscarEmpresa = async (entrada: string) => {
-        if(entrada.split('').length <= 14) {
-            setCnpj(entrada);
-        }
-
-        if(entrada.split('').length === 14) {
+        setCnpj(CNPJMascara(entrada));
+        if(CNPJSanitize(entrada).split('').length === 14) {
+            entrada = CNPJSanitize(entrada);
             const { data } = await consumirAPI<object, CNPJModel>({
                 url: `/profile/cnpj/${entrada}`,
                 method: 'get',
@@ -49,7 +48,7 @@ export default function PaginaPrimeiroAcesso() {
                                     <div className="row">
                                         <div className="col-6">
                                             <Input
-                                                type="number"
+                                                type="text"
                                                 label="CNPJ"
                                                 max={14}
                                                 value={cnpj}
