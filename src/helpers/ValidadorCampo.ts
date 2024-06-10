@@ -7,7 +7,7 @@ export interface RegraValidacaoCampo {
     value?: number;
 }
 
-export const ValidadorCampo = ( campo: string, regras: RegraValidacaoCampo[] ): boolean => {
+export const ValidadorCampo = ( campo: string, regras: RegraValidacaoCampo[], setError?: (value: React.SetStateAction<InputError | null>) => void): boolean => {
     let estado = true;
     
     regras.map( ({ regra, value }) => {

@@ -20,3 +20,15 @@ export interface EmpresaModel extends EntidadeBasicaModel {
     complemento: string;
     uf: string;
 }
+
+export interface IPerfilEmpresaRequest {
+    cnpj: string;
+    razaoSocial: string;
+    telefone: string;
+    email: string;
+    cep: string;
+    logadouro: string;
+    bairro: string;
+    cidade: string;
+    estado: string;
+}

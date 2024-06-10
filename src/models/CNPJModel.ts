@@ -1,5 +1,4 @@
 export interface CNPJModel {
-    cnpj: string;
     razaoSocial: string;
     cep: string;
     logadouro: string;

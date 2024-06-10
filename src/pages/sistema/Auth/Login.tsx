@@ -64,7 +64,7 @@ export default function Login() {
         if(email.split('').length < 6) return;
         if(senha.split('').length < 6) return;
 
-        if(ChecarUsuarioAnonimo(email, senha)) return navigate('/primeiro-acesso');
+        if(ChecarUsuarioAnonimo(email, senha)) return navigate('/');
         
         let { data, message, success } = await consumirAPI<unknown, APILoginResponse>({
             url: '/auth/login',

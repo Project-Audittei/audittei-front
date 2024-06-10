@@ -18,7 +18,6 @@ import RedefinirSenha from "./pages/sistema/Auth/RedefinirSenha";
 import Login from "./pages/sistema/Auth/Login";
 import EsqueciSenha from "./pages/sistema/Auth/EsqueciSenha";
 import LinkRedefinicaoExpirado from "./pages/sistema/Auth/LinkRedefinicaoExpirado";
-import PaginaPrimeiroAcesso from "./pages/sistema/PaginaPrimeiroAcesso";
 import UsuarioContextProvider from "./contexts/UsuarioContext";
 import PaginaInicial from "./pages/sistema/PaginaInicial";
 import PaginaListarEmpresas from "./pages/gerenciar-empresas/PaginaListarEmpresas";
@@ -47,7 +46,6 @@ function App() {
 						<Route path="/docs/icones" element={<DocsIcones />} />
 
 						<Route path="/" element={ <PaginaInicial /> } />
-						<Route path="/primeiro-acesso" element={ <PaginaPrimeiroAcesso /> } />
 
 						<Route path="/gerenciar-empresas" element={ <PaginaListarEmpresas /> } />
 						<Route path="/gerenciar-empresas/nova" element={ <PaginaCrudEmpresa modo="novo"/> } />

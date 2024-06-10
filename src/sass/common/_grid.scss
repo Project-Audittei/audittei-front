@@ -51,6 +51,11 @@
         height: 100%;
     }
 
+    .col-inline {
+        display: flex;
+        align-items: center;
+    }
+
     .col-align-center {
         display: flex;
         flex-direction: column;
