@@ -1,19 +1,19 @@
 import { ArrowRight } from "lucide-react";
-import Botao from "../../../components/Botoes/Botao";
-import FormContainer from "../../../components/Form/FormContainer";
-import Input from "../../../components/Form/Input";
-import Notificacao from "../../../components/Notificacao/Notificacao";
-import AuthContainer from "../../../components/app/AuthContainer";
-import Container from "../../../components/app/Container";
-import Logo from "../../../components/app/Logo";
+import Botao from "../../components/Botoes/Botao";
+import FormContainer from "../../components/Form/FormContainer";
+import Input from "../../components/Form/Input";
+import Notificacao from "../../components/Notificacao/Notificacao";
+import AuthContainer from "../../components/app/AuthContainer";
+import Container from "../../components/app/Container";
+import Logo from "../../components/app/Logo";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { InputError } from "../../../@types/InputErro";
-import { APIResponseErro } from "../../../models/API";
-import { TelefoneMascara, TelefoneSanitize } from "../../../helpers/TelefoneSanitize";
-import { NovoUsuarioModel } from "../../../models/UsuarioModel";
-import { consumirAPI } from "../../../hooks/consumirAPI";
-import { RegraValidacaoCampo, ValidarCampos } from "../../../helpers/ValidadorCampo";
+import { InputError } from "../../@types/InputErro";
+import { APIResponseErro } from "../../models/API";
+import { TelefoneMascara, TelefoneSanitize } from "../../helpers/TelefoneSanitize";
+import { NovoUsuarioModel } from "../../models/UsuarioModel";
+import { consumirAPI } from "../../hooks/consumirAPI";
+import { RegraValidacaoCampo, ValidarCampos } from "../../helpers/ValidadorCampo";
 
 export default function Cadastro() {
     const [nomeCompleto, setNomeCompleto] = useState<string>('');
@@ -143,7 +143,7 @@ export default function Cadastro() {
                             estilo="Primary"
                             tamanho="Small"
                             label="Já tenho conta, quero entrar"
-                            onClick={ () => navigate('/login') }
+                            onClick={ () => navigate('/auth/login') }
                         />
                     </div>
                     <div className="row row-align-center auth-logo">

@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import { UsuarioModel } from "../models/UsuarioModel";
 import { jwtDecode } from "jwt-decode";
 
@@ -7,7 +7,7 @@ interface UsuarioContextProviderProps {
 }
 
 interface UsuarioContextData {
-    usuario: UsuarioModel;
+    usuario: UsuarioModel | null;
     ChecarUsuarioAnonimo: (login: string, senha: string) => boolean;
     VerificaSessao: () => Promise<boolean>;
     HandleSignIn: (usuario: UsuarioModel, token: string, isUsuarioAnonimo?:boolean) => boolean;
@@ -18,15 +18,20 @@ export const UsuarioContext = createContext({} as UsuarioContextData);
 
 export default function UsuarioContextProvider({ children }: UsuarioContextProviderProps) {
     const LOCALSTORAGE_KEY = 'audittei_logged_user';
-    const [usuario, setUsuario] = useState<UsuarioModel>({} as UsuarioModel);
+
+    const [usuario, setUsuario] = useState<UsuarioModel | null>(null);
+
+    useEffect(() => {
+        VerificaSessao();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const VerificaSessao = async () => {
-        let usuarioStorage = localStorage.getItem(LOCALSTORAGE_KEY);
+        let usuarioStorage = await localStorage.getItem(LOCALSTORAGE_KEY);
         let usuarioLogado = usuarioStorage !== null ? JSON.parse(usuarioStorage) as UsuarioModel : null;
-
         if(usuarioLogado !== null) {
             if(usuarioLogado.expires_in > Math.floor(Date.now() / 1000)) {
-                setUsuario(usuarioLogado);
+                setUsuario(usuarioLogado!);
                 return true;
             } else {
                 HandleLogOut();
@@ -38,7 +43,6 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
     }
 
     const HandleSignIn = (usuario: UsuarioModel, token: string, isUsuarioAnonimo?: boolean) : boolean => {
-        
         let usuarioLogado = usuario;
 
         if(!isUsuarioAnonimo) {

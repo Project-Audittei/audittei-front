@@ -12,23 +12,23 @@ import { Paginacao as DocsPaginacao } from "./pages/documentation-app/Paginacao"
 import { NavegacaoInterna as DocsNavegacaoInterna } from "./pages/documentation-app/NavegacaoInterna";
 import { Icones as DocsIcones } from "./pages/documentation-app/Icones";
 import ModalContextProvider from "./contexts/ModalContext";
-import Home from "./pages/Home";
-import Cadastro from "./pages/sistema/Auth/Cadastro";
-import RedefinirSenha from "./pages/sistema/Auth/RedefinirSenha";
-import Login from "./pages/sistema/Auth/Login";
-import EsqueciSenha from "./pages/sistema/Auth/EsqueciSenha";
-import LinkRedefinicaoExpirado from "./pages/sistema/Auth/LinkRedefinicaoExpirado";
+import Cadastro from "./pages/Auth/Cadastro";
+import RedefinirSenha from "./pages/Auth/RedefinirSenha";
+import Login from "./pages/Auth/Login";
+import EsqueciSenha from "./pages/Auth/EsqueciSenha";
+import LinkRedefinicaoExpirado from "./pages/Auth/LinkRedefinicaoExpirado";
 import UsuarioContextProvider from "./contexts/UsuarioContext";
-import PaginaInicial from "./pages/sistema/PaginaInicial";
+import PaginaInicial from "./pages/PaginaInicial";
 import PaginaListarEmpresas from "./pages/gerenciar-empresas/PaginaListarEmpresas";
-import ConfirmarConta from "./pages/sistema/Auth/ConfirmarConta";
+import ConfirmarConta from "./pages/Auth/ConfirmarConta";
 import PaginaCrudEmpresa from "./pages/gerenciar-empresas/PaginaCrudEmpresa";
 import PaginaVerEmpresa from "./pages/gerenciar-empresas/PaginaVerEmpresa";
+import PageStyleGuide from "./pages/documentation-app/PageStyleGuide";
 
 function App() {
 	return (
-		<ModalContextProvider>
-			<UsuarioContextProvider>
+		<UsuarioContextProvider>
+			<ModalContextProvider>
 				<BrowserRouter basename="/audittei">
 					<Routes>
 						<Route path="/docs" element={<DocsGrid />} />
@@ -44,26 +44,25 @@ function App() {
 						<Route path="/docs/paginacao" element={<DocsPaginacao />} />
 						<Route path="/docs/navegacao-interna" element={<DocsNavegacaoInterna />} />
 						<Route path="/docs/icones" element={<DocsIcones />} />
+						<Route path="/docs/style-guide" element={<PageStyleGuide />} />
 
-						<Route path="/" element={ <PaginaInicial /> } />
+						<Route path="/" element={<PaginaInicial />} />
+						<Route path="/confirmar-conta/:hash" element={<ConfirmarConta />} />
 
-						<Route path="/gerenciar-empresas" element={ <PaginaListarEmpresas /> } />
-						<Route path="/gerenciar-empresas/nova" element={ <PaginaCrudEmpresa modo="novo"/> } />
-						<Route path="/gerenciar-empresas/visualizar/:id" element={ <PaginaVerEmpresa /> } />
-						<Route path="/gerenciar-empresas/editar/:id" element={ <PaginaCrudEmpresa modo="edicao" /> } />
+						<Route path="/gerenciar-empresas" element={<PaginaListarEmpresas />} />
+						<Route path="/gerenciar-empresas/nova" element={<PaginaCrudEmpresa modo="novo" />} />
+						<Route path="/gerenciar-empresas/visualizar/:id" element={<PaginaVerEmpresa />} />
+						<Route path="/gerenciar-empresas/editar/:id" element={<PaginaCrudEmpresa modo="edicao" />} />
 
-						<Route path="/cadastro" element={ <Cadastro /> } />
-						<Route path="/confirmar-conta/:hash" element={ <ConfirmarConta /> } />
-						<Route path="/esqueci-senha" element={ <EsqueciSenha /> } />
-						<Route path="/redefinir-senha" element={ <RedefinirSenha /> } />
-						<Route path="/reenviar-confirmar-conta" element={ <LinkRedefinicaoExpirado /> } />
-						<Route path="/login" element={ <Login /> } />
-
-						<Route path="/style-guide" element={ <Home /> } />
+						<Route path="/auth/cadastro" element={<Cadastro />} />
+						<Route path="/auth/esqueci-senha" element={<EsqueciSenha />} />
+						<Route path="/auth/redefinir-senha" element={<RedefinirSenha />} />
+						<Route path="/auth/reenviar-confirmar-conta" element={<LinkRedefinicaoExpirado />} />
+						<Route path="/auth/login" element={<Login />} />
 					</Routes>
 				</BrowserRouter>
-			</UsuarioContextProvider>
-		</ModalContextProvider>
+			</ModalContextProvider>
+		</UsuarioContextProvider>
 	);
 }
 

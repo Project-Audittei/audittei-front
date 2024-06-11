@@ -1,18 +1,18 @@
-import TipografiaContent from "./content/TipografiaContent";
-import BotoesContent from "./content/BotoesContent";
-import CoresContent from "./content/CoresContent";
-import GridContent from "./content/GridContent";
-import MargemContent from "./content/MargemContent";
-import IconesContent from "./content/IconesContent";
-import CamposDeTextoContent from "./content/CamposDeTextoContent";
-import TooltipContent from "./content/TooltipContent";
-import NotificacoesContent from "./content/NotificacoesContent";
-import PaginacaoContent from "./content/PaginacaoContent";
-import NavegacaoInternaContent from "./content/NavegacaoInternaContent";
-import ModalContent from "./content/ModalContent";
-import Modal from "../components/Modal/Modal";
+import TipografiaContent from "../content/TipografiaContent";
+import BotoesContent from "../content/BotoesContent";
+import CoresContent from "../content/CoresContent";
+import GridContent from "../content/GridContent";
+import MargemContent from "../content/MargemContent";
+import IconesContent from "../content/IconesContent";
+import CamposDeTextoContent from "../content/CamposDeTextoContent";
+import TooltipContent from "../content/TooltipContent";
+import NotificacoesContent from "../content/NotificacoesContent";
+import PaginacaoContent from "../content/PaginacaoContent";
+import NavegacaoInternaContent from "../content/NavegacaoInternaContent";
+import ModalContent from "../content/ModalContent";
+import Modal from "../../components/Modal/Modal";
 
-export default function Home() {
+export default function PageStyleGuide() {
     return (
         <div className="container">
             <div className="row mb-4">

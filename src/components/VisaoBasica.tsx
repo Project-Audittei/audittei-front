@@ -89,9 +89,9 @@ export default function VisaoBasica({ children, menuAtivo, breadcrumbSecao }: Vi
 
     useEffect(() => {
         VerificaSessao()
-            .then( result => {
-                if(!result) return navigate('/login');
-            })
+            .then((result) => {
+                return !result ? navigate('/auth/login') : '';
+            });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

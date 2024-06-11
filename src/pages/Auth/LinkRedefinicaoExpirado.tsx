@@ -1,14 +1,14 @@
 import { ArrowRight } from "lucide-react";
-import Botao from "../../../components/Botoes/Botao";
-import FormContainer from "../../../components/Form/FormContainer";
-import Input from "../../../components/Form/Input";
-import AuthContainer from "../../../components/app/AuthContainer";
-import Container from "../../../components/app/Container";
-import Logo from "../../../components/app/Logo";
+import Botao from "../../components/Botoes/Botao";
+import FormContainer from "../../components/Form/FormContainer";
+import Input from "../../components/Form/Input";
+import AuthContainer from "../../components/app/AuthContainer";
+import Container from "../../components/app/Container";
+import Logo from "../../components/app/Logo";
 import { useState } from "react";
-import Notificacao from "../../../components/Notificacao/Notificacao";
-import { APIRequestResponse } from "../../../models/API";
-import { consumirAPI } from "../../../hooks/consumirAPI";
+import Notificacao from "../../components/Notificacao/Notificacao";
+import { APIRequestResponse } from "../../models/API";
+import { consumirAPI } from "../../hooks/consumirAPI";
 
 export default function LinkRedefinicaoExpirado() {
     const [email, setEmail] = useState<string>('');

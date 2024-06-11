@@ -54,7 +54,7 @@ export default function MenuSide({ baseUrl, menu, ativo }: MenuLateralProps) {
         }
 
         return (
-            <li className={ classMenu }>
+            <li key={link} className={ classMenu }>
                 <Link to={ baseUrl ? `${link}` : link }>
                     <div className={ classContainer }>{ icon } <span>{ label }</span></div>
                 </Link>
@@ -65,10 +65,12 @@ export default function MenuSide({ baseUrl, menu, ativo }: MenuLateralProps) {
     return (
         <ul className="menu">
             { menu.map(({ secao, itens }, index) => (
-                <div key={index}>
-                    { secao ? <li><div className="subtitulo mb-2">{ secao }</div></li> : '' }
-                    { itens.map((item) => RenderizarMenu(item)) }
-                </div>
+                <li  key={secao}>
+                    { secao ? <div className="subtitulo mb-2">{ secao }</div> : '' }
+                    <ul className="menu-secao">
+                        { itens.map((item) => RenderizarMenu(item)) }
+                    </ul>
+                </li>
             )) }
         </ul>
     );

@@ -1,14 +1,18 @@
-import CardOnBoarding from "../../components/Card/CardOnBoarding";
-import VisaoBasica from "../../components/VisaoBasica";
-import Alerta from "../../components/app/Avisos/Alerta";
-import useUsuario from "../../hooks/useUsuario";
+import CardOnBoarding from "../components/Card/CardOnBoarding";
+import VisaoBasica from "../components/VisaoBasica";
+import Alerta from "../components/app/Avisos/Alerta";
+import PrimeiroAcesso from "../components/app/Modais/PrimeiroAcesso";
+import useUsuario from "../hooks/useUsuario";
 
 export default function PaginaInicial() {
 
-    const { usuario } = useUsuario();
+    const  { usuario } = useUsuario();
+
+    if(!usuario) return <></>;
 
     return (
         <VisaoBasica menuAtivo="/" breadcrumbSecao="Página Inicial">
+            <PrimeiroAcesso />
             <h3>👋 Olá, { usuario.nomeSimples }!</h3>
             <p className="subtitulo">Bem-vind@ de volta.</p>
             <Alerta

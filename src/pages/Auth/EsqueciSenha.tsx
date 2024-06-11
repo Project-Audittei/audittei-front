@@ -1,17 +1,17 @@
 import { ArrowRight } from "lucide-react";
-import Botao from "../../../components/Botoes/Botao";
-import FormContainer from "../../../components/Form/FormContainer";
-import Input from "../../../components/Form/Input";
-import AuthContainer from "../../../components/app/AuthContainer";
-import Container from "../../../components/app/Container";
-import Logo from "../../../components/app/Logo";
+import Botao from "../../components/Botoes/Botao";
+import FormContainer from "../../components/Form/FormContainer";
+import Input from "../../components/Form/Input";
+import AuthContainer from "../../components/app/AuthContainer";
+import Container from "../../components/app/Container";
+import Logo from "../../components/app/Logo";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { APIRequestResponse, APIResponse } from "../../../models/API";
-import { consumirAPI } from "../../../hooks/consumirAPI";
-import { ValidadorCampo } from "../../../helpers/ValidadorCampo";
-import { InputError } from "../../../@types/InputErro";
-import Notificacao from "../../../components/Notificacao/Notificacao";
+import { APIRequestResponse, APIResponse } from "../../models/API";
+import { consumirAPI } from "../../hooks/consumirAPI";
+import { ValidadorCampo } from "../../helpers/ValidadorCampo";
+import { InputError } from "../../@types/InputErro";
+import Notificacao from "../../components/Notificacao/Notificacao";
 
 export default function EsqueciSenha() {
     const [email, setEmail] = useState<string>('');
@@ -54,13 +54,13 @@ export default function EsqueciSenha() {
                             estilo="Primary"
                             tamanho="Small"
                             label="Teste grátis por 15 dias"
-                            onClick={ () => navigate('/cadastro') }
+                            onClick={ () => navigate('/auth/cadastro') }
                         />
                         <Botao
                             estilo="Primary"
                             tamanho="Small"
                             label="Já tenho conta, quero entrar"
-                            onClick={ () => navigate('/login') }
+                            onClick={ () => navigate('/auth/login') }
                         />
                     </div>
                     <div className="row row-align-center auth-logo">
@@ -109,7 +109,7 @@ export default function EsqueciSenha() {
                             label="Voltar para login"
                             icone={<ArrowRight size={24} />}
                             iconePosicao="direita"
-                            onClick={ () => navigate('/login') }
+                            onClick={ () => navigate('/auth/login') }
                         />
                     </div>
                 </FormContainer>

@@ -10,7 +10,7 @@ export default function CardPerfil() {
 
     const HandleSair = () => {
         if(HandleLogOut()) {
-            return navigate('/login');
+            return navigate('/auth/login');
         }
     }
 

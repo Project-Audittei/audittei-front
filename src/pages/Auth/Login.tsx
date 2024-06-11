@@ -1,18 +1,18 @@
 import { ArrowRight } from "lucide-react";
-import Botao from "../../../components/Botoes/Botao";
-import FormContainer from "../../../components/Form/FormContainer";
-import Input from "../../../components/Form/Input";
-import AuthContainer from "../../../components/app/AuthContainer";
-import Container from "../../../components/app/Container";
-import Logo from "../../../components/app/Logo";
+import Botao from "../../components/Botoes/Botao";
+import FormContainer from "../../components/Form/FormContainer";
+import Input from "../../components/Form/Input";
+import AuthContainer from "../../components/app/AuthContainer";
+import Container from "../../components/app/Container";
+import Logo from "../../components/app/Logo";
 import { useEffect, useState } from "react";
-import Checkbox from "../../../components/Form/Checkbox";
+import Checkbox from "../../components/Form/Checkbox";
 import { useLocation, useNavigate } from "react-router-dom";
-import { consumirAPI } from "../../../hooks/consumirAPI";
-import Notificacao from "../../../components/Notificacao/Notificacao";
-import { APILoginResponse, APIRequestResponse } from "../../../models/API";
-import { InputError } from "../../../@types/InputErro";
-import useUsuario from "../../../hooks/useUsuario";
+import { consumirAPI } from "../../hooks/consumirAPI";
+import Notificacao from "../../components/Notificacao/Notificacao";
+import { APILoginResponse, APIRequestResponse } from "../../models/API";
+import { InputError } from "../../@types/InputErro";
+import useUsuario from "../../hooks/useUsuario";
 
 export default function Login() {
     const location = useLocation();
@@ -38,9 +38,9 @@ export default function Login() {
         }
 
         VerificaSessao()
-            .then( result => {
-                return result ? navigate('/') : '';
-            });
+            .then(result => {
+                return result ? navigate('/') : ''
+            })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -95,7 +95,7 @@ export default function Login() {
         }
 
         if(HandleSignIn(user, token)) {
-            navigate('/primeiro-acesso');
+            navigate('/');
         }
     }
 
@@ -108,7 +108,7 @@ export default function Login() {
                             estilo="Primary"
                             tamanho="Small"
                             label="Teste grátis por 15 dias"
-                            onClick={ () => navigate('/cadastro') }
+                            onClick={ () => navigate('/auth/cadastro') }
                         />
                         <Botao
                             estilo="Primary"
@@ -178,7 +178,7 @@ export default function Login() {
                             icone={<ArrowRight size={16} />}
                             iconePosicao="direita"
                             className="border-none"
-                            onClick={ () => navigate('/esqueci-senha') }
+                            onClick={ () => navigate('/auth/esqueci-senha') }
                         />
                     </div>
                 </FormContainer>

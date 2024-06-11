@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { APIRequestResponse } from "../../../models/API";
-import { consumirAPI } from "../../../hooks/consumirAPI";
+import { APIRequestResponse } from "../../models/API";
+import { consumirAPI } from "../../hooks/consumirAPI";
 
 export default function ConfirmarConta() {
     
@@ -22,7 +22,7 @@ export default function ConfirmarConta() {
         });
 
         if(!success) {
-            return navigate('/reenviar-confirmar-conta');
+            return navigate('/auth/reenviar-confirmar-conta');
         }
 
         const feedback: APIRequestResponse = {
@@ -31,7 +31,7 @@ export default function ConfirmarConta() {
             titulo: "Sucesso!"
         }
 
-        navigate('/login', { state: { NotificacaoFeedback: feedback } })
+        navigate('/auth/login', { state: { NotificacaoFeedback: feedback } })
     }
     
     return (<></>);
