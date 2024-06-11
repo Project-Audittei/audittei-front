@@ -83,13 +83,13 @@ const menu: MenuLateral[] = [
 ];
 
 export default function VisaoBasica({ children, menuAtivo, breadcrumbSecao }: VisaoBasicaPropsType) {
-
     const navigate = useNavigate();
     const { VerificaSessao } = useUsuario();
 
     useEffect(() => {
         VerificaSessao()
             .then((result) => {
+                console.log(result);
                 return !result ? navigate('/auth/login') : '';
             });
         // eslint-disable-next-line react-hooks/exhaustive-deps

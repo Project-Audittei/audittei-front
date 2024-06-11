@@ -5,15 +5,12 @@ import PrimeiroAcesso from "../components/app/Modais/PrimeiroAcesso";
 import useUsuario from "../hooks/useUsuario";
 
 export default function PaginaInicial() {
-
     const  { usuario } = useUsuario();
-
-    if(!usuario) return <></>;
 
     return (
         <VisaoBasica menuAtivo="/" breadcrumbSecao="Página Inicial">
             <PrimeiroAcesso />
-            <h3>👋 Olá, { usuario.nomeSimples }!</h3>
+            <h3>👋 Olá, { usuario?.nomeSimples }!</h3>
             <p className="subtitulo">Bem-vind@ de volta.</p>
             <Alerta
                 titulo="Esses são os seus próximos passos:"
