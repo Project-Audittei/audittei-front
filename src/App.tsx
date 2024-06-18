@@ -47,6 +47,7 @@ function App() {
 						<Route path="/docs/style-guide" element={<PageStyleGuide />} />
 
 						<Route path="/" element={<PaginaInicial />} />
+						<Route path="/confirmar-conta" element={<ConfirmarConta />} />
 						<Route path="/confirmar-conta/:hash" element={<ConfirmarConta />} />
 
 						<Route path="/gerenciar-empresas" element={<PaginaListarEmpresas />} />

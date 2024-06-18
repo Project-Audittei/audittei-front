@@ -9,7 +9,7 @@ import Logo from "../../components/app/Logo";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { InputError } from "../../@types/InputErro";
-import { APIResponseErro } from "../../models/API";
+import { APIRequestResponse } from "../../models/API";
 import { TelefoneMascara, TelefoneSanitize } from "../../helpers/TelefoneSanitize";
 import { NovoUsuarioModel } from "../../models/UsuarioModel";
 import { consumirAPI } from "../../hooks/consumirAPI";
@@ -31,7 +31,7 @@ export default function Cadastro() {
     const [senhaError, setSenhaError] = useState<InputError | null>(null);
     const [confirmarSenhaError, setConfirmarSenhaError] = useState<InputError | null>(null);
 
-    const [feedbackCadastro, setFeedbackCadastro] = useState<APIResponseErro | null>(null);
+    const [feedbackCadastro, setFeedbackCadastro] = useState<APIRequestResponse | null>(null);
 
     const navigate = useNavigate();
 
@@ -109,23 +109,13 @@ export default function Cadastro() {
             method: "post"
         });
 
-        if(!success) {
-            setFeedbackCadastro({
-                titulo: "Erro ao realizar login",
-                tipo: 'erro',
-                mensagem: message
-            });
-
-            return;
-        }
-
         setFeedbackCadastro({
-            titulo: success ? "Cadastrado com sucesso" : "Erro ao realizar login",
+            titulo: success ? "Cadastrado com sucesso" : "Erro ao criar conta",
             tipo: success ? 'valido' : 'erro',
             mensagem: message
         })
 
-        return;
+        navigate('/confirmar-conta');
     }
 
     return (
