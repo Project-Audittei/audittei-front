@@ -115,7 +115,7 @@ export default function PrimeiroAcesso() {
         });
 
         setCarregandoCNPJ(false);
-        setIsPerfilEmpresa(false);
+        setIsPerfilEmpresa(true);
     }
     
     if (!isPerfilEmpresa) return (
