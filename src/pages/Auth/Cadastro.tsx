@@ -55,7 +55,6 @@ export default function Cadastro() {
 
     const HandleCadastrarUsuario = async (e: any) => {
         e.preventDefault();
-        setIsCarregando(true);
 
         const regras: RegraValidacaoCampo[] = [
             { regra: "not-null" }, 
@@ -97,6 +96,8 @@ export default function Cadastro() {
             }
         ])) return;
 
+        setIsCarregando(true);
+
         const usuario: NovoUsuarioModel = {
             nomeCompleto,
             email,
@@ -116,6 +117,7 @@ export default function Cadastro() {
             tipo: success ? 'valido' : 'erro',
             mensagem: message
         })
+
         setIsCarregando(false);
 
         navigate('/confirmar-conta');
