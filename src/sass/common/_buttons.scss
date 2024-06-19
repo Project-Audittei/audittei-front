@@ -7,6 +7,7 @@
 }
 
 .btn, .btn-icone {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,6 +21,11 @@
 
     &:hover {
         cursor: pointer;
+    }
+
+    .loader {
+        position: absolute;
+        right: -20%;
     }
 }
 
@@ -167,6 +173,12 @@
             border: $btn-perigo-border__active;
             background-color: $btn-perigo-background__active;
             color: $btn-perigo-text__active;
+        }
+    }
+
+    &-carregando {
+        .loader {
+            margin-left: 0px;
         }
     }
 }

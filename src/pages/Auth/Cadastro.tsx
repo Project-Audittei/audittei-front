@@ -32,6 +32,7 @@ export default function Cadastro() {
     const [confirmarSenhaError, setConfirmarSenhaError] = useState<InputError | null>(null);
 
     const [feedbackCadastro, setFeedbackCadastro] = useState<APIRequestResponse | null>(null);
+    const [isCarregando, setIsCarregando] = useState(false);
 
     const navigate = useNavigate();
 
@@ -54,6 +55,7 @@ export default function Cadastro() {
 
     const HandleCadastrarUsuario = async (e: any) => {
         e.preventDefault();
+        setIsCarregando(true);
 
         const regras: RegraValidacaoCampo[] = [
             { regra: "not-null" }, 
@@ -114,6 +116,7 @@ export default function Cadastro() {
             tipo: success ? 'valido' : 'erro',
             mensagem: message
         })
+        setIsCarregando(false);
 
         navigate('/confirmar-conta');
     }
@@ -227,6 +230,7 @@ export default function Cadastro() {
                             icone={<ArrowRight size={24} />}
                             onClick={(e) => HandleCadastrarUsuario(e)}
                             iconePosicao="direita"
+                            isCarregando={ isCarregando }
                         />
                     </div>
                 </FormContainer>

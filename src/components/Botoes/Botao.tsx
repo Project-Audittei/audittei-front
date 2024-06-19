@@ -15,22 +15,24 @@ interface BotaoPropsType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     notificacoes?: number;
     tamanhoAutomatico?: boolean;
     subitens?: any[];
+    isCarregando?: boolean;
 }
 
-export default function Botao({ 
-    label, 
-    tamanho, 
-    icone, 
-    iconePosicao, 
-    estilo, 
-    onClick, 
-    className, 
-    style, 
-    disabled, 
+export default function Botao({
+    label,
+    tamanho,
+    icone,
+    iconePosicao,
+    estilo,
+    onClick,
+    className,
+    style,
+    disabled,
     somenteIcone,
     notificacoes,
     tamanhoAutomatico,
-    subitens
+    subitens,
+    isCarregando
 }: BotaoPropsType) {
 
     const [btnEstilo, setBtnEstilo] = useState<string>('');
@@ -39,50 +41,50 @@ export default function Botao({
     const [btnIconeMargin, setBtnIconeMargin] = useState('');
     const [prefix] = useState(somenteIcone ? 'btn-icone' : 'btn');
 
-    if(btnTamanho === '') {
-        switch(tamanho) {
+    if (btnTamanho === '') {
+        switch (tamanho) {
             case "Large":
                 setBtnTamanho(prefix + '-large');
                 break;
-            
+
             case "Medium":
                 setBtnTamanho(prefix + '-medium');
                 break;
-            
+
             case "Normal":
                 setBtnTamanho(prefix + '-normal');
                 break;
-    
+
             case "Small":
                 setBtnTamanho(prefix + '-small');
                 break;
-    
+
             case "ExtraSmall":
                 setBtnTamanho(prefix + '-extraSmall');
                 break;
         }
     }
 
-    if(btnEstilo === '') {
-        switch(estilo) {
+    if (btnEstilo === '') {
+        switch (estilo) {
             case "Primary":
-                setBtnEstilo(`${className ?? ''} ${ tamanhoAutomatico ? 'btn-auto' : '' } ${prefix}-primary`);
+                setBtnEstilo(`${className ?? ''} ${tamanhoAutomatico ? 'btn-auto' : ''} ${prefix}-primary`);
                 break;
-    
+
             case "Secondary":
-                setBtnEstilo(`${ className ?? ''} ${ tamanhoAutomatico ? 'btn-auto' : '' } ${prefix}-secondary`);
+                setBtnEstilo(`${className ?? ''} ${tamanhoAutomatico ? 'btn-auto' : ''} ${prefix}-secondary`);
                 break;
-    
+
             case "Third":
-                setBtnEstilo(`${className ?? ''} ${ tamanhoAutomatico ? 'btn-auto' : '' } ${prefix}-third`);
+                setBtnEstilo(`${className ?? ''} ${tamanhoAutomatico ? 'btn-auto' : ''} ${prefix}-third`);
                 break;
-    
+
             case "Menu":
-                setBtnEstilo(`${className ?? ''} ${ tamanhoAutomatico ? 'btn-auto' : '' } ${prefix}-menu`);
+                setBtnEstilo(`${className ?? ''} ${tamanhoAutomatico ? 'btn-auto' : ''} ${prefix}-menu`);
                 break;
-            
+
             case "Danger":
-                setBtnEstilo(`${className ?? ''} ${ tamanhoAutomatico ? 'btn-auto' : '' } ${prefix}-perigo`);
+                setBtnEstilo(`${className ?? ''} ${tamanhoAutomatico ? 'btn-auto' : ''} ${prefix}-perigo`);
                 break;
 
             case "Icone":
@@ -91,67 +93,70 @@ export default function Botao({
         }
     }
 
-    if(btnIconeMargin === '') {
-        switch(tamanho) {
+    if (btnIconeMargin === '') {
+        switch (tamanho) {
             case "Large":
                 setBtnIconeMargin('btn-icone-margin-large');
                 break;
-            
+
             case "Medium":
                 setBtnIconeMargin('btn-icone-margin-medium');
                 break;
-            
+
             case "Normal":
                 setBtnIconeMargin('btn-icone-margin-normal');
                 break;
-    
+
             case "Small":
                 setBtnIconeMargin('btn-icone-margin-small');
                 break;
-    
+
             case "ExtraSmall":
                 setBtnIconeMargin('btn-icone-margin-extraSmall');
                 break;
         }
     }
 
-    if(somenteIcone) {
+    if (somenteIcone) {
         return (
-            <button style={ style } className={`${prefix} ${btnEstilo} ${btnTamanho} ${className ?? ''}`} onClick={ onClick } disabled={ disabled }>
+            <button style={style} className={`${prefix} ${btnEstilo} ${btnTamanho} ${className ?? ''}`} onClick={onClick} disabled={ isCarregando ?? disabled }>
                 <div className="d-flex justify-content-center align-items-center">{icone}</div>
             </button>
         );
     }
 
-    if(iconePosicao !== undefined) {
+    if (iconePosicao !== undefined) {
         return (
-            <button style={ style } className={`${prefix} ${btnEstilo} ${btnTamanho}`} onClick={ onClick } disabled={ disabled }>
+            <button style={style} className={`${prefix} ${btnEstilo} ${btnTamanho}`} onClick={onClick} disabled={ isCarregando ?? disabled }>
                 {
                     iconePosicao === "esquerda" ? <div className={`${btnIconeMargin}-right d-flex justify-content-center align-items-center`}>{icone}</div> ?? '' : ''
                 }
-                <span>{ label }</span>
+                <span>{label}</span>
                 {
                     iconePosicao === "direita" ? <div className={`${btnIconeMargin}-left d-flex justify-content-center align-items-center`}>{icone}</div> ?? '' : ''
                 }
+                { isCarregando ? <span className={"loader" }></span> : '' }
             </button>
         );
     }
 
-    if(estilo === 'Menu') {
+    if (estilo === 'Menu') {
         return (
-            <button style={ style } className={`${prefix} ${btnEstilo} ${btnTamanho}`} onClick={ onClick } disabled={ disabled }>
-                { icone ? <div className={`${btnIconeMargin}-right d-flex justify-content-center align-items-center`}>{icone}</div> : '' }
-                <span>{ label }</span>
-                { subitens ? <ChevronDown size={16} style={{ marginLeft: 'auto' }} /> : '' }
+            <button style={style} className={`${prefix} ${btnEstilo} ${btnTamanho}`} onClick={onClick} disabled={ isCarregando ?? disabled }>
+                {icone ? <div className={`${btnIconeMargin}-right d-flex justify-content-center align-items-center`}>{icone}</div> : ''}
+                <span>{label}</span>
+                {subitens ? <ChevronDown size={16} style={{ marginLeft: 'auto' }} /> : ''}
+                { isCarregando ? <span className={"loader" }></span> : '' }
             </button>
         );
     }
 
     return (
-        <button style={ style } className={`${prefix} ${btnEstilo} ${btnTamanho} ${className}`} onClick={ onClick } disabled={ disabled }>
-           { icone ? <div className={`${btnIconeMargin}-right d-flex justify-content-center align-items-center`}>{icone}</div> : '' }
-           <span>{ label }</span>
-           { notificacoes ? <span className="notificacoes">{ notificacoes }</span> : '' }
+        <button style={style} className={`${prefix} ${btnEstilo} ${btnTamanho} ${className}`} onClick={onClick} disabled={ isCarregando ?? disabled }>
+            {icone ? <div className={`${btnIconeMargin}-right d-flex justify-content-center align-items-center`}>{icone}</div> : ''}
+            <span>{label}</span>
+            {notificacoes ? <span className="notificacoes">{notificacoes}</span> : ''}
+            { isCarregando ? <span className={"loader" }></span> : '' }
         </button>
     );
 }

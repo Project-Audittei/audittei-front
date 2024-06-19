@@ -24,6 +24,7 @@ export default function Login() {
     const [senhaError, setSenhaError] = useState<InputError | null>(null);
     
     const [notificacao, setNotificacao] = useState<APIRequestResponse | null>(null);
+    const [isCarregando, setIsCarregando] = useState(false);
     
     const navigate = useNavigate();
     const { HandleSignIn, VerificaSessao, ChecarUsuarioAnonimo } = useUsuario();
@@ -64,6 +65,8 @@ export default function Login() {
         if(email.split('').length < 6) return;
         if(senha.split('').length < 6) return;
 
+        setIsCarregando(true);
+
         if(ChecarUsuarioAnonimo(email, senha)) return navigate('/');
         
         let { data, message, success } = await consumirAPI<unknown, APILoginResponse>({
@@ -73,6 +76,7 @@ export default function Login() {
         });
 
         if(!data) {
+            setIsCarregando(false);
             setNotificacao({
                 titulo: "Erro ao realizar login",
                 tipo: 'erro',
@@ -85,6 +89,7 @@ export default function Login() {
         const { user, token } = data;
 
         if(!success) {
+            setIsCarregando(false);
             setNotificacao({
                 titulo: "Erro ao realizar login",
                 tipo: 'erro',
@@ -95,6 +100,7 @@ export default function Login() {
         }
 
         if(HandleSignIn(user, token)) {
+            setIsCarregando(false);
             navigate('/');
         }
     }
@@ -170,6 +176,7 @@ export default function Login() {
                             icone={<ArrowRight size={24} />}
                             iconePosicao="direita"
                             onClick={HandleLogin}
+                            isCarregando={ isCarregando }
                         />
                         <Botao
                             estilo="Danger"

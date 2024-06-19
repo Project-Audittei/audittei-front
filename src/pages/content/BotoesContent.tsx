@@ -15,13 +15,14 @@ export default function BotoesContent() {
                         </div>
                         <div className="col">
                             <div className="row">
-                                <Botao estilo="Primary" tamanho="Large" label="Label" />
+                                <Botao estilo="Primary" tamanho="Large" label="Label" isCarregando/>
                                 <Botao estilo="Secondary" tamanho="Large" label="Label" />
                                 <Botao estilo="Third" tamanho="Large" label="Label" />
                                 <Botao estilo="Third" tamanho="Large" label="Label" disabled/>
                                 <Botao estilo="Primary" tamanho="Large" icone={ <Pencil size={24} /> } somenteIcone/>
                                 <Botao estilo="Secondary" tamanho="Large" icone={ <Pencil size={24} /> } somenteIcone/>
                                 <Botao estilo="Secondary" tamanho="Large" icone={ <Pencil size={24} /> } somenteIcone disabled/>
+                                <Botao estilo="Danger" tamanho="Large" label="Label" />
                                 <Botao estilo="Danger" tamanho="Large" label="Label" />
                             </div>
                         </div>

@@ -8,24 +8,38 @@ import Input from "../../components/Form/Input";
 import AuthContainer from "../../components/app/AuthContainer";
 import Logo from "../../components/app/Logo";
 import Container from "../../components/app/Container";
+import { InputError } from "../../@types/InputErro";
+import { ValidadorCampo } from "../../helpers/ValidadorCampo";
 
 export default function ConfirmarConta() {
-    
+
     const { hash } = useParams();
 
     const [codigoConfirmacao, setCodigoConfirmacao] = useState('');
     const [isContaConfirmada, setIsContaConfirmada] = useState(false);
+    const [isCarregando, setIsCarregando] = useState(false);
+
+    const [codigoErro, setCodigoErro] = useState<InputError | null>(null);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(hash) {
+        if (hash) {
             HandleConfirmarConta(hash);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const HandleConfirmarConta = async (hash?: string) => {
+    const HandleConfirmarConta = async (hash?: string, e?: any) => {
+        e.preventDefault();
+        setIsCarregando(true);
+
+        if(!ValidadorCampo(codigoConfirmacao, [
+            { regra: "not-empty" } , { regra: "not-null" }
+        ], setCodigoErro)) {
+            setIsCarregando(false);
+            return;
+        }
 
         const { success } = await consumirAPI({
             url: "/auth/confirm-register",
@@ -38,10 +52,11 @@ export default function ConfirmarConta() {
             return navigate('/auth/reenviar-confirmar-conta');
         }
 
+        setIsCarregando(false);
         setIsContaConfirmada(true);
     }
-    
-    if(hash) return (<></>);
+
+    if (hash) return (<></>);
 
     if(isContaConfirmada) return (
         <Container>
@@ -66,6 +81,7 @@ export default function ConfirmarConta() {
                             label="Voltar para login"
                             icone={<ArrowRight size={24} />}
                             iconePosicao="direita"
+                            onClick={e => navigate('/auth/login')}
                         />
                     </div>
                 </FormContainer>
@@ -92,6 +108,11 @@ export default function ConfirmarConta() {
                             label="Código de confirmação"
                             value={codigoConfirmacao}
                             onChange={(e) => setCodigoConfirmacao(e.currentTarget.value)}
+                            disabled={isCarregando}
+                            mensagensValidacao={{
+                                erro: codigoErro?.mensagem ?? ""
+                            }}
+                            estado={  codigoErro?.estado ?? "padrao" }
                         />
                     </div>
                     <div className="form-element-group-button">
@@ -101,7 +122,8 @@ export default function ConfirmarConta() {
                             label="Confirmar conta"
                             icone={<ArrowRight size={24} />}
                             iconePosicao="direita"
-                            onClick={e => HandleConfirmarConta(codigoConfirmacao)}
+                            onClick={e => HandleConfirmarConta(codigoConfirmacao, e)}
+                            isCarregando={isCarregando}
                         />
                     </div>
                 </FormContainer>

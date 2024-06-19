@@ -36,6 +36,13 @@ export const ValidadorCampo = ( campo: string, regras: RegraValidacaoCampo[], se
         return estado;
     })
 
+    if(setError && !estado) {
+        setError({
+            estado: "erro",
+            mensagem: `O campo não pode ser vazio`
+        });
+    }
+
     return estado;
 }
 

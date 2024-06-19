@@ -25,12 +25,12 @@ export default function PrimeiroAcesso() {
     const { usuario } = useUsuario();
 
     useEffect(() => {
-        if(usuario) {
+        if (usuario) {
             consumirAPI<object, CNPJModel>({
                 url: '/profile',
                 method: 'get',
                 authToken: usuario.access_token
-            }).then( ({ data }) => setIsPerfilEmpresa(!data ? false : true) )
+            }).then(({ data }) => setIsPerfilEmpresa(!data ? false : true))
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,6 +69,7 @@ export default function PrimeiroAcesso() {
 
     const HandleCriarPerfil = async (e: any) => {
         e.preventDefault();
+        setCarregandoCNPJ(true);
 
         if (!ValidarCampos([
             {
@@ -89,6 +90,7 @@ export default function PrimeiroAcesso() {
         ])) return;
 
         if (empresa.razaoSocial === '') {
+            setCarregandoCNPJ(false);
             return setErroCNPJ({
                 estado: "erro",
                 mensagem: "Informe um CNPJ válido"
@@ -112,133 +114,132 @@ export default function PrimeiroAcesso() {
             method: 'post'
         });
 
+        setCarregandoCNPJ(false);
         setIsPerfilEmpresa(false);
     }
-
-    if(isPerfilEmpresa) return <></>;
-
-    return (
+    
+    if (!isPerfilEmpresa) return (
         <div id="modal">
             <div className="backdrop"></div>
-            <div className="modal">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <img src={`${process.env.PUBLIC_URL}/assets/images/cadastro_empresa_header.svg`} alt="" />
-                    </div>
-                    <div className="modal-content">
-                        <div className="modal-body">
-                            <FormContainer>
-                                <h3 className="text-center">🎉 Você acessou a plataforma! Sinta-se em casa! 🎉</h3>
-                                <span className="descricao text-center m-medium">Antes de prosseguir, precisamos de algumas informações sobre o seu escritório.</span>
-                                <div className="form-element-group">
-                                    <div className="row">
-                                        <div className="col-6 col-inline">
-                                            <Input
-                                                type="text"
-                                                label="CNPJ"
-                                                max={14}
-                                                value={cnpj}
-                                                onChange={e => HandleBuscarEmpresa(e.currentTarget.value)}
-                                                estado={erroCNPJ?.estado ?? 'padrao'}
-                                                mensagensValidacao={{
-                                                    erro: erroCNPJ?.mensagem ?? '',
-                                                    aviso: erroCNPJ?.mensagem ?? ''
-                                                }}
-                                                disabled={carregandoCNPJ}
-                                            />
-                                            {carregandoCNPJ ? <span className="loader"></span> : ''}
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col">
-                                            <Input
-                                                type="text"
-                                                label="Razão Social"
-                                                value={empresa.razaoSocial}
-                                                disabled
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col">
-                                            <Input
-                                                type="text"
-                                                label="E-mail do Escritório"
-                                                value={email}
-                                                onChange={e => setEmail(e.currentTarget.value)}
-                                                estado={erroEmail?.estado ?? 'padrao'}
-                                                mensagensValidacao={{ erro: erroEmail?.mensagem ?? '' }}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <Input
-                                                type="text"
-                                                label="Telefone do Escritório"
-                                                value={telefone}
-                                                onChange={e => setTelefone(TelefoneMascara(e.currentTarget.value))}
-                                                estado={erroTelefone?.estado ?? 'padrao'}
-                                                mensagensValidacao={{ erro: erroTelefone?.mensagem ?? '' }}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <Input
-                                                type="text"
-                                                label="CEP"
-                                                value={empresa.cep}
-                                                disabled
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col">
-                                            <Input
-                                                type="text"
-                                                label="Logradouro"
-                                                value={empresa.logadouro}
-                                                disabled
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <Input
-                                                type="text"
-                                                label="Bairro"
-                                                value={empresa.bairro}
-                                                disabled
-                                            />
-                                        </div>
-                                        <div className="col-6">
-                                            <Input
-                                                type="text"
-                                                label="Cidade"
-                                                value={empresa.cidade}
-                                                disabled
-                                            />
-                                        </div>
+            <div className="modal modal-personalizado">
+                <div className="modal-header">
+                    <img src={`${process.env.PUBLIC_URL}/assets/images/cadastro_empresa_header.svg`} alt="" />
+                </div>
+                <div className="modal-content" style={{ padding: "24px 32px" }}>
+                    <div className="modal-body">
+                        <FormContainer>
+                            <h3 className="text-center">🎉 Você acessou a plataforma! Sinta-se em casa! 🎉</h3>
+                            <span className="descricao text-center m-medium">Antes de prosseguir, precisamos de algumas informações sobre o seu escritório.</span>
+                            <div className="form-element-group">
+                                <div className="row">
+                                    <div className="col-6 col-inline">
+                                        <Input
+                                            type="text"
+                                            label="CNPJ"
+                                            max={14}
+                                            value={cnpj}
+                                            onChange={e => HandleBuscarEmpresa(e.currentTarget.value)}
+                                            estado={erroCNPJ?.estado ?? 'padrao'}
+                                            mensagensValidacao={{
+                                                erro: erroCNPJ?.mensagem ?? '',
+                                                aviso: erroCNPJ?.mensagem ?? ''
+                                            }}
+                                            disabled={carregandoCNPJ}
+                                        />
+                                        {carregandoCNPJ ? <span className="loader"></span> : ''}
                                     </div>
                                 </div>
-                                <div className="row row-align-center mt-1">
-                                    <Botao
-                                        estilo="Primary"
-                                        tamanho="Normal"
-                                        label="Entrar"
-                                        icone={<ArrowRight size={24} />}
-                                        iconePosicao="direita"
-                                        onClick={HandleCriarPerfil}
-                                        disabled={carregandoCNPJ}
-                                    />
+                                <div className="row">
+                                    <div className="col">
+                                        <Input
+                                            type="text"
+                                            label="Razão Social"
+                                            value={empresa.razaoSocial}
+                                            disabled
+                                        />
+                                    </div>
                                 </div>
-                            </FormContainer>
-                        </div>
+                                <div className="row">
+                                    <div className="col">
+                                        <Input
+                                            type="text"
+                                            label="E-mail do Escritório"
+                                            value={email}
+                                            onChange={e => setEmail(e.currentTarget.value)}
+                                            estado={erroEmail?.estado ?? 'padrao'}
+                                            mensagensValidacao={{ erro: erroEmail?.mensagem ?? '' }}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-6">
+                                        <Input
+                                            type="text"
+                                            label="Telefone do Escritório"
+                                            value={telefone}
+                                            onChange={e => setTelefone(TelefoneMascara(e.currentTarget.value))}
+                                            estado={erroTelefone?.estado ?? 'padrao'}
+                                            mensagensValidacao={{ erro: erroTelefone?.mensagem ?? '' }}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-6">
+                                        <Input
+                                            type="text"
+                                            label="CEP"
+                                            value={empresa.cep}
+                                            disabled
+                                        />
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col">
+                                        <Input
+                                            type="text"
+                                            label="Logradouro"
+                                            value={empresa.logadouro}
+                                            disabled
+                                        />
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-6">
+                                        <Input
+                                            type="text"
+                                            label="Bairro"
+                                            value={empresa.bairro}
+                                            disabled
+                                        />
+                                    </div>
+                                    <div className="col-6">
+                                        <Input
+                                            type="text"
+                                            label="Cidade"
+                                            value={empresa.cidade}
+                                            disabled
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row row-align-center mt-1">
+                                <Botao
+                                    estilo="Primary"
+                                    tamanho="Normal"
+                                    label="Entrar"
+                                    icone={<ArrowRight size={24} />}
+                                    iconePosicao="direita"
+                                    onClick={HandleCriarPerfil}
+                                    isCarregando={carregandoCNPJ}
+                                />
+                            </div>
+                        </FormContainer>
                     </div>
                 </div>
             </div>
         </div>
     );
+
+    return <></>;
 }
 
