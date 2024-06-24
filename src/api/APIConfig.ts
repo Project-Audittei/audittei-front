@@ -1,4 +1,5 @@
 export const APIConfig = {
+    // apontando para a API de Homologação
     baseUrl: "https://auditteiapi.ofernandoavila.com/api",
     cadastro: '/auth/cadastro',
     login: '/auth/login',
