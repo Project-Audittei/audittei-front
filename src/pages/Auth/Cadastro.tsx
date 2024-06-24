@@ -6,7 +6,7 @@ import Notificacao from "../../components/Notificacao/Notificacao";
 import AuthContainer from "../../components/app/AuthContainer";
 import Container from "../../components/app/Container";
 import Logo from "../../components/app/Logo";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { InputError } from "../../@types/InputErro";
 import { APIRequestResponse } from "../../models/API";
@@ -14,12 +14,12 @@ import { TelefoneMascara, TelefoneSanitize } from "../../helpers/TelefoneSanitiz
 import { NovoUsuarioModel } from "../../models/UsuarioModel";
 import { consumirAPI } from "../../hooks/consumirAPI";
 import { RegraValidacaoCampo, ValidarCampos } from "../../helpers/ValidadorCampo";
+import { APIConfig } from "../../api/APIConfig";
 
 export default function Cadastro() {
     const [nomeCompleto, setNomeCompleto] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [telefone, setTelefone] = useState<string>('');
-    const [nomeEmpresa, setNomeEmpresa] = useState<string>('');
     const [senha, setSenha] = useState<string>('');
     const [confirmarSenha, setConfirmarSenha] = useState<string>('');
 
@@ -27,7 +27,6 @@ export default function Cadastro() {
     const [nomeCompletoError, setNomeCompletoError] = useState<InputError | null>(null);
     const [emailError, setEmailError] = useState<InputError | null>(null);
     const [telefoneError, setTelefoneError] = useState<InputError | null>(null);
-    const [nomeEmpresaError, setNomeEmpresaError] = useState<InputError | null>(null);
     const [senhaError, setSenhaError] = useState<InputError | null>(null);
     const [confirmarSenhaError, setConfirmarSenhaError] = useState<InputError | null>(null);
 
@@ -35,9 +34,6 @@ export default function Cadastro() {
     const [isCarregando, setIsCarregando] = useState(false);
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-    }, [nomeEmpresa]);
 
     const VerificaSenha = (senhaInput: string) => {
         setConfirmarSenha(senhaInput);
@@ -83,12 +79,6 @@ export default function Cadastro() {
                 label: 'Telefone'
             },
             {
-                campo: nomeEmpresa,
-                regras,
-                setError: setNomeEmpresaError,
-                label: 'Nome Empresa'
-            },
-            {
                 campo: senha,
                 regras,
                 setError: setSenhaError,
@@ -102,12 +92,11 @@ export default function Cadastro() {
             nomeCompleto,
             email,
             telefone: TelefoneSanitize(telefone),
-            nomeEmpresa,
             senha
         };
 
         let { message, success } = await consumirAPI({
-            url: '/auth/create-user',
+            url: APIConfig.cadastro,
             dataRequest: usuario,
             method: "post"
         });
@@ -120,7 +109,7 @@ export default function Cadastro() {
 
         setIsCarregando(false);
 
-        navigate('/confirmar-conta');
+        return success ? navigate('/confirmar-conta') : '';
     }
 
     return (
@@ -195,16 +184,6 @@ export default function Cadastro() {
                         />
                     </div>
                     <div className="form-element-group">
-                        <Input
-                            type="text"
-                            label="Nome da Empresa"
-                            value={nomeEmpresa}
-                            onChange={(e) => setNomeEmpresa(e.currentTarget.value)}
-                            estado={ nomeEmpresaError ? nomeEmpresaError.estado : 'padrao' }
-                            mensagensValidacao={{
-                                erro: nomeEmpresaError ? nomeEmpresaError.mensagem : ''
-                            }}
-                        />
                         <Input
                             type="password"
                             label="Insira sua senha de acesso"
