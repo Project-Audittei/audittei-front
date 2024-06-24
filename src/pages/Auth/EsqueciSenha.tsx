@@ -12,6 +12,7 @@ import { consumirAPI } from "../../hooks/consumirAPI";
 import { ValidadorCampo } from "../../helpers/ValidadorCampo";
 import { InputError } from "../../@types/InputErro";
 import Notificacao from "../../components/Notificacao/Notificacao";
+import { APIConfig } from "../../api/APIConfig";
 
 export default function EsqueciSenha() {
     const [email, setEmail] = useState<string>('');
@@ -33,7 +34,7 @@ export default function EsqueciSenha() {
         }
 
         const { success, message } = await consumirAPI<{email: string}, APIResponse<null>>({
-            url: '/auth/forgot-password',
+            url: APIConfig.esqueciSenha,
             dataRequest: { email },
             method: 'post'
         })

@@ -13,6 +13,7 @@ import Notificacao from "../../components/Notificacao/Notificacao";
 import { APILoginResponse, APIRequestResponse } from "../../models/API";
 import { InputError } from "../../@types/InputErro";
 import useUsuario from "../../hooks/useUsuario";
+import { APIConfig } from "../../api/APIConfig";
 
 export default function Login() {
     const location = useLocation();
@@ -70,10 +71,12 @@ export default function Login() {
         if(ChecarUsuarioAnonimo(email, senha)) return navigate('/');
         
         let { data, message, success } = await consumirAPI<unknown, APILoginResponse>({
-            url: '/auth/login',
+            url: APIConfig.login,
             dataRequest: { email, senha },
             method: "post"
         });
+
+        
 
         if(!data) {
             setIsCarregando(false);
@@ -86,8 +89,8 @@ export default function Login() {
             return;
         }
 
-        const { user, token } = data;
-
+        const { usuario, token } = data;
+        
         if(!success) {
             setIsCarregando(false);
             setNotificacao({
@@ -99,7 +102,7 @@ export default function Login() {
             return;
         }
 
-        if(HandleSignIn(user, token)) {
+        if(HandleSignIn(usuario, token)) {
             setIsCarregando(false);
             navigate('/');
         }

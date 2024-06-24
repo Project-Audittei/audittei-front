@@ -10,6 +10,7 @@ import { CNPJMascara, CNPJSanitize } from "../../../helpers/CNPJSanitize";
 import { TelefoneMascara, TelefoneSanitize } from "../../../helpers/TelefoneSanitize";
 import { InputError } from "../../../@types/InputErro";
 import { ValidarCampos } from "../../../helpers/ValidadorCampo";
+import { APIConfig } from "../../../api/APIConfig";
 
 export default function PrimeiroAcesso() {
     const [cnpj, setCnpj] = useState<string>('');
@@ -27,7 +28,7 @@ export default function PrimeiroAcesso() {
     useEffect(() => {
         if (usuario) {
             consumirAPI<object, CNPJModel>({
-                url: '/profile',
+                url: APIConfig.criarPerfilEmpresa,
                 method: 'get',
                 authToken: usuario.access_token
             }).then(({ data }) => setIsPerfilEmpresa(!data ? false : true))
@@ -42,7 +43,7 @@ export default function PrimeiroAcesso() {
             setCarregandoCNPJ(true);
             entrada = CNPJSanitize(entrada);
             const { data } = await consumirAPI<object, CNPJModel>({
-                url: `/profile/cnpj/${entrada}`,
+                url: `${APIConfig.buscarCNPJ}/${entrada}`,
                 method: 'get',
                 authToken: usuario!.access_token
             }).finally(() => setCarregandoCNPJ(false));

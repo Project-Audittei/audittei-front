@@ -31,6 +31,6 @@ export interface APIRequestResponse {
 }
 
 export interface APILoginResponse {
-    user: UsuarioModel;
+    usuario: UsuarioModel;
     token: string;
 }

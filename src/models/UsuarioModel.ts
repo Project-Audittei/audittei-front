@@ -2,7 +2,6 @@ export interface NovoUsuarioModel {
     nomeCompleto: string;
     email: string;
     telefone: string;
-    nomeEmpresa: string;
     senha: string;
 }
 

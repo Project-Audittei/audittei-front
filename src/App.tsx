@@ -29,7 +29,7 @@ function App() {
 	return (
 		<UsuarioContextProvider>
 			<ModalContextProvider>
-				<BrowserRouter basename="/audittei">
+				<BrowserRouter basename="/">
 					<Routes>
 						<Route path="/docs" element={<DocsGrid />} />
 						<Route path="/docs/tipografia" element={<DocsTipografia />} />

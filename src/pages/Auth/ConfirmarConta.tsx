@@ -10,6 +10,7 @@ import Logo from "../../components/app/Logo";
 import Container from "../../components/app/Container";
 import { InputError } from "../../@types/InputErro";
 import { ValidadorCampo } from "../../helpers/ValidadorCampo";
+import { APIConfig } from "../../api/APIConfig";
 
 export default function ConfirmarConta() {
 
@@ -42,7 +43,7 @@ export default function ConfirmarConta() {
         }
 
         const { success } = await consumirAPI({
-            url: "/auth/confirm-register",
+            url: APIConfig.confirmarConta,
             dataRequest: { hash: hash },
             method: "post"
         });
