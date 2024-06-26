@@ -11,6 +11,7 @@ import { TelefoneMascara, TelefoneSanitize } from "../../../helpers/TelefoneSani
 import { InputError } from "../../../@types/InputErro";
 import { ValidarCampos } from "../../../helpers/ValidadorCampo";
 import { APIConfig } from "../../../api/APIConfig";
+import { EmpresaModel } from "../../../models/EmpresaModel";
 
 export default function PrimeiroAcesso() {
     const [cnpj, setCnpj] = useState<string>('');
@@ -27,11 +28,11 @@ export default function PrimeiroAcesso() {
 
     useEffect(() => {
         if (usuario) {
-            consumirAPI<object, CNPJModel>({
-                url: APIConfig.criarPerfilEmpresa,
+            consumirAPI<object, EmpresaModel[]>({
+                url: APIConfig.obterPerfilEmpresa,
                 method: 'get',
                 authToken: usuario.access_token
-            }).then(({ data }) => setIsPerfilEmpresa(!data ? false : true))
+            }).then(({ data }) => setIsPerfilEmpresa(data!.length > 0 ? true : false))
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,8 +44,11 @@ export default function PrimeiroAcesso() {
             setCarregandoCNPJ(true);
             entrada = CNPJSanitize(entrada);
             const { data } = await consumirAPI<object, CNPJModel>({
-                url: `${APIConfig.buscarCNPJ}/${entrada}`,
-                method: 'get',
+                url: `${APIConfig.buscarCNPJ}`,
+                method: 'post',
+                dataRequest: {
+                    "cnpj": entrada
+                },
                 authToken: usuario!.access_token
             }).finally(() => setCarregandoCNPJ(false));
 
@@ -70,7 +74,6 @@ export default function PrimeiroAcesso() {
 
     const HandleCriarPerfil = async (e: any) => {
         e.preventDefault();
-        setCarregandoCNPJ(true);
 
         if (!ValidarCampos([
             {
@@ -88,7 +91,7 @@ export default function PrimeiroAcesso() {
                 regras: [{ regra: "not-null" }, { regra: "not-empty" }],
                 setError: setErroTelefone
             }
-        ])) return;
+        ])) return setCarregandoCNPJ(false);
 
         if (empresa.razaoSocial === '') {
             setCarregandoCNPJ(false);
@@ -99,7 +102,7 @@ export default function PrimeiroAcesso() {
         }
 
         await consumirAPI({
-            url: '/profile',
+            url: APIConfig.criarPerfilEmpresa,
             authToken: usuario!.access_token,
             dataRequest: {
                 cnpj: CNPJSanitize(cnpj),
