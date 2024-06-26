@@ -32,7 +32,8 @@ export default function ConfirmarConta() {
     }, []);
 
     const HandleConfirmarConta = async (hash?: string, e?: any) => {
-        e.preventDefault();
+        if(e) e.preventDefault();
+        
         setIsCarregando(true);
 
         if(!ValidadorCampo(codigoConfirmacao, [
