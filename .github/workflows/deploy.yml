@@ -25,6 +25,10 @@ jobs:
             - name: Build
               run: npm run build
 
+            - name: Adicionando htaccess ao bundle
+              run: |
+                cp .htaccess ./build/.htaccess
+
             - name: Preparando artefato
               run: |
                 mkdir -p artifact
@@ -57,3 +61,24 @@ jobs:
                 REMOTE_USER: ${{ vars.REMOTE_USER }}
                 SOURCE: "artifact/"
                 TARGET: ${{ vars.TARGET }}
+
+    PRD:
+        runs-on: ubuntu-latest
+        environment:
+            name: Production
+            url: http://auditteifront.ofernandoavila.com
+        needs: HML
+        steps:
+            - name: Download artifact
+              uses: actions/download-artifact@v4
+              with:
+                name: audittei-front
+                path: ./artifact
+            - name: FTP Deploy
+              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+              with:
+                server: ${{ vars.FTP_HOST }}
+                username: ${{ vars.FTP_USER }}
+                password: ${{ secrets.FTP_PASSWORD }}
+                local-dir: artifact/
+                server-dir: public_html/
