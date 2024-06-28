@@ -54,5 +54,5 @@ jobs:
                 SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
                 REMOTE_HOST: ${{ vars.REMOTE_HOST }}
                 REMOTE_USER: ${{ vars.REMOTE_USER }}
-                SOURCE: "audittei-front/"
+                SOURCE: "artifact/"
                 TARGET: ${{ vars.TARGET }}
