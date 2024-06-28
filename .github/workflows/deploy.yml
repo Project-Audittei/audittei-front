@@ -13,7 +13,7 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v2
-              
+
             - name: Setup Node.js
               uses: actions/setup-node@v2
               with:
@@ -32,12 +32,10 @@ jobs:
         needs: build
         steps:
             - name: Deploy
-              uses: easingthemes/ssh-deploy@main
+              uses: appleboy/scp-action@v0.1.7
               with:
-                  SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-                  ARGS: "-rlgoDzvc --delete"
-                  SOURCE: build/
-                  REMOTE_HOST: ${{ vars.REMOTE_HOST }}
-                  REMOTE_USER: ${{ vars.REMOTE_USER }}
-                  REMOTE_PORT: ${{ vars.REMOTE_PORT }}
-                  TARGET: ${{ vars.TARGET }}
+                  host: ${{ vars.REMOTE_HOST }}
+                  username: ${{ vars.REMOTE_USER }}
+                  key: ${{ secrets.SERVER_SSH_KEY }}
+                  source: "build/"
+                  target: ${{ vars.TARGET }}
