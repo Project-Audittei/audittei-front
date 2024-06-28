@@ -24,6 +24,17 @@ jobs:
 
             - name: Build
               run: npm run build
+
+            - name: Preparando artefato
+              run: |
+                mkdir -p artifact
+                cp -r ./build/* ./artifact/
+      
+            - name: Salvando artefato
+              uses: actions/upload-artifact@v3
+              with:
+                name: audittei-front
+                path: artifact
     deploy-staging:
         runs-on: ubuntu-latest
         environment:
