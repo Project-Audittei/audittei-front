@@ -1,9 +1,8 @@
 import { ReactNode, useEffect } from "react";
-import { Bell, BriefcaseBusiness, Building2, CreditCard, HandCoins, Home, SearchCheck, ShieldHalf, Users } from "lucide-react";
+import { Bell, BriefcaseBusiness, Home, SearchCheck } from "lucide-react";
 import Botao from "./Botoes/Botao";
 import Modal from "./Modal/Modal";
 import MenuSide, { MenuLateral } from "./Menu/MenuSide";
-import Selecao from "./Form/Selecao";
 import CardPerfil from "./CardPerfil/CardPerfil";
 import useUsuario from "../hooks/useUsuario";
 import { useNavigate } from "react-router-dom";
@@ -25,39 +24,25 @@ const menu: MenuLateral[] = [
             },
             {
                 label: "Fiscal",
-                link: '/fiscal',
-                icon: <SearchCheck size={16} />
-            },
-            {
-                label: "Contábil",
-                link: '/contabil',
-                icon: <HandCoins size={16} />
-            },
-            {
-                label: "Gestão",
-                link: '/gestao',
-                icon: <BriefcaseBusiness size={16} />
-            },
-            {
-                label: "Recursos Humanos",
-                link: '/recursos-humanos',
-                icon: <Users size={16} />
-            },
+                link: '#',
+                icon: <SearchCheck size={16} />,
+                desabilitado: true
+            }
         ]
     },
     {
         secao: "ADMINISTRAÇÃO",
         itens: [
-            {
-                label: "Gerenciar Escritório",
-                link: '/gerenciar-escritorio',
-                icon: <Building2 size={16} />
-            },
-            {
-                label: "Gerenciar Equipe",
-                link: '/gerenciar-equipe',
-                icon: <ShieldHalf size={16} />
-            },
+            // {
+            //     label: "Gerenciar Escritório",
+            //     link: '#',
+            //     icon: <Building2 size={16} />
+            // },
+            // {
+            //     label: "Gerenciar Equipe",
+            //     link: '#',
+            //     icon: <ShieldHalf size={16} />
+            // },
             {
                 label: "Gerenciar Empresas",
                 link: '/gerenciar-empresas',
@@ -73,11 +58,11 @@ const menu: MenuLateral[] = [
                     },
                 ]
             },
-            {
-                label: "Gerenciar Assinatura",
-                link: '/gerenciar-assinatura',
-                icon: <CreditCard size={16} />
-            },
+            // {
+            //     label: "Gerenciar Assinatura",
+            //     link: '#',
+            //     icon: <CreditCard size={16} />
+            // },
         ]
     }
 ];
@@ -111,7 +96,7 @@ export default function VisaoBasica({ children, menuAtivo, breadcrumbSecao }: Vi
             <div className="app-content">
                 <header className="app-header">
                     <div className="row">
-                        <div className="col-2">
+                        {/* <div className="col-2">
                             <span className="selecao-empresa">Selecione uma empresa</span>
                         </div>
                         <div className="col-5">
@@ -120,7 +105,7 @@ export default function VisaoBasica({ children, menuAtivo, breadcrumbSecao }: Vi
                                     { id: 1, name: "TV Globo" }
                                 ]}
                             />
-                        </div>
+                        </div> */}
                         <div className="col">
                             <Botao
                                 icone={<Bell size={16} />}
