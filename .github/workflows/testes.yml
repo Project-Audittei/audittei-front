@@ -1,0 +1,27 @@
+name: Deploy
+
+on:
+    push:
+        branches: [main]
+
+    workflow_dispatch:
+
+jobs:
+    Build:
+        runs-on: ubuntu-latest
+        environment:
+            name: Staging
+            url: ${{ vars.BASE_URL }}
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Criar diretorio
+              uses: nekiro/ssh-job@main
+              with:
+                  host: ${{ vars.REMOTE_HOST }}
+                  key: ${{ secrets.SERVER_SSH_KEY }}
+                  user: ${{ vars.REMOTE_USER }}
+                  command: |
+                      ls
