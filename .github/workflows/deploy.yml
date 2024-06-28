@@ -31,7 +31,7 @@ jobs:
                 cp -r ./build/* ./artifact/
       
             - name: Salvando artefato
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                 name: audittei-front
                 path: artifact
@@ -44,7 +44,7 @@ jobs:
         needs: Build
         steps:
             - name: Download artifact
-              uses: actions/download-artifact@v3
+              uses: actions/download-artifact@v4
               with:
                 name: audittei-front
                 path: ./artifact
