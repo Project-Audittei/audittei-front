@@ -35,6 +35,7 @@ jobs:
               with:
                 name: audittei-front
                 path: artifact
+
     deploy-staging:
         runs-on: ubuntu-latest
         environment:
@@ -42,11 +43,16 @@ jobs:
             url: http://auditteifront.ofernandoavila.com
         needs: build
         steps:
+            - name: Download artifact
+              uses: actions/download-artifact@v3
+              with:
+                name: audittei-front
+                path: ./artifact
             - name: Deploy
               uses: appleboy/scp-action@v0.1.7
               with:
                   host: ${{ vars.REMOTE_HOST }}
                   username: ${{ vars.REMOTE_USER }}
                   key: ${{ secrets.SERVER_SSH_KEY }}
-                  source: "build/"
+                  source: "audittei-front/"
                   target: ${{ vars.TARGET }}
