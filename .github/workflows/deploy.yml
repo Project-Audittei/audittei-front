@@ -49,10 +49,10 @@ jobs:
                 name: audittei-front
                 path: ./artifact
             - name: Deploy
-              uses: appleboy/scp-action@v0.1.7
+              uses: easingthemes/ssh-deploy@main
               with:
-                  host: ${{ vars.REMOTE_HOST }}
-                  username: ${{ vars.REMOTE_USER }}
-                  key: ${{ secrets.SERVER_SSH_KEY }}
-                  source: "audittei-front/"
-                  target: ${{ vars.TARGET }}
+                SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+                REMOTE_HOST: ${{ vars.REMOTE_HOST }}
+                REMOTE_USER: ${{ vars.REMOTE_USER }}
+                SOURCE: "audittei-front/"
+                TARGET: ${{ vars.TARGET }}
