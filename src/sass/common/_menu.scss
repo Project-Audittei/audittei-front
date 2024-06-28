@@ -4,6 +4,14 @@ ul.menu {
     flex-direction: column;
     transition: .5s ease-in-out;
 
+    .inativo {
+        color: #CCC;
+
+        a {
+            pointer-events: none;
+        }
+    }
+
     .subtitulo {
         margin-left: 16px;
         color: #4787F3;

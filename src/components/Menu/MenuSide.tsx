@@ -6,6 +6,7 @@ interface MenuItem {
     link: string;
     icon?: JSX.Element;
     subitens?: MenuItem[];
+    desabilitado?: boolean;
 }
 
 export interface MenuLateral {
@@ -21,7 +22,7 @@ interface MenuLateralProps {
 
 export default function MenuSide({ baseUrl, menu, ativo }: MenuLateralProps) {
 
-    function RenderizarMenu({ label, link, icon, subitens }: MenuItem) {
+    function RenderizarMenu({ label, link, icon, subitens, desabilitado }: MenuItem) {
         let classContainer = "menu-item-container";
         let classMenu = 'menu-item';
 
@@ -34,7 +35,7 @@ export default function MenuSide({ baseUrl, menu, ativo }: MenuLateralProps) {
             });
 
             return (
-                <li className="menu-item">
+                <li className={`menu-item`}>
                     <div className={ classContainer + " " + classMenu }>
                         { icon }
                         <span>{ label }</span>
@@ -54,7 +55,7 @@ export default function MenuSide({ baseUrl, menu, ativo }: MenuLateralProps) {
         }
 
         return (
-            <li key={link} className={ classMenu }>
+            <li key={link} className={ ` ${ classMenu } ${ desabilitado ? "inativo" : "" }` }>
                 <Link to={ baseUrl ? `${link}` : link }>
                     <div className={ classContainer }>{ icon } <span>{ label }</span></div>
                 </Link>
