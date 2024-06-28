@@ -190,6 +190,7 @@ export default function Login() {
                             className="border-none"
                             onClick={ () => navigate('/auth/esqueci-senha') }
                         />
+                        <span>Versão 0.1</span>
                     </div>
                 </FormContainer>
             </AuthContainer>
