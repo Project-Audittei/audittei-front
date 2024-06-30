@@ -11,7 +11,6 @@ import { TelefoneMascara, TelefoneSanitize } from "../../../helpers/TelefoneSani
 import { InputError } from "../../../@types/InputErro";
 import { ValidarCampos } from "../../../helpers/ValidadorCampo";
 import { APIConfig } from "../../../api/APIConfig";
-import { EscritorioModel } from "../../../models/EscritorioModel";
 
 export default function PrimeiroAcesso() {
     const [cnpj, setCnpj] = useState<string>('');
@@ -30,7 +29,7 @@ export default function PrimeiroAcesso() {
         if(usuario) {
             setIsPerfilEmpresa(usuario.escritorio !== null);
         }
-    }, []);
+    }, [usuario]);
 
     const HandleBuscarEmpresa = async (entrada: string) => {
         setCnpj(CNPJMascara(entrada));
