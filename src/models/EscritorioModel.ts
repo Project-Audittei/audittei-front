@@ -3,7 +3,7 @@ import { EntidadeBasicaModel } from "./EntidadeBasicaModel";
 export interface EscritorioModel extends EntidadeBasicaModel {
     cadastro?: string;
     cnpj: string;
-    razao_social: string;
+    razaoSocial: string;
     nome: string;
     responsavel: string;
     email: string;

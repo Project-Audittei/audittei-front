@@ -8,7 +8,8 @@ import Selecao from "../../components/Form/Selecao";
 import { useParams } from "react-router-dom";
 import { EscritorioModel } from "../../models/EscritorioModel";
 import useUsuario from "../../hooks/useUsuario";
-import { CNPJMascara } from "../../helpers/CNPJSanitize";
+import { CNPJMascara, CNPJSanitize } from "../../helpers/CNPJSanitize";
+import { TelefoneMascara, TelefoneSanitize } from "../../helpers/TelefoneSanitize";
 
 interface PaginaCrudEmpresaProps {
     modo: "novo" | "edicao";
@@ -50,8 +51,8 @@ export default function PaginaCrudEscritorio({modo}: PaginaCrudEmpresaProps) {
                                         type="text"
                                         label="CNPJ"
                                         className="w-50"
-                                        value={ escritorio.cnpj }
-                                        onChange={(e) => setEscritorio({...escritorio, cnpj: e.target.value })}
+                                        value={ CNPJMascara(escritorio.cnpj) }
+                                        onChange={(e) => setEscritorio({...escritorio, cnpj: CNPJSanitize(e.target.value) })}
                                     />
                                     <Input
                                         type="text"
@@ -68,8 +69,8 @@ export default function PaginaCrudEscritorio({modo}: PaginaCrudEmpresaProps) {
                                     <Input
                                         type="text"
                                         label="Telefone do Escritório"
-                                        value={escritorio.telefone}
-                                        onChange={(e) => setEscritorio({...escritorio, telefone: e.target.value })}
+                                        value={ TelefoneMascara(escritorio.telefone) }
+                                        onChange={(e) => setEscritorio({...escritorio, telefone: TelefoneSanitize(e.target.value) })}
                                     />
                                 </div>
                                 <div className="form-element-group">

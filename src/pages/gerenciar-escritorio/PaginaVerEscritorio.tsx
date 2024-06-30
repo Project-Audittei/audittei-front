@@ -6,6 +6,7 @@ import FormViewer, { IForm } from "../../components/Form/FormViewer";
 import { EscritorioModel } from "../../models/EscritorioModel";
 import { useNavigate } from "react-router-dom";
 import useUsuario from "../../hooks/useUsuario";
+import { TelefoneMascara } from "../../helpers/TelefoneSanitize";
 import { CNPJMascara } from "../../helpers/CNPJSanitize";
 
 export default function PaginaVerEscritorio() {
@@ -14,7 +15,7 @@ export default function PaginaVerEscritorio() {
 
     useEffect(() => {
         if(usuario) setEscritorio(usuario.escritorio);
-    }, []);
+    }, [usuario]);
 
     const form: IForm = {
         secoes: [
@@ -23,15 +24,15 @@ export default function PaginaVerEscritorio() {
                 campos: [
                     {
                         label: "CNPJ",
-                        value: escritorio.cnpj,
+                        value: CNPJMascara(escritorio.cnpj),
                         tipo: "number",
                         setValue: e => setEscritorio({ ...escritorio, cnpj: e.currentTarget.value })
                     },
                     {
                         label: "Razão Social",
-                        value: escritorio.razao_social,
+                        value: escritorio.razaoSocial,
                         tipo: "text",
-                        setValue: e => setEscritorio({ ...escritorio, razao_social: e.currentTarget.value })
+                        setValue: e => setEscritorio({ ...escritorio, razaoSocial: e.currentTarget.value })
                     },
                     {
                         label: "Nome",
@@ -47,9 +48,9 @@ export default function PaginaVerEscritorio() {
                     },
                     {
                         label: "Telefone do Escritório",
-                        value: escritorio.email,
+                        value: TelefoneMascara(escritorio.telefone),
                         tipo: "text",
-                        setValue: e => setEscritorio({ ...escritorio, email: e.currentTarget.value })
+                        setValue: e => setEscritorio({ ...escritorio, telefone: e.currentTarget.value })
                     },
                 ]
             },
