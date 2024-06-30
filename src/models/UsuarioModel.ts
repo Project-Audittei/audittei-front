@@ -1,3 +1,5 @@
+import { EscritorioModel } from "./EscritorioModel";
+
 export interface NovoUsuarioModel {
     nomeCompleto: string;
     email: string;
@@ -17,6 +19,7 @@ export interface UsuarioModel {
     userRole: string;
     username: string;
     password: string;
+    escritorio: EscritorioModel;
     
     iniciais: string;
     access_token: string;

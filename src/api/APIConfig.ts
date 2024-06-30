@@ -1,14 +1,18 @@
 export const APIConfig = {
     // apontando para a API de Homologação
-    baseUrl: "https://auditteiapi.ofernandoavila.com/api",
-    // baseUrl: "http://localhost:8000/api",
+    // baseUrl: "https://auditteiapi.ofernandoavila.com/api",
+    baseUrl: "http://localhost:8000/api",
+
+    // Autenticação
     cadastro: '/auth/cadastro',
     login: '/auth/login',
     confirmarConta: '/auth/confirmar-conta',
     esqueciSenha: '/auth/esqueci-senha',
-    obterPerfilEmpresa: '/perfil',
-    criarPerfilEmpresa: '/perfil/cadastro',
-    buscarCNPJ: '/perfil/cnpj'
+
+    // Perfil
+    obterPerfilEmpresa: '/escritorio',
+    criarPerfilEmpresa: '/escritorio/cadastro',
+    buscarCNPJ: '/escritorio/cnpj'
 };
 
 // export const APIConfigAudittei = {

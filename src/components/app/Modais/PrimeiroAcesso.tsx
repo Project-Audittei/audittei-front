@@ -11,7 +11,7 @@ import { TelefoneMascara, TelefoneSanitize } from "../../../helpers/TelefoneSani
 import { InputError } from "../../../@types/InputErro";
 import { ValidarCampos } from "../../../helpers/ValidadorCampo";
 import { APIConfig } from "../../../api/APIConfig";
-import { EmpresaModel } from "../../../models/EmpresaModel";
+import { EscritorioModel } from "../../../models/EscritorioModel";
 
 export default function PrimeiroAcesso() {
     const [cnpj, setCnpj] = useState<string>('');
@@ -27,15 +27,9 @@ export default function PrimeiroAcesso() {
     const { usuario } = useUsuario();
 
     useEffect(() => {
-        if (usuario) {
-            consumirAPI<object, EmpresaModel[]>({
-                url: APIConfig.obterPerfilEmpresa,
-                method: 'get',
-                authToken: usuario.access_token
-            }).then(({ data }) => setIsPerfilEmpresa(data!.length > 0 ? true : false))
+        if(usuario) {
+            setIsPerfilEmpresa(usuario.escritorio !== null);
         }
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const HandleBuscarEmpresa = async (entrada: string) => {

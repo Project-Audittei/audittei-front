@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from "react";
-import { Bell, BriefcaseBusiness, Home, SearchCheck } from "lucide-react";
+import { Bell, BriefcaseBusiness, Building2, CreditCard, Home, SearchCheck, ShieldHalf } from "lucide-react";
 import Botao from "./Botoes/Botao";
 import Modal from "./Modal/Modal";
 import MenuSide, { MenuLateral } from "./Menu/MenuSide";
@@ -33,16 +33,16 @@ const menu: MenuLateral[] = [
     {
         secao: "ADMINISTRAÇÃO",
         itens: [
-            // {
-            //     label: "Gerenciar Escritório",
-            //     link: '#',
-            //     icon: <Building2 size={16} />
-            // },
-            // {
-            //     label: "Gerenciar Equipe",
-            //     link: '#',
-            //     icon: <ShieldHalf size={16} />
-            // },
+            {
+                label: "Gerenciar Escritório",
+                link: '/gerenciar-escritorio',
+                icon: <Building2 size={16} />
+            },
+            {
+                label: "Gerenciar Equipe",
+                link: '#',
+                icon: <ShieldHalf size={16} />
+            },
             {
                 label: "Gerenciar Empresas",
                 link: '/gerenciar-empresas',
@@ -58,11 +58,11 @@ const menu: MenuLateral[] = [
                     },
                 ]
             },
-            // {
-            //     label: "Gerenciar Assinatura",
-            //     link: '#',
-            //     icon: <CreditCard size={16} />
-            // },
+            {
+                label: "Gerenciar Assinatura",
+                link: '#',
+                icon: <CreditCard size={16} />
+            },
         ]
     }
 ];
