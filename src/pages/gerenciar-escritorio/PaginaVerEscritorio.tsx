@@ -11,11 +11,16 @@ import { CNPJMascara } from "../../helpers/CNPJSanitize";
 
 export default function PaginaVerEscritorio() {
     const { usuario } = useUsuario();
-    const [escritorio, setEscritorio] = useState<EscritorioModel>({} as EscritorioModel);
+    const [escritorio, setEscritorio] = useState<EscritorioModel | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if(usuario) setEscritorio(usuario.escritorio);
     }, [usuario]);
+
+    if(!escritorio) return (
+        <VisaoBasica breadcrumbSecao="Gerenciar Escritório:" menuAtivo="/gerenciar-escritorio"></VisaoBasica>
+    );
 
     const form: IForm = {
         secoes: [
@@ -106,8 +111,6 @@ export default function PaginaVerEscritorio() {
             }
         ]
     };
-
-    const navigate = useNavigate();
 
     return (
         <VisaoBasica breadcrumbSecao="Gerenciar Escritório:" menuAtivo="/gerenciar-escritorio">

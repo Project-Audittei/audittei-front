@@ -30,8 +30,6 @@ export default function Login() {
     const navigate = useNavigate();
     const { HandleSignIn, VerificaSessao, ChecarUsuarioAnonimo } = useUsuario();
 
-
-    
     useEffect(() => {
         let teste = location.state;
 

@@ -10,6 +10,32 @@ ul.menu {
         a {
             pointer-events: none;
         }
+
+        &:hover {
+            background-color: transparent !important;
+            cursor: default !important;
+
+            a {
+                text-decoration: none !important;
+            }
+        }
+
+        &:has(.menu-item-container-parent) {
+            padding: 0;
+
+            &:hover {
+                .submenu {
+                    display: none !important;
+                }
+
+                background-color: transparent !important;
+                cursor: default !important;
+    
+                a {
+                    text-decoration: none !important;
+                }
+            }    
+        }
     }
 
     .subtitulo {

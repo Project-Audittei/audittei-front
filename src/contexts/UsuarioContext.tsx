@@ -12,6 +12,7 @@ interface UsuarioContextData {
     VerificaSessao: () => Promise<boolean>;
     HandleSignIn: (usuario: UsuarioModel, token: string, isUsuarioAnonimo?:boolean) => boolean;
     HandleLogOut: () => boolean;
+    AtualizarUsuario: (usuario: UsuarioModel) => void;
 }
 
 export const UsuarioContext = createContext({} as UsuarioContextData);
@@ -26,12 +27,18 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const AtualizarUsuario = (usuario: UsuarioModel) => {
+        setUsuario(usuario);
+        localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify( usuario ));
+    };
+
     const VerificaSessao = async () => {
         let usuarioStorage = await localStorage.getItem(LOCALSTORAGE_KEY);
-        let usuarioLogado = usuarioStorage !== null ? JSON.parse(usuarioStorage) as UsuarioModel : null;
+        let usuarioLogado = usuarioStorage ? JSON.parse(usuarioStorage) as UsuarioModel : null;
+
         if(usuarioLogado !== null) {
             if(usuarioLogado.expires_in > Math.floor(Date.now() / 1000)) {
-                setUsuario(usuarioLogado!);
+                setUsuario(usuarioLogado);
                 return true;
             } else {
                 HandleLogOut();
@@ -62,7 +69,7 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
         } else usuarioLogado.nomeSimples = usuarioLogado.nomeCompleto;
 
         setUsuario(usuarioLogado);
-        localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(usuarioLogado));
+        localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify( usuarioLogado ));
         
         return true;
     }
@@ -104,7 +111,7 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
     }
 
     return (
-        <UsuarioContext.Provider value={{ usuario, ChecarUsuarioAnonimo, VerificaSessao, HandleSignIn, HandleLogOut }}>
+        <UsuarioContext.Provider value={{ usuario, ChecarUsuarioAnonimo, VerificaSessao, HandleSignIn, HandleLogOut, AtualizarUsuario }}>
             { children }
         </UsuarioContext.Provider>
     );
