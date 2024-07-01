@@ -24,13 +24,13 @@ export default function PrimeiroAcesso() {
     const [erroTelefone, setErroTelefone] = useState<InputError | null>(null);
     const [isPerfilEmpresa, setIsPerfilEmpresa] = useState(true);
 
-    const { usuario } = useUsuario();
+    const { usuario, AtualizarUsuario } = useUsuario();
 
     useEffect(() => {
-        if(usuario) {
+        if (usuario) {
             setIsPerfilEmpresa(usuario.escritorio !== null);
         }
-    }, []);
+    }, [usuario]);
 
     const HandleBuscarEmpresa = async (entrada: string) => {
         setCnpj(CNPJMascara(entrada));
@@ -95,27 +95,32 @@ export default function PrimeiroAcesso() {
             })
         }
 
+        const escritorio: EscritorioModel = {
+            cnpj: CNPJSanitize(cnpj),
+            razaoSocial: empresa.razaoSocial,
+            telefone: TelefoneSanitize(telefone),
+            email: email,
+            cep: empresa.cep,
+            logradouro: empresa.logadouro,
+            bairro: empresa.bairro,
+            cidade: empresa.cidade,
+            uf: empresa.estado
+        };
+
         await consumirAPI({
             url: APIConfig.criarPerfilEmpresa,
             authToken: usuario!.access_token,
-            dataRequest: {
-                cnpj: CNPJSanitize(cnpj),
-                razaoSocial: empresa.razaoSocial,
-                telefone: TelefoneSanitize(telefone),
-                email: email,
-                cep: empresa.cep,
-                logadouro: empresa.logadouro,
-                bairro: empresa.bairro,
-                cidade: empresa.cidade,
-                estado: empresa.estado
-            },
+            dataRequest: escritorio,
             method: 'post'
         });
 
+        usuario!.escritorio = escritorio;
+
+        AtualizarUsuario(usuario!);
         setCarregandoCNPJ(false);
         setIsPerfilEmpresa(true);
     }
-    
+
     if (!isPerfilEmpresa) return (
         <div id="modal">
             <div className="backdrop"></div>

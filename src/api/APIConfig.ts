@@ -12,7 +12,10 @@ export const APIConfig = {
     // Perfil
     obterPerfilEmpresa: '/escritorio',
     criarPerfilEmpresa: '/escritorio/cadastro',
-    buscarCNPJ: '/escritorio/cnpj'
+    buscarCNPJ: '/escritorio/cnpj',
+
+    // Usuario
+    informacoesUsuario: '/usuario'
 };
 
 // export const APIConfigAudittei = {

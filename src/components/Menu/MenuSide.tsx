@@ -35,7 +35,7 @@ export default function MenuSide({ baseUrl, menu, ativo }: MenuLateralProps) {
             });
 
             return (
-                <li className={`menu-item`}>
+                <li className={`menu-item ${ desabilitado ? "inativo" : "" }`}>
                     <div className={ classContainer + " " + classMenu }>
                         { icon }
                         <span>{ label }</span>
