@@ -7,6 +7,7 @@ import { EscritorioModel } from "../../models/EscritorioModel";
 import { useNavigate } from "react-router-dom";
 import useUsuario from "../../hooks/useUsuario";
 import { TelefoneMascara } from "../../helpers/TelefoneSanitize";
+
 import { CNPJMascara } from "../../helpers/CNPJSanitize";
 
 export default function PaginaVerEscritorio() {
@@ -111,7 +112,6 @@ export default function PaginaVerEscritorio() {
             }
         ]
     };
-
     return (
         <VisaoBasica breadcrumbSecao="Gerenciar Escritório:" menuAtivo="/gerenciar-escritorio">
             <div className="row">

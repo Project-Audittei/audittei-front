@@ -30,7 +30,6 @@ export default function PaginaCrudEscritorio({modo}: PaginaCrudEmpresaProps) {
     }, [modo, params, usuario]);
 
     if(!escritorio) return (<VisaoBasica breadcrumbSecao="Editar Escritório:" menuAtivo="/gerenciar-escritorio/editar"></VisaoBasica>);
-
     return (
         <VisaoBasica breadcrumbSecao="Editar Escritório:" menuAtivo="/gerenciar-escritorio/editar">
             <div className="row">
