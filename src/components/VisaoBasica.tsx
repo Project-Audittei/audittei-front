@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from "react";
-import { Bell, BriefcaseBusiness, Building2, CreditCard, Home, SearchCheck, ShieldHalf } from "lucide-react";
+import { Bell, BriefcaseBusiness, Building2, CreditCard, HandCoins, Home, PackageSearch, SearchCheck, ShieldHalf, Upload, Users } from "lucide-react";
 import Botao from "./Botoes/Botao";
 import Modal from "./Modal/Modal";
 import MenuSide, { MenuLateral } from "./Menu/MenuSide";
@@ -26,6 +26,38 @@ const menu: MenuLateral[] = [
                 label: "Fiscal",
                 link: '#',
                 icon: <SearchCheck size={16} />,
+                desabilitado: true,
+                subitens: [
+                    { label: "Entradas", link: "#" },
+                    { label: "Saídas", link: "#" }
+                ]
+            },
+            {
+                label: "Cenários Tributários",
+                link: '#',
+                icon: <HandCoins size={16} />,
+                desabilitado: true,
+                subitens: [
+                    { label: "Entradas", link: "#" },
+                    { label: "Saídas", link: "#" }
+                ]
+            },
+            {
+                label: "Parceiros",
+                link: '#',
+                icon: <Users size={16} />,
+                desabilitado: true
+            },
+            {
+                label: "Produtos",
+                link: '#',
+                icon: <PackageSearch size={16} />,
+                desabilitado: true
+            },
+            {
+                label: "Importações",
+                link: '#',
+                icon: <Upload size={16} />,
                 desabilitado: true
             }
         ]

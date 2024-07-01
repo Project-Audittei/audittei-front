@@ -16,7 +16,7 @@ interface PaginaCrudEmpresaProps {
 }
 
 export default function PaginaCrudEscritorio({modo}: PaginaCrudEmpresaProps) {
-    const [escritorio, setEscritorio] = useState<EscritorioModel>({} as EscritorioModel);
+    const [escritorio, setEscritorio] = useState<EscritorioModel | null>(null);
 
     const params = useParams();
 
@@ -28,6 +28,8 @@ export default function PaginaCrudEscritorio({modo}: PaginaCrudEmpresaProps) {
         }
 
     }, [modo, params, usuario]);
+
+    if(!escritorio) return (<VisaoBasica breadcrumbSecao="Editar Escritório:" menuAtivo="/gerenciar-escritorio/editar"></VisaoBasica>);
 
     return (
         <VisaoBasica breadcrumbSecao="Editar Escritório:" menuAtivo="/gerenciar-escritorio/editar">

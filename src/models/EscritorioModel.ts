@@ -1,11 +1,10 @@
-import { EntidadeBasicaModel } from "./EntidadeBasicaModel";
-
-export interface EscritorioModel extends EntidadeBasicaModel {
+export interface EscritorioModel {
+    guid?: string;
     cadastro?: string;
     cnpj: string;
     razaoSocial: string;
-    nome: string;
-    responsavel: string;
+    nome?: string;
+    responsavel?: string;
     email: string;
     telefone: string;
 
@@ -13,8 +12,8 @@ export interface EscritorioModel extends EntidadeBasicaModel {
     logradouro: string;
     bairro: string;
     cidade: string;
-    numero: string;
-    complemento: string;
+    numero?: string;
+    complemento?: string;
     uf: string;
 }
 
