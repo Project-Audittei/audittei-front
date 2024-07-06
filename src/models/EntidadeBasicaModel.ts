@@ -1,3 +1,3 @@
 export interface EntidadeBasicaModel {
-    id: number;
+    guid: string;
 }

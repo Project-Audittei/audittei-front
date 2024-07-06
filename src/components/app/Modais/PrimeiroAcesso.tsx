@@ -58,8 +58,8 @@ export default function PrimeiroAcesso() {
                     bairro: '',
                     cep: '',
                     cidade: '',
-                    estado: '',
-                    logadouro: '',
+                    uf: '',
+                    logradouro: '',
                     razaoSocial: ''
                 } as CNPJModel);
             }
@@ -101,10 +101,10 @@ export default function PrimeiroAcesso() {
             telefone: TelefoneSanitize(telefone),
             email: email,
             cep: empresa.cep,
-            logradouro: empresa.logadouro,
+            logradouro: empresa.logradouro,
             bairro: empresa.bairro,
             cidade: empresa.cidade,
-            uf: empresa.estado
+            uf: empresa.uf
         };
 
         await consumirAPI({
@@ -201,7 +201,7 @@ export default function PrimeiroAcesso() {
                                         <Input
                                             type="text"
                                             label="Logradouro"
-                                            value={empresa.logadouro}
+                                            value={empresa.logradouro}
                                             disabled
                                         />
                                     </div>
