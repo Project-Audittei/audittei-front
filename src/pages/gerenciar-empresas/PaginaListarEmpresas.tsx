@@ -13,6 +13,7 @@ import { consumirAPI } from "../../hooks/consumirAPI";
 import { APIConfig } from "../../api/APIConfig";
 import useUsuario from "../../hooks/useUsuario";
 import { useEmpresa } from "../../services/EmpresaService";
+import Loader from "../../components/Loader/Loader";
 
 export default function PaginaListarEmpresas() {
 
@@ -76,9 +77,7 @@ export default function PaginaListarEmpresas() {
                     />
                 </div>
             </div>
-            <div className="row">
-                <span className={"loader" }></span>
-            </div>
+            <Loader />
         </VisaoBasica>
     );
 

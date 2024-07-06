@@ -13,6 +13,8 @@ import InputCNPJ from "../../components/Form/InputCNPJ";
 import { CNPJSanitize } from "../../helpers/CNPJSanitize";
 import { useEmpresa } from "../../services/EmpresaService";
 import { TelefoneMascara, TelefoneSanitize } from "../../helpers/TelefoneSanitize";
+import Loader from "../../components/Loader/Loader";
+import { ufs } from "../../helpers/UFLista";
 
 interface PaginaCrudEmpresaProps {
     modo: "novo" | "edicao";
@@ -26,7 +28,12 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
     const { modalOpen } = useModal();
     const params = useParams();
 
-    const { ObterInformacoesCNPJ, CadastrarEmpresa, ObterEmpresaPorGUID, AtualizarEmpresa } = useEmpresa();
+    const { 
+        ObterInformacoesCNPJ, 
+        CadastrarEmpresa, 
+        ObterEmpresaPorGUID, 
+        AtualizarEmpresa 
+    } = useEmpresa();
 
     useEffect(() => {
         if(params.id) {
@@ -37,7 +44,22 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
 
         if(modo === 'novo') {
             setModoEdicao(false);
-            setEmpresa({} as IEmpresaCadastro);
+            setEmpresa({
+                guid: "",
+                cnpj: "",
+                nomeFantasia: "",
+                responsavelLegal: "",
+                email: "",
+                telefone: "",
+                razaoSocial: "",
+                cep: "",
+                logradouro: "",
+                bairro: "",
+                cidade: "",
+                numero: "",
+                complemento: "",
+                uf: ""
+            });
         }
 
     }, [modo, params]);
@@ -52,40 +74,66 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
         if(!modoEdicao) {
             return await CadastrarEmpresa(empresa);
         } else {
-            const entidade: IEmpresaAtualizar = {
+            return await AtualizarEmpresa({
                 guid: empresa.guid!,
                 complemento: empresa.complemento,
                 email: empresa.email,
                 nomeFantasia: empresa.nomeFantasia,
                 responsavelLegal: empresa.responsavelLegal,
                 telefone: empresa.telefone
-            };
-            return await AtualizarEmpresa(entidade);
+            });
         }
     }
 
-    async function HandleCNPJ(e: any) {
-        setEmpresa({...empresa, cnpj: e.target.value });
-        let entrada = e.target.value;
-        if (CNPJSanitize(entrada).split('').length === 14) {
-            setCarregando(true);
-            entrada = CNPJSanitize(entrada);
-            ObterInformacoesCNPJ(entrada)
-                .then(data => {
-                    setEmpresa( tmp => ({
-                        ...tmp,
-                        razaoSocial: data.razaoSocial,
-                        logradouro: data.logradouro,
-                        numero: data.numero,
-                        cep: data.cep,
-                        bairro: data.bairro,
-                        cidade: data.cidade,
-                        uf: data.uf,
-                    }));
-                })
-                .finally(() => setCarregando(false));
-        }
+    async function HandleCNPJ(cnpj: string) {
+        setEmpresa({...empresa, cnpj: cnpj });
+        setCarregando(true);
+        ObterInformacoesCNPJ(cnpj)
+            .then(data => {
+                setEmpresa( tmp => ({
+                    ...tmp,
+                    razaoSocial: data.razaoSocial,
+                    logradouro: data.logradouro,
+                    numero: data.numero,
+                    cep: data.cep,
+                    bairro: data.bairro,
+                    cidade: data.cidade,
+                    uf: data.uf,
+                }));
+            })
+            .finally(() => setCarregando(false));
     }
+
+    if(empresa.guid === undefined && modoEdicao) return (
+        <VisaoBasica breadcrumbSecao="Gerenciar Empresas:" menuAtivo="/gerenciar-empresas/nova">
+            <div className="row">
+                <div className="col">
+                    <div className="row">
+                        <h3>Editando</h3>
+                    </div>
+                </div>
+                <div className="col col-align-center align-right">
+                    { modoEdicao ? '' : <Botao
+                        tamanho="ExtraSmall"
+                        estilo="Primary"
+                        icone={<Plus size={16} />}
+                        label="Adicionar muitas Empresas de uma só vez"
+                        onClick={HandleAbrirImportadorPlanilha}
+                    /> }
+                </div>
+            </div>
+            <hr />
+            <div className="card mt-3">
+                <div className="card-body">
+                    <div className="row row-align-center">
+                        <div className="col-6">
+                            <Loader />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </VisaoBasica>
+    );
 
     return (
         <VisaoBasica breadcrumbSecao="Gerenciar Empresas:" menuAtivo="/gerenciar-empresas/nova">
@@ -228,10 +276,9 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                         onChange={(e) => setEmpresa({...empresa, complemento: e.target.value })}
                                     />
                                     <Selecao
+                                        value={empresa.uf}
                                         className="w-50"
-                                        opcoes={[
-                                            { id: 1, name: "UF" }
-                                        ]}
+                                        opcoes={ufs}
                                         disabled
                                     />
                                 </div>

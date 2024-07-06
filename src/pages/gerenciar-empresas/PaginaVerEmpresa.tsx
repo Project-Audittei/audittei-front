@@ -1,6 +1,6 @@
 import VisaoBasica from "../../components/VisaoBasica";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { EmpresaModel } from "../../models/EmpresaModel";
 import { Printer, Pencil, CircleX } from "lucide-react";
 import Botao from "../../components/Botoes/Botao";
@@ -9,12 +9,14 @@ import AssociarUsuarios from "../../components/app/Inputs/AssociarUsuarios";
 import { UsuarioModel } from "../../models/UsuarioModel";
 import { useEmpresa } from "../../services/EmpresaService";
 import FormularioVerEmpresa from "../../components/app/Forms/Empresa/FormularioVerEmpresa";
+import Loader from "../../components/Loader/Loader";
 
 export default function PaginaVerEmpresa() {
 
     const [empresa, setEmpresa] = useState<EmpresaModel>();
     const params = useParams();
     const { ObterEmpresaPorGUID } = useEmpresa();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (params.id) {
@@ -23,8 +25,12 @@ export default function PaginaVerEmpresa() {
         }
     }, [params]);
     
-    if (!empresa) {
-        return <VisaoBasica breadcrumbSecao="Gerenciar Empresas:" menuAtivo="/gerenciar-empresas"></VisaoBasica>
+    if(!empresa) {
+        return (
+            <VisaoBasica breadcrumbSecao="Gerenciar Empresas:" menuAtivo="/gerenciar-empresas">
+                <Loader/>
+            </VisaoBasica>
+        );
     }
 
     return (
@@ -49,6 +55,7 @@ export default function PaginaVerEmpresa() {
                             estilo="Secondary"
                             icone={<Pencil size={16} />}
                             label="Editar"
+                            onClick={ e => navigate('/gerenciar-empresas/editar/' + empresa.guid)}
                         />
                         <Botao
                             className="ml-3"
