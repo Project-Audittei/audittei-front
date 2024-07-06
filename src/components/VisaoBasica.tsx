@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Bell, BriefcaseBusiness, Building2, CreditCard, HandCoins, Home, PackageSearch, SearchCheck, ShieldHalf, Upload, Users } from "lucide-react";
 import Botao from "./Botoes/Botao";
 import Modal from "./Modal/Modal";
@@ -103,14 +103,18 @@ export default function VisaoBasica({ children, menuAtivo, breadcrumbSecao }: Vi
     const navigate = useNavigate();
     const { VerificaSessao } = useUsuario();
 
+    const [sessaoVerificada, setSessaoVerificada] = useState(false);
+
     useEffect(() => {
         VerificaSessao()
             .then((result) => {
                 console.log(result);
                 return !result ? navigate('/auth/login') : '';
-            });
+            }).finally(() => setSessaoVerificada(true));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    if(!sessaoVerificada) return <></>;
 
     return (
         <div className="app-container">
