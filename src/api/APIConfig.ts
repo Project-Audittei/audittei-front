@@ -1,7 +1,7 @@
 export const APIConfig = {
     // apontando para a API de Homologação
-    baseUrl: "https://auditteiapi.ofernandoavila.com/api",
-    // baseUrl: "http://localhost:8000/api",
+    // baseUrl: "https://auditteiapi.ofernandoavila.com/api",
+    baseUrl: "http://localhost:8000/api",
 
     // Autenticação
     cadastro: '/auth/cadastro',
@@ -9,10 +9,17 @@ export const APIConfig = {
     confirmarConta: '/auth/confirmar-conta',
     esqueciSenha: '/auth/esqueci-senha',
 
-    // Perfil
+    // Escritorio
     obterPerfilEmpresa: '/escritorio',
     criarPerfilEmpresa: '/escritorio/cadastro',
     buscarCNPJ: '/escritorio/cnpj',
+    obterEmpresas: '/escritorio/empresas',
+    
+    // Empresa
+    obterEmpresa: '/empresa',
+    cadastrarEmpresa: '/empresa/cadastro',
+    atualizarEmpresa: '/empresa/atualizar',
+
 
     // Usuario
     informacoesUsuario: '/usuario'

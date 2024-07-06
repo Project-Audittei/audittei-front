@@ -1,8 +1,9 @@
 export interface CNPJModel {
     razaoSocial: string;
     cep: string;
-    logadouro: string;
+    logradouro: string;
     bairro: string;
+    numero: string;
     cidade: string;
-    estado: string;
+    uf: string;
 }

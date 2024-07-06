@@ -1,3 +1,4 @@
+import { EntidadeBasicaModel } from "./EntidadeBasicaModel";
 import { EscritorioModel } from "./EscritorioModel";
 
 export interface NovoUsuarioModel {
@@ -7,8 +8,7 @@ export interface NovoUsuarioModel {
     senha: string;
 }
 
-export interface UsuarioModel {
-    userId: number;
+export interface UsuarioModel extends EntidadeBasicaModel {
     email: string;
     telefone: string;
     nomeCompleto: string;

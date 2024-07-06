@@ -8,40 +8,36 @@ import { useNavigate } from "react-router-dom";
 import Tabela from "../../components/Tabela/Tabela";
 import Paginacao from "../../components/Paginacao/Paginacao";
 import { EmpresaModel } from "../../models/EmpresaModel";
-
-const data: EmpresaModel[] = [
-    {
-        id: 1,
-        cnpj: 37764102000193,
-        razao_social: "MicroPack LTDA",
-        uf: "SP",
-        cadastro: "14/05/24",
-        bairro: "Perdizes",
-        cep: "31837-033",
-        cnae: 0,
-        email: "joao@micropack.com.br",
-        industria: "Indústria",
-        logradouro: "Rua ABC",
-        municipio: "São Paulo",
-        nome_fantasia: "MicroPack",
-        numero: "123",
-        regimeTributario: "Simples Nacional",
-        responsavel: "João Silva",
-        complemento: "Frente"
-    },
-];
+import { useEffect, useState } from "react";
+import { consumirAPI } from "../../hooks/consumirAPI";
+import { APIConfig } from "../../api/APIConfig";
+import useUsuario from "../../hooks/useUsuario";
+import { useEmpresa } from "../../services/EmpresaService";
 
 export default function PaginaListarEmpresas() {
 
+    const { usuario } = useUsuario();
+    const { ObterEmpresas } = useEmpresa();
     const navigate = useNavigate();
 
+    const [ carregando, setCarregando ] = useState(false);
+
+    useEffect(() => {
+        setCarregando(true);
+        ObterEmpresas()
+            .then( dados => setEmpresas(dados) )
+            .finally(() => setCarregando(false));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     const HandleCriarNovaEmpresa = () => navigate('/gerenciar-empresas/nova');
-    const HandleEditarEmpresa = (id: number) => navigate('/gerenciar-empresas/editar/' + id);
-    const HandleVerNovaEmpresa = (id: number) => navigate('/gerenciar-empresas/visualizar/' + id);
+    const HandleEditarEmpresa = (id: string) => navigate('/gerenciar-empresas/editar/' + id);
+    const HandleVerNovaEmpresa = (id: string) => navigate('/gerenciar-empresas/visualizar/' + id);
 
-    return (
+    const [empresas, setEmpresas] = useState<EmpresaModel[]>([]);
+
+    if(carregando) return (
         <VisaoBasica menuAtivo="/gerenciar-empresas">
-
             <div className="row">
                 <div className="col">
                     <div className="row">
@@ -80,7 +76,53 @@ export default function PaginaListarEmpresas() {
                     />
                 </div>
             </div>
-            {data.length === 0 ?
+            <div className="row">
+                <span className={"loader" }></span>
+            </div>
+        </VisaoBasica>
+    );
+
+    return (
+        <VisaoBasica menuAtivo="/gerenciar-empresas">
+            <div className="row">
+                <div className="col">
+                    <div className="row">
+                        <h3>💼 Gerenciamento de empresas</h3>
+                    </div>
+                    <div className="row">
+                        <p className="subtitulo">Aqui você pode gerenciar, editar, criar e excluir seus clientes.</p>
+                    </div>
+                </div>
+                <div className="col col-align-center align-right">
+                    <Botao
+                        tamanho="ExtraSmall"
+                        estilo="Primary"
+                        icone={<Plus size={16} />}
+                        label="Adicionar nova Empresa"
+                        onClick={HandleCriarNovaEmpresa}
+                    />
+                </div>
+            </div>
+            <hr />
+            <div className="row filtro">
+                <div className="col-4">
+                    <div className="row">
+                        <div className="subtitulo">Pesquisar</div>
+                        <Input
+                            type="text"
+                            label="Digite o nome ou CNPJ da Empresa"
+                        />
+                    </div>
+                </div>
+                <div className="col-6"></div>
+                <div className="col-2">
+                    <Selecao
+                        label="Mostrar 10 resultados"
+                        opcoes={[{ id: 1, name: "Mostrar 10 resultados" }]}
+                    />
+                </div>
+            </div>
+            { empresas.length === 0 ?
                 <>
                     <Alerta
                         titulo="Nenhuma Empresa Cadastrada"
@@ -99,8 +141,8 @@ export default function PaginaListarEmpresas() {
                     <div className="mt-3">
                         <Tabela<EmpresaModel> 
                             campos={["CNPJ", "Razão Social", "UF", "Cadastro"]} 
-                            chaves={['cnpj', 'razao_social', 'uf', 'cadastro']} 
-                            itens={data} 
+                            chaves={['cnpj', 'razaoSocial', 'uf', 'created_at']} 
+                            itens={empresas} 
                             eventos={{
                                 onEditar: HandleEditarEmpresa,
                                 onVisualizar: HandleVerNovaEmpresa
