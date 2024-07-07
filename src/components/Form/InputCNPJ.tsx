@@ -11,7 +11,7 @@ interface InputCNPJProps extends InputPropsType {
     disabled?: boolean
 }
 
-export default function InputCNPJ({ value, setValue, isCarregando, disabled = false }: InputCNPJProps) {
+export default function InputCNPJ({ value, setValue, isCarregando, mensagensValidacao, estado, disabled = false }: InputCNPJProps) {
 
     const [cnpj, setCNPJ] = useState<string>('');
     const [cnpjErro, setCNPJErro] = useState<InputError | null>(null);
@@ -19,6 +19,15 @@ export default function InputCNPJ({ value, setValue, isCarregando, disabled = fa
     useEffect(() => {
         setCNPJ(value);
     }, [value]);
+
+    useEffect(() => {
+        if(estado && mensagensValidacao) {
+            setCNPJErro({
+                estado: estado,
+                mensagem: mensagensValidacao.erro ?? ''
+            });
+        }
+    }, [estado, mensagensValidacao]);
 
     const HandleOnChange = (e: any) => {
         let entrada = e.target.value;
@@ -43,8 +52,9 @@ export default function InputCNPJ({ value, setValue, isCarregando, disabled = fa
 
     return (
 
-        <div className="col-6 col-inline">
+        <>
             <Input
+                max={14}
                 type="text"
                 label="CNPJ"
                 value={ CNPJMascara(cnpj) ?? ''}
@@ -56,6 +66,6 @@ export default function InputCNPJ({ value, setValue, isCarregando, disabled = fa
                 disabled={disabled}
             />
             { isCarregando ? <span className="loader"></span> : ''}
-        </div>
+        </>
     );
 }

@@ -4,7 +4,7 @@ import MensagemValidacao, { MensagensValidacao } from "./MensagemValidacao";
 import { EstadosForcaType } from "../../@types/EstadoForca";
 
 export interface InputPropsType extends React.InputHTMLAttributes<HTMLInputElement> {
-    type: React.HTMLInputTypeAttribute;
+    type?: React.HTMLInputTypeAttribute;
     icone?: JSX.Element;
     label?: string;
     estado?: EstadosForcaType;

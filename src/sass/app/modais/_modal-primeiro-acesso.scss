@@ -2,4 +2,23 @@
     .modal-content {
         padding: 39px 45px !important;
     }
+
+    .modal {
+        position: relative !important;
+        top: inherit !important;
+        left: inherit !important;
+        transform: inherit !important;
+    }
+
+    .modal-container {
+        padding: 40px 30px;
+        overflow-y: auto;
+        height: 100%;
+    }
+
+    .modal-header {
+        img {
+            width: 100%;
+        }
+    }
 }

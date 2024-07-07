@@ -14,6 +14,8 @@ import { useEmpresa } from "../../services/EmpresaService";
 import { TelefoneMascara, TelefoneSanitize } from "../../helpers/TelefoneSanitize";
 import Loader from "../../components/Loader/Loader";
 import { ufs } from "../../helpers/UFLista";
+import { InputError } from "../../@types/InputErro";
+import { ValidarCampos } from "../../helpers/ValidadorCampo";
 
 interface PaginaCrudEmpresaProps {
     modo: "novo" | "edicao";
@@ -23,6 +25,12 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
     const [modoEdicao, setModoEdicao] = useState(false);
     const [empresa, setEmpresa] = useState<IEmpresaCadastro>({} as IEmpresaCadastro);
     const [carregando, setCarregando] = useState<boolean>(false);
+
+    const [erroCNPJ, setErroCNPJ] = useState<InputError | null>(null);
+    const [erroResponsavelLegal, setErroResponsavelLegal] = useState<InputError | null>(null);
+    const [erroNomeFantasia, setErroNomeFantasia] = useState<InputError | null>(null);
+    const [erroEmail, setErroEmail] = useState<InputError | null>(null);
+    const [erroTelefone, setErroTelefone] = useState<InputError | null>(null);
 
     const { modalOpen } = useModal();
     const params = useParams();
@@ -69,6 +77,38 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
 
     const HandleCadastrarEmpresa = async (e: any) => {
         e.preventDefault();
+
+        setCarregando(true);
+
+        if (!ValidarCampos([
+            {
+                campo: empresa.cnpj,
+                regras: [{ regra: "not-null" }, { regra: "not-empty" }],
+                setError: setErroCNPJ
+            },
+            {
+                campo: empresa.responsavelLegal,
+                regras: [{ regra: "not-null" }, { regra: "not-empty" }],
+                setError: setErroResponsavelLegal
+            },
+            {
+                campo: empresa.nomeFantasia,
+                regras: [{ regra: "not-null" }, { regra: "not-empty" }],
+                setError: setErroNomeFantasia
+            },
+            {
+                campo: empresa.email,
+                regras: [{ regra: "not-null" }, { regra: "not-empty" }],
+                setError: setErroEmail
+            },
+            {
+                campo: empresa.telefone,
+                regras: [{ regra: "not-null" }, { regra: "not-empty" }],
+                setError: setErroTelefone
+            }
+        ])) {
+            return setCarregando(false);
+        }
 
         if(!modoEdicao) {
             return await CadastrarEmpresa(empresa);
@@ -167,6 +207,10 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                         setValue={(e) => HandleCNPJ(e)}
                                         isCarregando={carregando}
                                         disabled={ modoEdicao }
+                                        estado={ erroCNPJ?.estado ?? 'padrao' }
+                                        mensagensValidacao={{
+                                            erro: erroCNPJ?.mensagem
+                                        }}
                                     />
                                     <Input
                                         type="text"
@@ -180,24 +224,40 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                         label="Nome Fantasia"
                                         value={empresa.nomeFantasia}
                                         onChange={(e) => setEmpresa({...empresa, nomeFantasia: e.target.value })}
+                                        estado={ erroNomeFantasia?.estado ?? 'padrao' }
+                                        mensagensValidacao={{
+                                            erro: erroNomeFantasia?.mensagem
+                                        }}
                                     />
                                     <Input
                                         type="text"
                                         label="Responsável Legal"
                                         value={empresa.responsavelLegal}
                                         onChange={(e) => setEmpresa({...empresa, responsavelLegal: e.target.value })}
+                                        estado={ erroResponsavelLegal?.estado ?? 'padrao' }
+                                        mensagensValidacao={{
+                                            erro: erroResponsavelLegal?.mensagem
+                                        }}
                                     />
                                     <Input
                                         type="text"
                                         label="E-mail"
                                         value={empresa.email}
                                         onChange={(e) => setEmpresa({...empresa, email: e.target.value })}
+                                        estado={ erroEmail?.estado ?? 'padrao' }
+                                        mensagensValidacao={{
+                                            erro: erroEmail?.mensagem
+                                        }}
                                     />
                                     <Input
                                         type="text"
                                         label="Telefone"
                                         value={ TelefoneMascara(empresa.telefone ?? '') }
                                         onChange={(e) => setEmpresa({...empresa, telefone: TelefoneSanitize(e.target.value) })}
+                                        estado={ erroTelefone?.estado ?? 'padrao' }
+                                        mensagensValidacao={{
+                                            erro: erroTelefone?.mensagem
+                                        }}
                                     />
                                 </div>
                                 {/* <div className="form-element-group">
@@ -290,6 +350,8 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                         icone={<ArrowRight size={24} />}
                                         iconePosicao="direita"
                                         onClick={HandleCadastrarEmpresa}
+                                        isCarregando={ carregando }
+                                        disabled={ carregando }
                                     />
                                 </div>
                             </FormContainer>
