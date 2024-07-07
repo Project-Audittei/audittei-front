@@ -137,7 +137,7 @@ export default function Cadastro() {
             </div>
             <AuthContainer>
                 <h3>Teste grátis por 15 dias!</h3>
-                <span className="subtitulo">Não será necessário fornecer dados de cartão de crédito.</span>
+                {/* <span className="subtitulo">Não será necessário fornecer dados de cartão de crédito.</span> */}
                 <FormContainer>
                     {
                         feedbackCadastro ? 
@@ -164,7 +164,7 @@ export default function Cadastro() {
                         />
                         <Input
                             type="text"
-                            label="Email profissional"
+                            label="Email"
                             value={email}
                             onChange={(e) => setEmail(e.currentTarget.value)}
                             estado={ emailError ? emailError.estado : 'padrao' }
@@ -186,7 +186,7 @@ export default function Cadastro() {
                     <div className="form-element-group">
                         <Input
                             type="password"
-                            label="Insira sua senha de acesso"
+                            label="Senha"
                             value={senha}
                             onChange={(e) => setSenha(e.currentTarget.value)}
                             estado={ senhaError ? senhaError.estado : 'padrao' }
@@ -194,7 +194,7 @@ export default function Cadastro() {
                         />
                         <Input
                             type="password"
-                            label="Repita a sua senha de acesso"
+                            label="Confirmar senha"
                             value={confirmarSenha}
                             onChange={(e) => VerificaSenha(e.currentTarget.value)}
                             estado={ confirmarSenhaError ? confirmarSenhaError.estado : 'padrao' }
@@ -207,7 +207,7 @@ export default function Cadastro() {
                         <Botao
                             estilo="Primary"
                             tamanho="Normal"
-                            label="Testar grátis"
+                            label="Iniciar teste"
                             icone={<ArrowRight size={24} />}
                             onClick={(e) => HandleCadastrarUsuario(e)}
                             iconePosicao="direita"

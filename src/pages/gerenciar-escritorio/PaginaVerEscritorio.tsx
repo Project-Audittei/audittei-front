@@ -41,12 +41,6 @@ export default function PaginaVerEscritorio() {
                         setValue: e => setEscritorio({ ...escritorio, razaoSocial: e.currentTarget.value })
                     },
                     {
-                        label: "Nome",
-                        value: escritorio.nome,
-                        tipo: "text",
-                        setValue: e => setEscritorio({ ...escritorio, nome: e.currentTarget.value })
-                    },
-                    {
                         label: "E-mail do Escritório",
                         value: escritorio.email,
                         tipo: "text",
@@ -98,7 +92,7 @@ export default function PaginaVerEscritorio() {
                     },
                     {
                         label: "Complemento",
-                        value: escritorio.complemento,
+                        value: escritorio.complemento ?? '-',
                         tipo: "text",
                         setValue: e => setEscritorio({ ...escritorio, complemento: e.currentTarget.value })
                     },
