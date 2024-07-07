@@ -6,7 +6,6 @@ import AuthContainer from "../../components/app/AuthContainer";
 import Container from "../../components/app/Container";
 import Logo from "../../components/app/Logo";
 import { useEffect, useState } from "react";
-import Checkbox from "../../components/Form/Checkbox";
 import { useLocation, useNavigate } from "react-router-dom";
 import { consumirAPI } from "../../hooks/consumirAPI";
 import Notificacao from "../../components/Notificacao/Notificacao";
@@ -146,8 +145,8 @@ export default function Login() {
                     : '' }
                     <div className="form-element-group">
                         <Input
-                            type="text"
-                            label="E-mail profissional"
+                            type="email"
+                            label="E-mail"
                             value={email}
                             onChange={(e) => setEmail(e.currentTarget.value)}
                             estado={ emailError?.estado ?? 'padrao' }
@@ -157,7 +156,7 @@ export default function Login() {
                         />
                         <Input
                             type="password"
-                            label="Senha de acesso"
+                            label="Senha"
                             value={senha}
                             onChange={(e) => setSenha(e.currentTarget.value)}
                             estado={ senhaError?.estado ?? 'padrao' }
@@ -165,9 +164,9 @@ export default function Login() {
                                 erro: senhaError?.mensagem
                             } ?? ''}
                         />
-                        <Checkbox
+                        {/* <Checkbox
                             label="Salvar meus dados para entrar automaticamente da próxima vez."
-                        />
+                        /> */}
                     </div>
                     <div className="form-element-group-button">
                         <Botao
