@@ -2,7 +2,6 @@ import { CNPJMascara } from "../../../../helpers/CNPJSanitize";
 import { EmpresaModel } from "../../../../models/EmpresaModel";
 import FormContainer from "../../../Form/FormContainer";
 import FormField from "../../../Form/FormField";
-import FormViewer from "../../../Form/FormViewer";
 
 type FormularioVerEmpresaProps = {
     empresa: EmpresaModel;
