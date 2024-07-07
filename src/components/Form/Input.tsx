@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import MensagemValidacao, { MensagensValidacao } from "./MensagemValidacao";
 import { EstadosForcaType } from "../../@types/EstadoForca";
 
-interface InputPropsType extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputPropsType extends React.InputHTMLAttributes<HTMLInputElement> {
     type: React.HTMLInputTypeAttribute;
     icone?: JSX.Element;
     label?: string;

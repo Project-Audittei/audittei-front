@@ -82,7 +82,7 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
     const ChecarUsuarioAnonimo = (login: string, senha: string) => {
         if(login === 'anonimo.usuario' && senha === 'Audittei2024!') {
             const usuario = {
-                userId: 38,
+                guid: "5B3E08B0-1E3B-5C20-BEC2-84EE98415952",
                 email: "anonimo.usuairo@audittei.com",
                 telefone: "21979333142",
                 nomeCompleto: "Homologação Da Silva",

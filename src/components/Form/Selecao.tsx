@@ -12,7 +12,7 @@ interface SelecaoPropsType extends React.InputHTMLAttributes<HTMLSelectElement> 
 }
 
 export type SelectOptionsType = {
-    id: number;
+    id: number | string;
     name: string;
 }
 

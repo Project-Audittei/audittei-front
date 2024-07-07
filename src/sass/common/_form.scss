@@ -44,6 +44,7 @@ form.form-container {
 }
 
 .form-viewer {
+    flex-direction: column;
     .card-body, .form-container {
         align-items: flex-start;
         text-align: left;

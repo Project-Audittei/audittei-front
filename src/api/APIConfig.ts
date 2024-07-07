@@ -9,10 +9,17 @@ export const APIConfig = {
     confirmarConta: '/auth/confirmar-conta',
     esqueciSenha: '/auth/esqueci-senha',
 
-    // Perfil
+    // Escritorio
     obterPerfilEmpresa: '/escritorio',
     criarPerfilEmpresa: '/escritorio/cadastro',
     buscarCNPJ: '/escritorio/cnpj',
+    obterEmpresas: '/escritorio/empresas',
+    
+    // Empresa
+    obterEmpresa: '/empresa',
+    cadastrarEmpresa: '/empresa/cadastro',
+    atualizarEmpresa: '/empresa/atualizar',
+
 
     // Usuario
     informacoesUsuario: '/usuario'

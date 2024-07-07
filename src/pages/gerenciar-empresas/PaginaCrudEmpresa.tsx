@@ -8,29 +8,12 @@ import Selecao from "../../components/Form/Selecao";
 import useModal from "../../hooks/useModal";
 import ImportarPlanilhaEmpresas from "../../components/app/Modais/ImportarPlanilhaEmpresas";
 import { useParams } from "react-router-dom";
-import { EmpresaModel } from "../../models/EmpresaModel";
-
-const data: EmpresaModel[] = [
-    {
-        id: 1,
-        cnpj: 37764102000193,
-        razao_social: "MicroPack LTDA",
-        uf: "SP",
-        cadastro: "14/05/24",
-        bairro: "Perdizes",
-        cep: "31837-033",
-        cnae: 0,
-        email: "joao@micropack.com.br",
-        industria: "Indústria",
-        logradouro: "Rua ABC",
-        municipio: "São Paulo",
-        nome_fantasia: "MicroPack",
-        numero: "123",
-        regimeTributario: "Simples Nacional",
-        responsavel: "João Silva",
-        complemento: "Frente"
-    },
-];
+import { IEmpresaCadastro } from "../../models/EmpresaModel";
+import InputCNPJ from "../../components/Form/InputCNPJ";
+import { useEmpresa } from "../../services/EmpresaService";
+import { TelefoneMascara, TelefoneSanitize } from "../../helpers/TelefoneSanitize";
+import Loader from "../../components/Loader/Loader";
+import { ufs } from "../../helpers/UFLista";
 
 interface PaginaCrudEmpresaProps {
     modo: "novo" | "edicao";
@@ -38,34 +21,125 @@ interface PaginaCrudEmpresaProps {
 
 export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
     const [modoEdicao, setModoEdicao] = useState(false);
-    const [empresa, setEmpresa] = useState<EmpresaModel>({} as EmpresaModel);
+    const [empresa, setEmpresa] = useState<IEmpresaCadastro>({} as IEmpresaCadastro);
+    const [carregando, setCarregando] = useState<boolean>(false);
 
     const { modalOpen } = useModal();
     const params = useParams();
 
+    const { 
+        ObterInformacoesCNPJ, 
+        CadastrarEmpresa, 
+        ObterEmpresaPorGUID, 
+        AtualizarEmpresa 
+    } = useEmpresa();
+
     useEffect(() => {
         if(params.id) {
-            setEmpresa(data[parseInt(params.id) - 1] as EmpresaModel)
+            ObterEmpresaPorGUID(params.id)
+                .then( dados => setEmpresa(dados! as IEmpresaCadastro) );
             setModoEdicao(true);
         }
 
         if(modo === 'novo') {
             setModoEdicao(false);
-            setEmpresa({} as EmpresaModel);
+            setEmpresa({
+                guid: "",
+                cnpj: "",
+                nomeFantasia: "",
+                responsavelLegal: "",
+                email: "",
+                telefone: "",
+                razaoSocial: "",
+                cep: "",
+                logradouro: "",
+                bairro: "",
+                cidade: "",
+                numero: "",
+                complemento: "",
+                uf: ""
+            });
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [modo, params]);
 
     const HandleAbrirImportadorPlanilha = () => {
         modalOpen(<ImportarPlanilhaEmpresas />, true);
     }
 
+    const HandleCadastrarEmpresa = async (e: any) => {
+        e.preventDefault();
+
+        if(!modoEdicao) {
+            return await CadastrarEmpresa(empresa);
+        } else {
+            return await AtualizarEmpresa({
+                guid: empresa.guid!,
+                complemento: empresa.complemento,
+                email: empresa.email,
+                nomeFantasia: empresa.nomeFantasia,
+                responsavelLegal: empresa.responsavelLegal,
+                telefone: empresa.telefone
+            });
+        }
+    }
+
+    async function HandleCNPJ(cnpj: string) {
+        setEmpresa({...empresa, cnpj: cnpj });
+        setCarregando(true);
+        ObterInformacoesCNPJ(cnpj)
+            .then(data => {
+                setEmpresa( tmp => ({
+                    ...tmp,
+                    razaoSocial: data.razaoSocial,
+                    logradouro: data.logradouro,
+                    numero: data.numero,
+                    cep: data.cep,
+                    bairro: data.bairro,
+                    cidade: data.cidade,
+                    uf: data.uf,
+                }));
+            })
+            .finally(() => setCarregando(false));
+    }
+
+    if(empresa.guid === undefined && modoEdicao) return (
+        <VisaoBasica breadcrumbSecao="Gerenciar Empresas:" menuAtivo="/gerenciar-empresas/nova">
+            <div className="row">
+                <div className="col">
+                    <div className="row">
+                        <h3>Editando</h3>
+                    </div>
+                </div>
+                <div className="col col-align-center align-right">
+                    { modoEdicao ? '' : <Botao
+                        tamanho="ExtraSmall"
+                        estilo="Primary"
+                        icone={<Plus size={16} />}
+                        label="Adicionar muitas Empresas de uma só vez"
+                        onClick={HandleAbrirImportadorPlanilha}
+                    /> }
+                </div>
+            </div>
+            <hr />
+            <div className="card mt-3">
+                <div className="card-body">
+                    <div className="row row-align-center">
+                        <div className="col-6">
+                            <Loader />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </VisaoBasica>
+    );
+
     return (
         <VisaoBasica breadcrumbSecao="Gerenciar Empresas:" menuAtivo="/gerenciar-empresas/nova">
             <div className="row">
                 <div className="col">
                     <div className="row">
-                        <h3>{ modoEdicao ? `Editando ${empresa.nome_fantasia}` : "➕ Adicionar nova Empresa" }</h3>
+                        <h3>{ modoEdicao ? `Editando ${empresa.nomeFantasia}` : "➕ Adicionar nova Empresa" }</h3>
                     </div>
                 </div>
                 <div className="col col-align-center align-right">
@@ -87,29 +161,31 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                 <div className="form-element-group">
                                     <h5>Dados cadastrais</h5>
                                     <hr />
-                                    <Input
-                                        type="number"
-                                        label="CNPJ"
-                                        className="w-50"
-                                        disabled={modoEdicao}
+                                    <InputCNPJ
+                                        type="text"
+                                        value={ empresa.cnpj }
+                                        setValue={(e) => HandleCNPJ(e)}
+                                        isCarregando={carregando}
+                                        disabled={ modoEdicao }
                                     />
                                     <Input
                                         type="text"
                                         label="Razão Social"
-                                        value={empresa.razao_social}
-                                        onChange={(e) => setEmpresa({...empresa, razao_social: e.target.value })}
+                                        value={empresa.razaoSocial}
+                                        onChange={(e) => setEmpresa({...empresa, razaoSocial: e.target.value })}
+                                        disabled
                                     />
                                     <Input
                                         type="text"
                                         label="Nome Fantasia"
-                                        value={empresa.nome_fantasia}
-                                        onChange={(e) => setEmpresa({...empresa, nome_fantasia: e.target.value })}
+                                        value={empresa.nomeFantasia}
+                                        onChange={(e) => setEmpresa({...empresa, nomeFantasia: e.target.value })}
                                     />
                                     <Input
                                         type="text"
                                         label="Responsável Legal"
-                                        value={empresa.responsavel}
-                                        onChange={(e) => setEmpresa({...empresa, responsavel: e.target.value })}
+                                        value={empresa.responsavelLegal}
+                                        onChange={(e) => setEmpresa({...empresa, responsavelLegal: e.target.value })}
                                     />
                                     <Input
                                         type="text"
@@ -117,8 +193,14 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                         value={empresa.email}
                                         onChange={(e) => setEmpresa({...empresa, email: e.target.value })}
                                     />
+                                    <Input
+                                        type="text"
+                                        label="Telefone"
+                                        value={ TelefoneMascara(empresa.telefone ?? '') }
+                                        onChange={(e) => setEmpresa({...empresa, telefone: TelefoneSanitize(e.target.value) })}
+                                    />
                                 </div>
-                                <div className="form-element-group">
+                                {/* <div className="form-element-group">
                                     <h5>Dados Tributários</h5>
                                     <hr />
                                     <Selecao
@@ -139,7 +221,7 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                             { id: 1, name: "Atividade" }
                                         ]}
                                     />
-                                </div>
+                                </div> */}
                                 <div className="form-element-group">
                                     <h5>Dados de Localização</h5>
                                     <hr />
@@ -149,12 +231,14 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                         className="w-50"
                                         value={empresa.cep}
                                         onChange={(e) => setEmpresa({...empresa, cep: e.target.value })}
+                                        disabled
                                     />
                                     <Input
                                         type="text"
                                         label="Logradouro"
                                         value={empresa.logradouro}
                                         onChange={(e) => setEmpresa({...empresa, logradouro: e.target.value })}
+                                        disabled
                                     />
                                     <div className="row">
                                         <div className="col">
@@ -163,23 +247,26 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                                 label="Bairro"
                                                 value={empresa.bairro}
                                                 onChange={(e) => setEmpresa({...empresa, bairro: e.target.value })}
+                                                disabled
                                             />
                                         </div>
                                         <div className="col">
                                             <Input
                                                 type="text"
                                                 label="Município"
-                                                value={empresa.municipio}
-                                                onChange={(e) => setEmpresa({...empresa, municipio: e.target.value })}
+                                                value={empresa.cidade}
+                                                onChange={(e) => setEmpresa({...empresa, cidade: e.target.value })}
+                                                disabled
                                             />
                                         </div>
                                     </div>
                                     <Input
-                                        type="number"
+                                        type="text"
                                         label="Número"
                                         className="w-50"
                                         value={empresa.numero}
                                         onChange={(e) => setEmpresa({...empresa, numero: e.target.value })}
+                                        disabled
                                     />
                                     <Input
                                         type="text"
@@ -188,10 +275,10 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                         onChange={(e) => setEmpresa({...empresa, complemento: e.target.value })}
                                     />
                                     <Selecao
+                                        value={empresa.uf}
                                         className="w-50"
-                                        opcoes={[
-                                            { id: 1, name: "UF" }
-                                        ]}
+                                        opcoes={ufs}
+                                        disabled
                                     />
                                 </div>
                                 <div className="form-element-group">
@@ -202,6 +289,7 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                         label={ modoEdicao ? "Salvar" : "Adicionar nova Empresa" }
                                         icone={<ArrowRight size={24} />}
                                         iconePosicao="direita"
+                                        onClick={HandleCadastrarEmpresa}
                                     />
                                 </div>
                             </FormContainer>
