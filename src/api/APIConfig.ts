@@ -1,6 +1,6 @@
 export const APIConfig = {
     // apontando para a API de Homologação
-    baseUrl: "http://auditteiapi.ofernandoavila.com/api",
+    baseUrl: "https://auditteiapi.ofernandoavila.com/api",
     // baseUrl: "http://localhost:8000/api",
 
     // Autenticação
