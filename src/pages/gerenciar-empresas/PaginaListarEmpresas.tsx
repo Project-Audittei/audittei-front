@@ -9,15 +9,10 @@ import Tabela from "../../components/Tabela/Tabela";
 import Paginacao from "../../components/Paginacao/Paginacao";
 import { EmpresaModel } from "../../models/EmpresaModel";
 import { useEffect, useState } from "react";
-import { consumirAPI } from "../../hooks/consumirAPI";
-import { APIConfig } from "../../api/APIConfig";
-import useUsuario from "../../hooks/useUsuario";
 import { useEmpresa } from "../../services/EmpresaService";
 import Loader from "../../components/Loader/Loader";
 
 export default function PaginaListarEmpresas() {
-
-    const { usuario } = useUsuario();
     const { ObterEmpresas } = useEmpresa();
     const navigate = useNavigate();
 

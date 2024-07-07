@@ -42,7 +42,7 @@ export function useEmpresa() {
     }
 
     const CadastrarEmpresa = async (empresa: IEmpresaCadastro) => {
-        const { data, success } = await consumirAPI<IEmpresaCadastro, CNPJModel>({
+        const { success } = await consumirAPI<IEmpresaCadastro, CNPJModel>({
             url: `${APIConfig.cadastrarEmpresa}`,
             method: 'post',
             dataRequest: empresa,

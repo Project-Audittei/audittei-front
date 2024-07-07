@@ -23,6 +23,7 @@ export default function PaginaVerEmpresa() {
             ObterEmpresaPorGUID(params.id)
                         .then( dados => setEmpresa(dados));
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params]);
     
     if(!empresa) {

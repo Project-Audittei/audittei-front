@@ -8,9 +8,8 @@ import Selecao from "../../components/Form/Selecao";
 import useModal from "../../hooks/useModal";
 import ImportarPlanilhaEmpresas from "../../components/app/Modais/ImportarPlanilhaEmpresas";
 import { useParams } from "react-router-dom";
-import { EmpresaModel, IEmpresaAtualizar, IEmpresaCadastro } from "../../models/EmpresaModel";
+import { IEmpresaCadastro } from "../../models/EmpresaModel";
 import InputCNPJ from "../../components/Form/InputCNPJ";
-import { CNPJSanitize } from "../../helpers/CNPJSanitize";
 import { useEmpresa } from "../../services/EmpresaService";
 import { TelefoneMascara, TelefoneSanitize } from "../../helpers/TelefoneSanitize";
 import Loader from "../../components/Loader/Loader";
@@ -61,7 +60,7 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                 uf: ""
             });
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [modo, params]);
 
     const HandleAbrirImportadorPlanilha = () => {
