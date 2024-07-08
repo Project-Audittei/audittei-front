@@ -17,7 +17,6 @@ export default function PaginaVerEscritorio() {
 
     useEffect(() => {
         if(usuario) setEscritorio(usuario.escritorio);
-        console.log(escritorio);
     }, [usuario]);
 
     if(!escritorio) return (

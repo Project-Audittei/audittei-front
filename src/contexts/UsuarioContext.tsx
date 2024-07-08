@@ -1,8 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { UsuarioModel } from "../models/UsuarioModel";
 import { jwtDecode } from "jwt-decode";
-import { consumirAPI } from "../hooks/consumirAPI";
-import { APIConfig } from "../api/APIConfig";
 
 interface UsuarioContextProviderProps {
     children: ReactNode;

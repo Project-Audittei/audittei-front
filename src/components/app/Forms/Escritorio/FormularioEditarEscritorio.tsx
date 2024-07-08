@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { CNPJSanitize } from "../../../../helpers/CNPJSanitize";
 import { TelefoneMascara, TelefoneSanitize } from "../../../../helpers/TelefoneSanitize";
 import { ufs } from "../../../../helpers/UFLista";
-import { EscritorioModel, EscritorioModelDTO } from "../../../../models/EscritorioModel";
+import { EscritorioModel } from "../../../../models/EscritorioModel";
 import Botao from "../../../Botoes/Botao";
 import FormContainer from "../../../Form/FormContainer";
 import Input from "../../../Form/Input";

@@ -11,7 +11,7 @@ export function useEscritorio() {
     const navigate = useNavigate();
         
     const AtualizarEscritorio = (escritorio: EscritorioModelDTO) => new Promise<void>(async (resolve, reject) => {
-        const { success, message, data } = await consumirAPI<EscritorioModelDTO, EscritorioModel>({
+        const { success, message } = await consumirAPI<EscritorioModelDTO, EscritorioModel>({
             url: `${APIConfig.editarEscritorio}`,
             method: 'post',
             dataRequest: escritorio,

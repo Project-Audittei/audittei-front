@@ -1,17 +1,8 @@
-import { ArrowRight } from "lucide-react";
-import Botao from "../../components/Botoes/Botao";
 import VisaoBasica from "../../components/VisaoBasica";
 import { useEffect, useState } from "react";
-import Input from "../../components/Form/Input";
-import FormContainer from "../../components/Form/FormContainer";
-import Selecao from "../../components/Form/Selecao";
 import { useParams } from "react-router-dom";
 import { EscritorioModel } from "../../models/EscritorioModel";
 import useUsuario from "../../hooks/useUsuario";
-import { CNPJMascara, CNPJSanitize } from "../../helpers/CNPJSanitize";
-import { TelefoneMascara, TelefoneSanitize } from "../../helpers/TelefoneSanitize";
-import { ufs } from "../../helpers/UFLista";
-import InputCEP from "../../components/Form/InputCEP";
 import FormularioEditarEscritorio from "../../components/app/Forms/Escritorio/FormularioEditarEscritorio";
 
 interface PaginaCrudEmpresaProps {

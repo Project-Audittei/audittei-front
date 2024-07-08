@@ -14,6 +14,7 @@ export const APIConfig = {
     criarPerfilEmpresa: '/escritorio/cadastro',
     buscarCNPJ: '/escritorio/cnpj',
     obterEmpresas: '/escritorio/empresas',
+    editarEscritorio: '/escritorio/editar',
     
     // Empresa
     obterEmpresa: '/empresa',
