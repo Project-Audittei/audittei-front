@@ -17,6 +17,7 @@ export default function PaginaVerEscritorio() {
 
     useEffect(() => {
         if(usuario) setEscritorio(usuario.escritorio);
+        console.log(escritorio);
     }, [usuario]);
 
     if(!escritorio) return (
@@ -48,7 +49,7 @@ export default function PaginaVerEscritorio() {
                     },
                     {
                         label: "Telefone do Escritório",
-                        value: TelefoneMascara(escritorio.telefone),
+                        value: TelefoneMascara(escritorio.telefone ?? ''),
                         tipo: "text",
                         setValue: e => setEscritorio({ ...escritorio, telefone: e.currentTarget.value })
                     },

@@ -1,18 +1,28 @@
 export interface EscritorioModel {
     guid?: string;
-    cadastro?: string;
     cnpj: string;
     razaoSocial: string;
-    nome?: string;
-    responsavel?: string;
     email: string;
     telefone: string;
-
     cep: string;
     logradouro: string;
     bairro: string;
     cidade: string;
-    numero?: string;
+    numero: string;
+    complemento?: string;
+    uf: string;
+}
+
+export interface EscritorioModelDTO {
+    cnpj: string;
+    razaoSocial: string;
+    email: string;
+    telefone: string;
+    cep: string;
+    logradouro: string;
+    bairro: string;
+    cidade: string;
+    numero: string;
     complemento?: string;
     uf: string;
 }

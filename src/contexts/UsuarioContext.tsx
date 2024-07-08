@@ -1,6 +1,8 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { UsuarioModel } from "../models/UsuarioModel";
 import { jwtDecode } from "jwt-decode";
+import { consumirAPI } from "../hooks/consumirAPI";
+import { APIConfig } from "../api/APIConfig";
 
 interface UsuarioContextProviderProps {
     children: ReactNode;
@@ -27,8 +29,14 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const AtualizarUsuario = (usuario: UsuarioModel) => {
-        setUsuario(usuario);
+    const AtualizarUsuario = async (entidade: UsuarioModel) => {
+        setUsuario((prev) => {
+            return ({
+                ...prev!,
+                escritorio: entidade.escritorio
+            })
+        });
+
         localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify( usuario ));
     };
 
