@@ -16,6 +16,7 @@ import Loader from "../../components/Loader/Loader";
 import { ufs } from "../../helpers/UFLista";
 import { InputError } from "../../@types/InputErro";
 import { ValidarCampos } from "../../helpers/ValidadorCampo";
+import InputTelefone from "../../components/Form/InputTelefone";
 
 interface PaginaCrudEmpresaProps {
     modo: "novo" | "edicao";
@@ -249,11 +250,9 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                             erro: erroEmail?.mensagem
                                         }}
                                     />
-                                    <Input
-                                        type="text"
-                                        label="Telefone"
+                                    <InputTelefone
                                         value={ TelefoneMascara(empresa.telefone ?? '') }
-                                        onChange={(e) => setEmpresa({...empresa, telefone: TelefoneSanitize(e.target.value) })}
+                                        setValue={telefone => setEmpresa({...empresa, telefone: TelefoneSanitize(telefone) })}
                                         estado={ erroTelefone?.estado ?? 'padrao' }
                                         mensagensValidacao={{
                                             erro: erroTelefone?.mensagem

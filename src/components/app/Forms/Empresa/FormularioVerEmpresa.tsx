@@ -1,4 +1,5 @@
 import { CNPJMascara } from "../../../../helpers/CNPJSanitize";
+import { TelefoneMascara } from "../../../../helpers/TelefoneSanitize";
 import { EmpresaModel } from "../../../../models/EmpresaModel";
 import FormContainer from "../../../Form/FormContainer";
 import FormField from "../../../Form/FormField";
@@ -50,6 +51,12 @@ export default function FormularioVerEmpresa({ empresa, setEmpresa }: Formulario
                                     value={ empresa.email } 
                                     setValue={ e => setEmpresa({ ...empresa, email: e.currentTarget.value }) } 
                                     tipo={ "email" }
+                                />
+                                <FormField 
+                                    label={ "Telefone" } 
+                                    value={ TelefoneMascara(empresa.telefone) } 
+                                    setValue={ e => setEmpresa({ ...empresa, telefone: e.currentTarget.value }) } 
+                                    tipo={ "text" }
                                 />
                             </FormContainer>
                         </div>
