@@ -26,6 +26,7 @@ import PaginaVerEmpresa from "./pages/gerenciar-empresas/PaginaVerEmpresa";
 import PageStyleGuide from "./pages/documentation-app/PageStyleGuide";
 import PaginaCrudEscritorio from "./pages/gerenciar-escritorio/PaginaCrudEscritorio";
 import PaginaVerEscritorio from "./pages/gerenciar-escritorio/PaginaVerEscritorio";
+import PaginaMeuPerfil from "./pages/usuario/PaginaMeuPerfil";
 
 function App() {
 	return (
@@ -59,6 +60,8 @@ function App() {
 						
 						<Route path="/gerenciar-escritorio" element={<PaginaVerEscritorio />} />
 						<Route path="/gerenciar-escritorio/editar" element={<PaginaCrudEscritorio modo="edicao" />} />
+
+						<Route path="/meu-perfil" element={ <PaginaMeuPerfil /> } />
 
 						<Route path="/auth/cadastro" element={<Cadastro />} />
 						<Route path="/auth/esqueci-senha" element={<EsqueciSenha />} />

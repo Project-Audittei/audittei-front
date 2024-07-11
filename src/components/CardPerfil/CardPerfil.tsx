@@ -25,7 +25,7 @@ export default function CardPerfil() {
                     </div>
                     <div className="col-10">
                         <div className="row">Olá, { usuario.nomeSimples }.</div>
-                        <div className="row"><Link to={'/'}>Meu Perfil</Link></div>
+                        <div className="row"><Link to={'/meu-perfil'}>Meu Perfil</Link></div>
                     </div>
                 </div>
             </div>
