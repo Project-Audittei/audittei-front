@@ -4,6 +4,7 @@ import VisaoBasica from "../../components/VisaoBasica";
 import useUsuario from "../../hooks/useUsuario";
 import FormViewer, { IForm } from "../../components/Form/FormViewer";
 import { TelefoneMascara } from "../../helpers/TelefoneSanitize";
+import FormularioMeuPerfil from "../../components/app/Forms/MeuPerfil/FormularioMeuPerfil";
 
 export default function PaginaMeuPerfil() {
 
@@ -50,33 +51,8 @@ export default function PaginaMeuPerfil() {
 				<div className="col col-align-center align-right"></div>
 			</div>
 
-			<div className="row">
-				<div className="col">
-					<div className="row mb-2">
-						<div className="col">
-							<div className="row">
-								<h4>Imagem de perfil</h4>
-							</div>
-						</div>
-						<div className="col col-align-center align-right">
-							<Botao
-								estilo="Primary"
-								tamanho="ExtraSmall"
-								label="Editar"
-								icone={<Pencil size={16} />}
-							/>
-						</div>
-					</div>
-					<div className="row">
-						<div className="card">
-							<div className="avatar">{ usuario.iniciais }</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			{ form ? form.secoes.map( secao => (
-                <FormViewer secao={secao} />
-            ) ) : '' }
+			<FormularioMeuPerfil usuario={usuario} />
+
 		</VisaoBasica>
 	);
 }

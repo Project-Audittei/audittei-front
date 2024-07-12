@@ -99,7 +99,7 @@ export default function Input({
         
         case 'password':
             return (
-                <div className="input-group">
+                <div className={`input-group ${className}`}>
                     <div className={`form-group ${classEstado}`}>
                         <input 
                             type={ !mostrarSenha ? "password" : "text" } 
