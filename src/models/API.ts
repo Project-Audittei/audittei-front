@@ -4,7 +4,7 @@ import { UsuarioModel } from "./UsuarioModel";
 export interface APIRequest<T> {
     url: string;
     dataRequest?: T;
-    method?: 'get' | 'post';
+    method?: 'get' | 'post' | 'put' | 'delete';
     authToken?: string;
 }
 

@@ -16,6 +16,7 @@ import InputCNPJ from "../../Form/InputCNPJ";
 import { useEmpresa } from "../../../services/EmpresaService";
 import { ufs } from "../../../helpers/UFLista";
 import Selecao from "../../Form/Selecao";
+import { CEPMascara } from "../../../helpers/CEPHelper";
 
 export default function PrimeiroAcesso() {
     const [cnpj, setCnpj] = useState<string>('');
@@ -48,11 +49,15 @@ export default function PrimeiroAcesso() {
                     razaoSocial: data.razaoSocial,
                     logradouro: data.logradouro,
                     numero: data.numero,
+                    email: data.email,
+                    telefone: data.telefone,
                     cep: data.cep,
                     bairro: data.bairro,
                     cidade: data.cidade,
                     uf: data.uf,
                 }));
+                setEmail(data.email);
+                setTelefone(data.telefone);
             })
             .finally(() => setCarregandoCNPJ(false));
     }
@@ -177,8 +182,8 @@ export default function PrimeiroAcesso() {
                                             <Input
                                                 type="text"
                                                 label="Telefone do Escritório"
-                                                value={telefone}
-                                                onChange={e => setTelefone(TelefoneMascara(e.currentTarget.value))}
+                                                value={ TelefoneMascara(telefone) }
+                                                onChange={e => setTelefone(TelefoneSanitize(e.currentTarget.value))}
                                                 estado={erroTelefone?.estado ?? 'padrao'}
                                                 mensagensValidacao={{ erro: erroTelefone?.mensagem ?? '' }}
                                             />
@@ -189,7 +194,7 @@ export default function PrimeiroAcesso() {
                                             <Input
                                                 type="text"
                                                 label="CEP"
-                                                value={empresa.cep}
+                                                value={ CEPMascara(empresa.cep ?? '') }
                                                 disabled
                                             />
                                         </div>

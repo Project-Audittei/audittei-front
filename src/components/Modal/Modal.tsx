@@ -38,9 +38,6 @@ export default function Modal() {
                     <div className="modal-body">
                         { modalContent }
                     </div>
-                    <div className="modal-footer">
-                        <Botao className="float-right" estilo="Primary" tamanho="Large" label="Label"/>
-                    </div>
                 </div>
             </div>
         </div>

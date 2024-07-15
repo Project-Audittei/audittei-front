@@ -72,6 +72,11 @@
 }
 
 .notificacao {
+    .icone {
+        display: flex;
+        align-items: center;
+    }
+
     &-informacao {
         background-color: #F4F3FE;
         border-color: #605DEC;
