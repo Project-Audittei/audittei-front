@@ -144,7 +144,7 @@ export default function Input({
 
         default:
             return (
-                <div className="input-group">
+                <div className={`input-group ${className}`}>
                     <div className={`form-group ${classEstado}`}>
                         <input 
                             type="text" 

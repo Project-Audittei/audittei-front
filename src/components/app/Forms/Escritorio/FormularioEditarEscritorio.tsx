@@ -70,12 +70,16 @@ export default function FormularioEditarEscritorio({ escritorio, setEscritorio }
             <div className="form-element-group">
                 <h5>Dados de Localização</h5>
                 <hr />
-                <InputCEP
-                    className="w-50"
-                    value={escritorio.cep}
-                    setValue={(telefone) => setEscritorio({ ...escritorio, cep: telefone })}
-                    disabled
-                />
+                <div className="row">
+                    <div className="col">
+                        <InputCEP
+                            value={escritorio.cep}
+                            setValue={(cep) => setEscritorio({ ...escritorio, cep: cep })}
+                            disabled
+                        />
+                    </div>
+                    <div className="col"></div>
+                </div>
                 <Input
                     type="text"
                     label="Logradouro"
@@ -103,14 +107,18 @@ export default function FormularioEditarEscritorio({ escritorio, setEscritorio }
                         />
                     </div>
                 </div>
-                <Input
-                    type="text"
-                    label="Número"
-                    className="w-50"
-                    value={escritorio.numero}
-                    onChange={(e) => setEscritorio({ ...escritorio, numero: e.target.value })}
-                    disabled
-                />
+                <div className="row">
+                    <div className="col">
+                        <Input
+                            type="text"
+                            label="Número"
+                            value={escritorio.numero}
+                            onChange={(e) => setEscritorio({ ...escritorio, numero: e.target.value })}
+                            disabled
+                        />
+                    </div>
+                    <div className="col"></div>
+                </div>
                 <Input
                     type="text"
                     label="Complemento"
