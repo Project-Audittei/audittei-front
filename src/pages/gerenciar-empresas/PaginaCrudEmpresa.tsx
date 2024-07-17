@@ -17,6 +17,7 @@ import { ufs } from "../../helpers/UFLista";
 import { InputError } from "../../@types/InputErro";
 import { ValidarCampos } from "../../helpers/ValidadorCampo";
 import InputTelefone from "../../components/Form/InputTelefone";
+import { CEPMascara, CEPSanitize } from "../../helpers/CEPHelper";
 
 interface PaginaCrudEmpresaProps {
     modo: "novo" | "edicao";
@@ -24,7 +25,22 @@ interface PaginaCrudEmpresaProps {
 
 export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
     const [modoEdicao, setModoEdicao] = useState(false);
-    const [empresa, setEmpresa] = useState<IEmpresaCadastro>({} as IEmpresaCadastro);
+    const [empresa, setEmpresa] = useState<IEmpresaCadastro>({
+        guid: "",
+        cnpj: "",
+        nomeFantasia: "",
+        responsavelLegal: "",
+        email: "",
+        telefone: "",
+        razaoSocial: "",
+        cep: "",
+        logradouro: "",
+        bairro: "",
+        cidade: "",
+        numero: "",
+        complemento: "",
+        uf: ""
+    });
     const [carregando, setCarregando] = useState<boolean>(false);
 
     const [erroCNPJ, setErroCNPJ] = useState<InputError | null>(null);
@@ -132,12 +148,16 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
             .then(data => {
                 setEmpresa( tmp => ({
                     ...tmp,
+                    nomeFantasia: data.nomeFantasia ?? '',
                     razaoSocial: data.razaoSocial,
                     logradouro: data.logradouro,
                     numero: data.numero,
+                    complemento: data.complemento ?? '',
                     cep: data.cep,
                     bairro: data.bairro,
                     cidade: data.cidade,
+                    telefone: data.telefone,
+                    email: data.email,
                     uf: data.uf,
                 }));
             })
@@ -284,14 +304,18 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                 <div className="form-element-group">
                                     <h5>Dados de Localização</h5>
                                     <hr />
-                                    <Input
-                                        type="number"
-                                        label="CEP"
-                                        className="w-50"
-                                        value={empresa.cep}
-                                        onChange={(e) => setEmpresa({...empresa, cep: e.target.value })}
-                                        disabled
-                                    />
+                                    <div className="row">
+                                        <div className="col">
+                                            <Input
+                                                type="text"
+                                                label="CEP"
+                                                value={ CEPMascara(empresa.cep) }
+                                                onChange={(e) => setEmpresa({...empresa, cep: CEPSanitize(e.target.value) })}
+                                                disabled
+                                            />
+                                        </div>
+                                        <div className="col"></div>
+                                    </div>
                                     <Input
                                         type="text"
                                         label="Logradouro"
@@ -319,14 +343,18 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                                             />
                                         </div>
                                     </div>
-                                    <Input
-                                        type="text"
-                                        label="Número"
-                                        className="w-50"
-                                        value={empresa.numero}
-                                        onChange={(e) => setEmpresa({...empresa, numero: e.target.value })}
-                                        disabled
-                                    />
+                                    <div className="row">
+                                        <div className="col">
+                                            <Input
+                                                type="text"
+                                                label="Número"
+                                                value={empresa.numero}
+                                                onChange={(e) => setEmpresa({...empresa, numero: e.target.value })}
+                                                disabled
+                                            />
+                                        </div>
+                                        <div className="col"></div>
+                                    </div>
                                     <Input
                                         type="text"
                                         label="Complemento"
