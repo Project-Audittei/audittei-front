@@ -28,6 +28,9 @@ export default function UsuarioContextProvider({ children }: UsuarioContextProvi
     }, []);
 
     const AtualizarUsuario = async (entidade: UsuarioModel) => {
+
+        entidade.iniciais = obterIniciais(entidade.nomeCompleto);
+
         setUsuario((prev) => {
             return ({
                 ...prev!,

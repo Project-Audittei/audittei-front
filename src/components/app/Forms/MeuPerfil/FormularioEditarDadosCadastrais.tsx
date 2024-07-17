@@ -12,6 +12,7 @@ import Notificacao, { INotificacao } from "../../../Notificacao/Notificacao";
 import { useNavigate } from "react-router-dom";
 import { ValidarCampos } from "../../../../helpers/ValidadorCampo";
 import { InputError } from "../../../../@types/InputErro";
+import useUsuario from "../../../../hooks/useUsuario";
 
 type FormularioEditarDadosCadastraisProps = {
 	usuario: UsuarioModel;
@@ -21,6 +22,7 @@ export default function FormularioEditarDadosCadastrais({
 	usuario,
 }: FormularioEditarDadosCadastraisProps) {
 
+	const { AtualizarUsuario } = useUsuario();
 	const [nome, setNome] = useState(usuario.nomeCompleto);
 	const [nomeErro, setNomeErro] = useState<InputError | null>(null);
 	
@@ -70,7 +72,12 @@ export default function FormularioEditarDadosCadastrais({
 				tipo: "erro"
 			});
 		}
-	
+		
+		usuario.nomeCompleto = nome;
+		usuario.telefone = telefone;
+
+		AtualizarUsuario(usuario);
+
 		return navigate('/meu-perfil');
 	}
 
