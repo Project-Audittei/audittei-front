@@ -11,6 +11,8 @@ export const ValidadorCampo = ( campo: string, regras: RegraValidacaoCampo[], se
     let estado = true;
     
     regras.map( ({ regra, value }) => {
+        if(!estado) return false;
+
         switch(regra) {
             case "less-than":
                 estado = campo.split('').length > value!;
@@ -64,6 +66,8 @@ export const ValidarCampos = (campos: CamposParaValidacao[]) : boolean => {
             });
             estado = false;
         } else setError(null);
+
+        if(!estado) return estado;
 
         return true;
     } )

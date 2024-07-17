@@ -8,6 +8,7 @@ export const APIConfig = {
     login: '/auth/login',
     confirmarConta: '/auth/confirmar-conta',
     esqueciSenha: '/auth/esqueci-senha',
+    redefinirSenha: '/auth/redefinir-senha',
 
     // Escritorio
     obterPerfilEmpresa: '/escritorio',
