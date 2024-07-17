@@ -1,6 +1,6 @@
 import VisaoBasica from "../../components/VisaoBasica";
 import { useEffect, useState } from "react";
-import { Printer, Pencil } from "lucide-react";
+import { Pencil } from "lucide-react";
 import Botao from "../../components/Botoes/Botao";
 import { EscritorioModel } from "../../models/EscritorioModel";
 import { useNavigate } from "react-router-dom";
