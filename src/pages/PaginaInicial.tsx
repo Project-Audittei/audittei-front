@@ -1,11 +1,22 @@
+import { useEffect } from "react";
 import CardOnBoarding from "../components/Card/CardOnBoarding";
 import VisaoBasica from "../components/VisaoBasica";
 import Alerta from "../components/app/Avisos/Alerta";
 import PrimeiroAcesso from "../components/app/Modais/PrimeiroAcesso";
 import useUsuario from "../hooks/useUsuario";
+import useAnalytics from "../analytics/useAnalytics";
 
 export default function PaginaInicial() {
     const  { usuario } = useUsuario();
+    const { enviarAnalise } = useAnalytics();
+
+    useEffect(() => {
+        enviarAnalise({
+            page: '/',
+            title: 'Home'
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <VisaoBasica menuAtivo="/" breadcrumbSecao="Página Inicial">

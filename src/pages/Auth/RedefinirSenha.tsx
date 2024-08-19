@@ -5,13 +5,14 @@ import Input from "../../components/Form/Input";
 import AuthContainer from "../../components/app/AuthContainer";
 import Container from "../../components/app/Container";
 import Logo from "../../components/app/Logo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ValidarCampos } from "../../helpers/ValidadorCampo";
 import { InputError } from "../../@types/InputErro";
 import { consumirAPI } from "../../hooks/consumirAPI";
 import { APIConfig } from "../../api/APIConfig";
 import Notificacao, { INotificacao } from "../../components/Notificacao/Notificacao";
+import useAnalytics from "../../analytics/useAnalytics";
 
 export default function RedefinirSenha() {
     const [chaveAcesso, setChaveAcesso] = useState<string>('');
@@ -27,6 +28,15 @@ export default function RedefinirSenha() {
     const [carregando, setCarregando] = useState(false);
 
     const navigate = useNavigate();
+    const { enviarAnalise } = useAnalytics();
+
+    useEffect(() => {
+        enviarAnalise({
+            page: '/auth/redefinir-senha',
+            title: 'Redefinir senha'
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const HandleConfirmarSenha = (confirmarSenha: string) => {
         setConfirmarSenha(confirmarSenha);

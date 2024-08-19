@@ -10,6 +10,7 @@ import { UsuarioModel } from "../../models/UsuarioModel";
 import { useEmpresa } from "../../services/EmpresaService";
 import FormularioVerEmpresa from "../../components/app/Forms/Empresa/FormularioVerEmpresa";
 import Loader from "../../components/Loader/Loader";
+import useAnalytics from "../../analytics/useAnalytics";
 
 export default function PaginaVerEmpresa() {
 
@@ -17,8 +18,14 @@ export default function PaginaVerEmpresa() {
     const params = useParams();
     const { ObterEmpresaPorGUID } = useEmpresa();
     const navigate = useNavigate();
+    const { enviarAnalise } = useAnalytics();
 
     useEffect(() => {
+        enviarAnalise({
+            page: '/gerenciar-empresas/visualizar',
+            title: 'Ver empresa'
+        });
+
         if (params.id) {
             ObterEmpresaPorGUID(params.id)
                         .then( dados => setEmpresa(dados));

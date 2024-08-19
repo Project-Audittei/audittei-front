@@ -22,6 +22,10 @@ jobs:
             - name: Install dependencies
               run: npm install
 
+            - name: Create .env file
+              run: |
+                echo "REACT_APP_API_BASE_URL=${{ secrets.GOOGLE_ANALYTICS }}" > .env
+
             - name: Build
               run: npm run build
 

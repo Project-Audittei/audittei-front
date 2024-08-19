@@ -5,7 +5,7 @@ import Input from "../../components/Form/Input";
 import AuthContainer from "../../components/app/AuthContainer";
 import Container from "../../components/app/Container";
 import Logo from "../../components/app/Logo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { APIRequestResponse, APIResponse } from "../../models/API";
 import { consumirAPI } from "../../hooks/consumirAPI";
@@ -13,12 +13,22 @@ import { ValidadorCampo } from "../../helpers/ValidadorCampo";
 import { InputError } from "../../@types/InputErro";
 import Notificacao from "../../components/Notificacao/Notificacao";
 import { APIConfig } from "../../api/APIConfig";
+import useAnalytics from "../../analytics/useAnalytics";
 
 export default function EsqueciSenha() {
     const [email, setEmail] = useState<string>('');
     const [emailErro, setEmailErro] = useState<InputError | null>(null);
     const [requestResponse, setRequestResponse] = useState<APIRequestResponse>();
     const navigate = useNavigate();
+    const { enviarAnalise } = useAnalytics();
+
+    useEffect(() => {
+        enviarAnalise({
+            page: '/auth/esqueci-senha',
+            title: 'Esqueci senha'
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const HandleEnviarLinkRecuperacao = async (e:any) => {
         e.preventDefault();

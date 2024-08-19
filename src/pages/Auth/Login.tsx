@@ -13,6 +13,7 @@ import { APILoginResponse, APIRequestResponse } from "../../models/API";
 import { InputError } from "../../@types/InputErro";
 import useUsuario from "../../hooks/useUsuario";
 import { APIConfig } from "../../api/APIConfig";
+import useAnalytics from "../../analytics/useAnalytics";
 
 export default function Login() {
     const location = useLocation();
@@ -28,8 +29,14 @@ export default function Login() {
     
     const navigate = useNavigate();
     const { HandleSignIn, VerificaSessao, ChecarUsuarioAnonimo } = useUsuario();
+    const { enviarAnalise } = useAnalytics();
 
     useEffect(() => {
+        enviarAnalise({
+            page: '/auth/login',
+            title: 'Login'
+        });
+        
         let teste = location.state;
 
         if(teste !== null) {

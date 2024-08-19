@@ -1,10 +1,22 @@
 import VisaoBasica from "../../components/VisaoBasica";
 import useUsuario from "../../hooks/useUsuario";
 import FormularioEditarDadosCadastrais from "../../components/app/Forms/MeuPerfil/FormularioEditarDadosCadastrais";
+import useAnalytics from "../../analytics/useAnalytics";
+import { useEffect } from "react";
 
 export default function PaginaEditarDadosCadastrais() {
 
 	const { usuario } = useUsuario();
+	const { enviarAnalise } = useAnalytics();
+
+	useEffect(() => {
+		enviarAnalise({
+			page: '/meu-perfil/editar-dados-cadastro',
+			title: 'Editar perfil'
+		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 
 	if(!usuario) return <></>;
 

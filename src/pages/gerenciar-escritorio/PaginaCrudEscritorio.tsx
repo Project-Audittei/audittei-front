@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { EscritorioModel } from "../../models/EscritorioModel";
 import useUsuario from "../../hooks/useUsuario";
 import FormularioEditarEscritorio from "../../components/app/Forms/Escritorio/FormularioEditarEscritorio";
+import useAnalytics from "../../analytics/useAnalytics";
 
 interface PaginaCrudEmpresaProps {
     modo: "novo" | "edicao";
@@ -14,6 +15,7 @@ export default function PaginaCrudEscritorio({modo}: PaginaCrudEmpresaProps) {
 
     const params = useParams();
 
+    const { enviarAnalise } = useAnalytics();
     const { usuario } = useUsuario();
 
     useEffect(() => {
@@ -22,6 +24,11 @@ export default function PaginaCrudEscritorio({modo}: PaginaCrudEmpresaProps) {
             console.log(usuario.escritorio);
         }
 
+        enviarAnalise({
+            page: '/gerenciar-escritorio/editar',
+            title: 'Editar escritorio'
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [modo, params, usuario]);
 
     if(!escritorio) return (<VisaoBasica breadcrumbSecao="Editar Escritório:" menuAtivo="/gerenciar-escritorio/editar"></VisaoBasica>);

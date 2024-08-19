@@ -6,11 +6,22 @@ import { EscritorioModel } from "../../models/EscritorioModel";
 import { useNavigate } from "react-router-dom";
 import useUsuario from "../../hooks/useUsuario";
 import FormularioVerEscritorio from "../../components/app/Forms/Escritorio/FormularioVerEscritorio";
+import useAnalytics from "../../analytics/useAnalytics";
 
 export default function PaginaVerEscritorio() {
     const { usuario } = useUsuario();
     const [escritorio, setEscritorio] = useState<EscritorioModel | null>(null);
     const navigate = useNavigate();
+
+    const { enviarAnalise } = useAnalytics();
+
+    useEffect(() => {
+        enviarAnalise({
+            page: '/gerenciar-escritorio',
+            title: 'Gerenciar escritorio'
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useEffect(() => {
         if(usuario) setEscritorio(usuario.escritorio);

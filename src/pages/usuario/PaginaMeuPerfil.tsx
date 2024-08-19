@@ -1,8 +1,20 @@
 import VisaoBasica from "../../components/VisaoBasica";
 import useUsuario from "../../hooks/useUsuario";
 import FormularioMeuPerfil from "../../components/app/Forms/MeuPerfil/FormularioMeuPerfil";
+import { useEffect } from "react";
+import useAnalytics from "../../analytics/useAnalytics";
 
 export default function PaginaMeuPerfil() {
+
+	const { enviarAnalise } = useAnalytics();
+
+    useEffect(() => {
+        enviarAnalise({
+			page: '/meu-perfil',
+			title: 'Meu perfil'
+		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
 	const { usuario } = useUsuario();
 

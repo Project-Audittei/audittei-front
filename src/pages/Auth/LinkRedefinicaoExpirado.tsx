@@ -5,15 +5,25 @@ import Input from "../../components/Form/Input";
 import AuthContainer from "../../components/app/AuthContainer";
 import Container from "../../components/app/Container";
 import Logo from "../../components/app/Logo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Notificacao from "../../components/Notificacao/Notificacao";
 import { APIRequestResponse } from "../../models/API";
 import { consumirAPI } from "../../hooks/consumirAPI";
+import useAnalytics from "../../analytics/useAnalytics";
 
 export default function LinkRedefinicaoExpirado() {
     const [email, setEmail] = useState<string>('');
 
     const [feedback, setFeedback] = useState<APIRequestResponse | null>(null);
+    const { enviarAnalise } = useAnalytics();
+
+    useEffect(() => {
+        enviarAnalise({
+            page: '/auth/reenviar-confirmar-conta',
+            title: 'Reenviar confirmar conta'
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const HandleEnviarEmail = async (event: MouseEvent) => {
         event.preventDefault();

@@ -11,14 +11,22 @@ import { EmpresaModel } from "../../models/EmpresaModel";
 import { useEffect, useState } from "react";
 import { useEmpresa } from "../../services/EmpresaService";
 import Loader from "../../components/Loader/Loader";
+import useAnalytics from "../../analytics/useAnalytics";
 
 export default function PaginaListarEmpresas() {
     const { ObterEmpresas } = useEmpresa();
     const navigate = useNavigate();
 
     const [ carregando, setCarregando ] = useState(false);
+    
+	const { enviarAnalise } = useAnalytics();
 
     useEffect(() => {
+        enviarAnalise({
+            page: '/gerenciar-empresas',
+            title: 'Gerenciar Empresas'
+        });
+
         setCarregando(true);
         ObterEmpresas()
             .then( dados => setEmpresas(dados) )

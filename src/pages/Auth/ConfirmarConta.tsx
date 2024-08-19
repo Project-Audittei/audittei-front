@@ -11,6 +11,7 @@ import Container from "../../components/app/Container";
 import { InputError } from "../../@types/InputErro";
 import { ValidadorCampo } from "../../helpers/ValidadorCampo";
 import { APIConfig } from "../../api/APIConfig";
+import useAnalytics from "../../analytics/useAnalytics";
 
 export default function ConfirmarConta() {
 
@@ -23,8 +24,14 @@ export default function ConfirmarConta() {
     const [codigoErro, setCodigoErro] = useState<InputError | null>(null);
 
     const navigate = useNavigate();
+    const { enviarAnalise } = useAnalytics();
 
     useEffect(() => {
+        enviarAnalise({
+            page: '/confirmar-conta',
+            title: 'Confirmar conta'
+        });
+
         if (hash) {
             HandleConfirmarConta(hash);
         }

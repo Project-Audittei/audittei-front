@@ -6,7 +6,7 @@ import Notificacao from "../../components/Notificacao/Notificacao";
 import AuthContainer from "../../components/app/AuthContainer";
 import Container from "../../components/app/Container";
 import Logo from "../../components/app/Logo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { InputError } from "../../@types/InputErro";
 import { APIRequestResponse } from "../../models/API";
@@ -15,6 +15,7 @@ import { NovoUsuarioModel } from "../../models/UsuarioModel";
 import { consumirAPI } from "../../hooks/consumirAPI";
 import { RegraValidacaoCampo, ValidarCampos } from "../../helpers/ValidadorCampo";
 import { APIConfig } from "../../api/APIConfig";
+import useAnalytics from "../../analytics/useAnalytics";
 
 export default function Cadastro() {
     const [nomeCompleto, setNomeCompleto] = useState<string>('');
@@ -34,6 +35,15 @@ export default function Cadastro() {
     const [isCarregando, setIsCarregando] = useState(false);
 
     const navigate = useNavigate();
+    const { enviarAnalise } = useAnalytics();
+
+    useEffect(() => {
+        enviarAnalise({
+            page: '/auth/cadastro',
+            title: 'Cadastro'
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const VerificaSenha = (senhaInput: string) => {
         setConfirmarSenha(senhaInput);

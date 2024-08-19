@@ -18,6 +18,7 @@ import { InputError } from "../../@types/InputErro";
 import { ValidarCampos } from "../../helpers/ValidadorCampo";
 import InputTelefone from "../../components/Form/InputTelefone";
 import { CEPMascara, CEPSanitize } from "../../helpers/CEPHelper";
+import useAnalytics from "../../analytics/useAnalytics";
 
 interface PaginaCrudEmpresaProps {
     modo: "novo" | "edicao";
@@ -51,6 +52,7 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
 
     const { modalOpen } = useModal();
     const params = useParams();
+    const { enviarAnalise } = useAnalytics();
 
     const { 
         ObterInformacoesCNPJ, 
@@ -60,6 +62,8 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
     } = useEmpresa();
 
     useEffect(() => {
+        
+
         if(params.id) {
             ObterEmpresaPorGUID(params.id)
                 .then( dados => setEmpresa(dados! as IEmpresaCadastro) );
@@ -67,6 +71,11 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
         }
 
         if(modo === 'novo') {
+            enviarAnalise({
+                page: '/gerenciar-empresas/nova',
+                title: 'Criar nova empresa'
+            });
+
             setModoEdicao(false);
             setEmpresa({
                 guid: "",
@@ -83,6 +92,11 @@ export default function PaginaCrudEmpresa({modo}: PaginaCrudEmpresaProps) {
                 numero: "",
                 complemento: "",
                 uf: ""
+            });
+        } else {
+            enviarAnalise({
+                page: '/gerenciar-empresas/editar',
+                title: 'Criar editar empresa'
             });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
