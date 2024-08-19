@@ -29,12 +29,7 @@ import PaginaVerEscritorio from "./pages/gerenciar-escritorio/PaginaVerEscritori
 import PaginaMeuPerfil from "./pages/usuario/PaginaMeuPerfil";
 import PaginaEditarDadosCadastrais from "./pages/usuario/PaginaEditarDadosCadastrais";
 
-import ReactGA from 'react-ga4';
-
 function App() {
-
-	ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS!);
-
 	return (
 		<UsuarioContextProvider>
 			<ModalContextProvider>

@@ -8,6 +8,9 @@ export interface IAnalise {
 
 export default function useAnalytics() {
     function enviarAnalise(analise: IAnalise) {
+        
+        ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS!);
+
         return ReactGA.send({
             hitType: 'pageview',
             page: analise.page,
